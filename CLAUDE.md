@@ -6,6 +6,7 @@ Follow the `ios-project-conventions` skill; on conflict this file and the projec
 - Test: `set -o pipefail && xcodebuild -scheme BlixRekrtuacja -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' test | xcbeautify`
 - Lint: `swiftlint lint --strict`. Mechanical rules live in `.swiftlint.yml` — never restate them in CLAUDE.md files.
   Fix violations; never disable or relax a rule to pass.
+- Schemes: `BlixRekrtuacja` (all tests) · `BlixRekrtuacja-UnitTests` (skips `.snapshot`) · `BlixRekrtuacja-SnapshotTests` (only `.snapshot`).
 - Record snapshots (only for intended UI changes): prefix the test command with `TEST_RUNNER_SNAPSHOT_TESTING_RECORD=all`.
 
 ## Layers (all inside BlixRekrtuacja/)
@@ -17,6 +18,11 @@ Follow the `ios-project-conventions` skill; on conflict this file and the projec
 - Extensions of Apple types → `Core/Extensions/<Type>+Extension.swift`, one file per type, append if it exists,
   `// MARK: - <Purpose>` sections. Extensions of our own types stay next to the type. Never return user-facing text from them.
 - Default actor isolation is `nonisolated`: mark ViewModels and other UI-bound types `@MainActor` explicitly.
+
+## Errors & networking
+- ViewModels catch with `self.error = AppError(error)` (nil for cancellation) and views show it with `.errorAlert($viewModel.error)`.
+- Requests only through the `HTTPClient` protocol and `Endpoint<Response>` — never `URLSession` in features.
+- Log with `Logger` once, where the error originates.
 
 ## Text
 Every user-facing string comes from Resources/Localizable.xcstrings via generated symbols: `Text(.settingsTitle)`.
@@ -33,8 +39,9 @@ Before writing or changing any test, read and follow BlixRekrtuacjaTests/CLAUDE.
 
 ## Definition of done
 Builds without warnings · tests green · zero SwiftLint violations · new keys have PL + EN ·
-new component/screen has snapshot tests · Conventional Commit `type(scope): summary` (feat, fix, refactor, test, docs, chore).
+new component/screen has snapshot tests · every commit builds and passes tests on its own ·
+Conventional Commit `type(scope): summary` (feat, fix, refactor, test, docs, chore).
 
 ## Never
 Edit project.pbxproj by hand · add dependencies · hardcode user-facing text or URLs · logic in component views ·
-APIs above iOS 17 without `if #available` · real network in tests.
+APIs above iOS 17 without `if #available`.

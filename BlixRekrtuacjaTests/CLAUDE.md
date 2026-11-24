@@ -35,4 +35,5 @@ Swift Testing suite. Area rules: `Unit/CLAUDE.md`, `Snapshot/CLAUDE.md`.
 - `Stubs/<Area>/<Type>Stub.swift`: one per file, `internal`, shared by all tests.
 - Fixed data or closures set by the test. No logic, randomness or assertions inside.
 - To verify a call, record it through a closure passed by the test and assert in the test.
+- Closures that run on other threads (e.g. `URLProtocol` handlers) only record; assert after `await`.
 - If the app provides a lightweight isolated implementation, use it instead of a stub.

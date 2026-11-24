@@ -18,7 +18,9 @@ General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:layout:)` in `Snapsho
 - Texts come from the String Catalog in the development language.
 
 ## Recording
-- Only for an intended UI change: prefix the test command with `TEST_RUNNER_SNAPSHOT_TESTING_RECORD=all`.
+- Only for an intended UI change. Xcode: scheme `BlixRekrtuacja-SnapshotTests` → Edit Test Plan → Configurations →
+  Environment Variables → tick `SNAPSHOT_TESTING_RECORD` (untick to verify). CLI: prefix with `TEST_RUNNER_SNAPSHOT_TESTING_RECORD=all`.
 - Review every new image before committing. Never re-record to make a failing test pass.
+- Never commit `SnapshotTests.xctestplan` with `SNAPSHOT_TESTING_RECORD` ticked — untick it after recording.
 - Never lower `precision` / `perceptualPrecision` to make a test pass.
 - `__Snapshots__/` is committed and excluded from target membership.

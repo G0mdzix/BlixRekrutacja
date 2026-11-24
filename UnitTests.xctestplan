@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "6C1F2A10-0001-4000-8000-000000000001",
+      "name" : "Default",
+      "options" : {}
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:BlixRekrtuacja.xcodeproj",
+          "identifier" : "6898D53B30B6084A00348852",
+          "name" : "BlixRekrtuacja"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "skippedTags" : {
+        "tags" : [
+          "snapshot"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:BlixRekrtuacja.xcodeproj",
+        "identifier" : "6898D54830B6084B00348852",
+        "name" : "BlixRekrtuacjaTests"
+      }
+    }
+  ],
+  "version" : 1
+}
