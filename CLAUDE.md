@@ -4,12 +4,13 @@ Follow the `ios-project-conventions` skill; on conflict this file and the projec
 
 ## Commands — after every change
 - Test: `set -o pipefail && xcodebuild -scheme BlixRekrtuacja -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' test | xcbeautify`
-- Lint: `swiftlint lint --strict`
+- Lint: `swiftlint lint --strict`. Mechanical rules live in `.swiftlint.yml` — never restate them in CLAUDE.md files.
+  Fix violations; never disable or relax a rule to pass.
 - Record snapshots (only for intended UI changes): prefix the test command with `TEST_RUNNER_SNAPSHOT_TESTING_RECORD=all`.
 
 ## Layers (all inside BlixRekrtuacja/)
 - App: composition root only — the only place that creates concrete types. No logic.
-- Core: generic, feature-agnostic (DesignSystem, State, Errors, Navigation, Storage, Extensions). May know Domain's AppError, never a feature.
+- Core: generic, feature-agnostic (DesignSystem, Errors, Extensions, Navigation, UserDefaults). May know Domain's AppError, never a feature.
 - Domain: Foundation only. Entities, enums, repository protocols.
 - Features/<Name>: View + ViewModel (+ Coordinator, Route). ViewModels: `@MainActor @Observable final class`,
   `private(set)` state, dependencies via init as protocols.
@@ -27,10 +28,13 @@ Not user-facing (plain String): Logger messages, fatalError, storage keys, SF Sy
 Feature views only compose Design System components (View + ViewModel pairs); tokens only (Spacing, Radius, Size, AppColor, Typography).
 Dynamic Type from xSmall to accessibility5: no truncation, no fixed text heights.
 
+## Tests
+Before writing or changing any test, read and follow BlixRekrtuacjaTests/CLAUDE.md (strict rules, stubs, snapshots).
+
 ## Definition of done
 Builds without warnings · tests green · zero SwiftLint violations · new keys have PL + EN ·
 new component/screen has snapshot tests · Conventional Commit `type(scope): summary` (feat, fix, refactor, test, docs, chore).
 
 ## Never
-Edit project.pbxproj by hand · add dependencies · print · hardcode text, colors, numbers in views or URLs ·
-logic in component views · `.system(size:)` · APIs above iOS 17 without `if #available` · real network in tests.
+Edit project.pbxproj by hand · add dependencies · hardcode user-facing text or URLs · logic in component views ·
+APIs above iOS 17 without `if #available` · real network in tests.

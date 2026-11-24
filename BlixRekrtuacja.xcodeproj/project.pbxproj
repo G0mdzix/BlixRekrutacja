@@ -23,7 +23,20 @@
 /* Begin PBXFileReference section */
 		6898D53C30B6084A00348852 /* BlixRekrtuacja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlixRekrtuacja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlixRekrtuacjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6898D5BA30B6210A00348852 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6844A08630B6277200641F2C /* Exceptions for "BlixRekrtuacjaTests" folder in "BlixRekrtuacjaTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CLAUDE.md,
+				Snapshot/CLAUDE.md,
+				Unit/CLAUDE.md,
+			);
+			target = 6898D54830B6084B00348852 /* BlixRekrtuacjaTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6898D53E30B6084A00348852 /* BlixRekrtuacja */ = {
@@ -33,6 +46,9 @@
 		};
 		6898D54C30B6084B00348852 /* BlixRekrtuacjaTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6844A08630B6277200641F2C /* Exceptions for "BlixRekrtuacjaTests" folder in "BlixRekrtuacjaTests" target */,
+			);
 			path = BlixRekrtuacjaTests;
 			sourceTree = "<group>";
 		};
@@ -60,6 +76,7 @@
 		6898D53330B6084A00348852 = {
 			isa = PBXGroup;
 			children = (
+				6898D5BA30B6210A00348852 /* .swiftlint.yml */,
 				6898D53E30B6084A00348852 /* BlixRekrtuacja */,
 				6898D54C30B6084B00348852 /* BlixRekrtuacjaTests */,
 				6898D53D30B6084A00348852 /* Products */,
