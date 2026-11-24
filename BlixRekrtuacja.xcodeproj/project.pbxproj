@@ -6,15 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6898D57030B6084B00348852 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6898D57230B6084B00348852 /* SnapshotTesting */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		6898D54A30B6084B00348852 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6898D53430B6084A00348852 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6898D53B30B6084A00348852;
-			remoteInfo = BlixRekrtuacja;
-		};
-		6898D55430B6084B00348852 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6898D53430B6084A00348852 /* Project object */;
 			proxyType = 1;
@@ -26,7 +23,6 @@
 /* Begin PBXFileReference section */
 		6898D53C30B6084A00348852 /* BlixRekrtuacja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlixRekrtuacja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlixRekrtuacjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6898D55330B6084B00348852 /* BlixRekrtuacjaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlixRekrtuacjaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,11 +34,6 @@
 		6898D54C30B6084B00348852 /* BlixRekrtuacjaTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BlixRekrtuacjaTests;
-			sourceTree = "<group>";
-		};
-		6898D55630B6084B00348852 /* BlixRekrtuacjaUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BlixRekrtuacjaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -59,13 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6898D55030B6084B00348852 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				6898D57030B6084B00348852 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +62,6 @@
 			children = (
 				6898D53E30B6084A00348852 /* BlixRekrtuacja */,
 				6898D54C30B6084B00348852 /* BlixRekrtuacjaTests */,
-				6898D55630B6084B00348852 /* BlixRekrtuacjaUITests */,
 				6898D53D30B6084A00348852 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +71,6 @@
 			children = (
 				6898D53C30B6084A00348852 /* BlixRekrtuacja.app */,
 				6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */,
-				6898D55330B6084B00348852 /* BlixRekrtuacjaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,33 +118,11 @@
 			);
 			name = BlixRekrtuacjaTests;
 			packageProductDependencies = (
+				6898D57230B6084B00348852 /* SnapshotTesting */,
 			);
 			productName = BlixRekrtuacjaTests;
 			productReference = 6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6898D55230B6084B00348852 /* BlixRekrtuacjaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6898D56330B6084B00348852 /* Build configuration list for PBXNativeTarget "BlixRekrtuacjaUITests" */;
-			buildPhases = (
-				6898D54F30B6084B00348852 /* Sources */,
-				6898D55030B6084B00348852 /* Frameworks */,
-				6898D55130B6084B00348852 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6898D55530B6084B00348852 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				6898D55630B6084B00348852 /* BlixRekrtuacjaUITests */,
-			);
-			name = BlixRekrtuacjaUITests;
-			packageProductDependencies = (
-			);
-			productName = BlixRekrtuacjaUITests;
-			productReference = 6898D55330B6084B00348852 /* BlixRekrtuacjaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -180,10 +141,6 @@
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = 6898D53B30B6084A00348852;
 					};
-					6898D55230B6084B00348852 = {
-						CreatedOnToolsVersion = 26.3;
-						TestTargetID = 6898D53B30B6084A00348852;
-					};
 				};
 			};
 			buildConfigurationList = 6898D53730B6084A00348852 /* Build configuration list for PBXProject "BlixRekrtuacja" */;
@@ -192,9 +149,13 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 6898D53330B6084A00348852;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6898D57130B6084B00348852 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6898D53D30B6084A00348852 /* Products */;
 			projectDirPath = "";
@@ -202,7 +163,6 @@
 			targets = (
 				6898D53B30B6084A00348852 /* BlixRekrtuacja */,
 				6898D54830B6084B00348852 /* BlixRekrtuacjaTests */,
-				6898D55230B6084B00348852 /* BlixRekrtuacjaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +176,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6898D54730B6084B00348852 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6898D55130B6084B00348852 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +199,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6898D54F30B6084B00348852 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +206,6 @@
 			isa = PBXTargetDependency;
 			target = 6898D53B30B6084A00348852 /* BlixRekrtuacja */;
 			targetProxy = 6898D54A30B6084B00348852 /* PBXContainerItemProxy */;
-		};
-		6898D55530B6084B00348852 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6898D53B30B6084A00348852 /* BlixRekrtuacja */;
-			targetProxy = 6898D55430B6084B00348852 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -322,7 +263,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -380,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -403,8 +344,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,11 +354,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -435,8 +378,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,11 +388,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -462,7 +407,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 548J77AC83;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MateuszGozdzik.BlixRekrutacja.BlixRekrtuacjaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -470,8 +415,8 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlixRekrtuacja.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlixRekrtuacja";
 			};
 			name = Debug;
@@ -484,7 +429,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 548J77AC83;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MateuszGozdzik.BlixRekrutacja.BlixRekrtuacjaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -492,49 +437,9 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlixRekrtuacja.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlixRekrtuacja";
-			};
-			name = Release;
-		};
-		6898D56430B6084B00348852 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 548J77AC83;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MateuszGozdzik.BlixRekrutacja.BlixRekrtuacjaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlixRekrtuacja;
-			};
-			name = Debug;
-		};
-		6898D56530B6084B00348852 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 548J77AC83;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MateuszGozdzik.BlixRekrutacja.BlixRekrtuacjaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlixRekrtuacja;
 			};
 			name = Release;
 		};
@@ -568,16 +473,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6898D56330B6084B00348852 /* Build configuration list for PBXNativeTarget "BlixRekrtuacjaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6898D56430B6084B00348852 /* Debug */,
-				6898D56530B6084B00348852 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6898D57130B6084B00348852 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.19.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6898D57230B6084B00348852 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6898D57130B6084B00348852 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6898D53430B6084A00348852 /* Project object */;
 }
