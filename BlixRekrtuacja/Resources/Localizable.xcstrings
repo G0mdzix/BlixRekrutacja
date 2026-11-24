@@ -1,7 +1,204 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-
+  "sourceLanguage": "en",
+  "strings": {
+    "errorBadRequestMessage": {
+      "comment": "Error alert message: HTTP 400, the request was rejected.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The request couldn't be processed."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się przetworzyć żądania."
+          }
+        }
+      }
+    },
+    "errorDecodingMessage": {
+      "comment": "Error alert message: the server returned data the app can't read.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We received unexpected data. Try again later."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otrzymaliśmy nieoczekiwane dane. Spróbuj ponownie później."
+          }
+        }
+      }
+    },
+    "errorForbiddenMessage": {
+      "comment": "Error alert message: HTTP 403, no access to the resource.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You don't have access to this content."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie masz dostępu do tych danych."
+          }
+        }
+      }
+    },
+    "errorGenericMessage": {
+      "comment": "Error alert message for an unexpected error.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please try again in a moment."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spróbuj ponownie za chwilę."
+          }
+        }
+      }
+    },
+    "errorNotFoundMessage": {
+      "comment": "Error alert message: HTTP 404, the resource doesn't exist.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The requested content couldn't be found."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie znaleziono szukanych danych."
+          }
+        }
+      }
+    },
+    "errorOfflineMessage": {
+      "comment": "Error alert message: no internet connection.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No internet connection. Check your connection and try again."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brak połączenia z internetem. Sprawdź połączenie i spróbuj ponownie."
+          }
+        }
+      }
+    },
+    "errorServerMessage": {
+      "comment": "Error alert message: HTTP 5xx or the server can't be reached.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong on our side. Try again later."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wystąpił problem po stronie serwera. Spróbuj ponownie później."
+          }
+        }
+      }
+    },
+    "errorTimeoutMessage": {
+      "comment": "Error alert message: the server took too long to respond.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server is taking too long to respond. Try again in a moment."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serwer zbyt długo nie odpowiada. Spróbuj ponownie za chwilę."
+          }
+        }
+      }
+    },
+    "errorTitle": {
+      "comment": "Title of the error alert.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coś poszło nie tak"
+          }
+        }
+      }
+    },
+    "errorTooManyRequestsMessage": {
+      "comment": "Error alert message: HTTP 429, rate limit exceeded.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many attempts. Wait a moment and try again."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zbyt wiele prób. Odczekaj chwilę i spróbuj ponownie."
+          }
+        }
+      }
+    },
+    "errorUnauthorizedMessage": {
+      "comment": "Error alert message: HTTP 401, the user is not signed in or the session expired.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your session has expired. Please sign in again."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesja wygasła. Zaloguj się ponownie."
+          }
+        }
+      }
+    }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
