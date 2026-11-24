@@ -4,6 +4,7 @@ General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:layout:)` in `Snapsho
 
 ## Layout
 - `Snapshot/<Area>/<Type>SnapshotTests.swift`: one parameterized test per component or screen, every variant an argument.
+- Suite tags: `.snapshot` plus the area, e.g. `@Suite(.tags(.snapshot, .feature))`.
 - Components: `view.frame(width: 390)` with `layout: .sizeThatFits`. Screens: default `.device`.
 
 ## Scope

@@ -10,7 +10,7 @@ Follow the `ios-project-conventions` skill; on conflict this file and the projec
 
 ## Layers (all inside BlixRekrtuacja/)
 - App: composition root only — the only place that creates concrete types. No logic.
-- Core: generic, feature-agnostic (DesignSystem, Errors, Extensions, Navigation, UserDefaults). May know Domain's AppError, never a feature.
+- Core: generic, feature-agnostic (DesignSystem, Errors, Extensions, Navigation, Networking). May know Domain's AppError, never a feature.
 - Domain: Foundation only. Entities, enums, repository protocols.
 - Features/<Name>: View + ViewModel (+ Coordinator, Route). ViewModels: `@MainActor @Observable final class`,
   `private(set)` state, dependencies via init as protocols.

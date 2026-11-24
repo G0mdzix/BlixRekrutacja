@@ -3,16 +3,9 @@ import Observation
 import Testing
 
 @MainActor
+@Suite(.tags(.unit, .navigation))
 struct CoordinatorTests {
-    @Test(arguments: [
-        Scenario(actions: [.push(1), .push(2)], expectedPath: [1, 2]),
-        Scenario(actions: [.push(1), .push(1)], expectedPath: [1, 1]),
-        Scenario(actions: [.push(1), .push(2), .pop], expectedPath: [1]),
-        Scenario(actions: [.pop], expectedPath: []),
-        Scenario(actions: [.push(1), .push(2), .popToRoot], expectedPath: []),
-        Scenario(actions: [.popToRoot], expectedPath: []),
-        Scenario(actions: [.push(1), .popToRoot, .push(2)], expectedPath: [2])
-    ])
+    @Test(arguments: Self.pathScenarios)
     func updatesPath(_ scenario: Scenario) {
         let sut = CoordinatorStub()
 
@@ -21,7 +14,7 @@ struct CoordinatorTests {
         #expect(sut.path == scenario.expectedPath)
     }
 
-    @Test(arguments: [Action.push(3), .pop, .popToRoot])
+    @Test(arguments: Self.pathChangingActions)
     func notifiesObserversWhenPathChanges(_ action: Action) async {
         let sut = CoordinatorStub()
         sut.path = [1, 2]
@@ -40,18 +33,5 @@ struct CoordinatorTests {
         case .pop: coordinator.pop()
         case .popToRoot: coordinator.popToRoot()
         }
-    }
-}
-
-// MARK: - Test data
-
-extension CoordinatorTests {
-    enum Action {
-        case push(Int), pop, popToRoot
-    }
-
-    struct Scenario {
-        let actions: [Action]
-        let expectedPath: [Int]
     }
 }

@@ -25,11 +25,13 @@ Swift Testing suite. Area rules: `Unit/CLAUDE.md`, `Snapshot/CLAUDE.md`.
 - `#require` for preconditions (unwrapping, initial state) — it stops the test. `#expect` for the actual checks.
 - Tested object is `sut`. Arrange, act, assert separated by one blank line.
 - Suite is `@MainActor` when the tested type is.
+- Every suite has one kind and one area tag from `Tags.swift`: `@Suite(.tags(.unit, .networking))`. New area → add a tag there.
 - Names describe behaviour: `notifiesObserversWhenPathChanges`.
 - Tests ship in the same commit as the code they cover.
 - While working run one suite (`-only-testing:BlixRekrtuacjaTests/<Suite>`); run everything before a commit.
 
-## Stubs
+## Mocks and stubs
+- `Mocks/<Area>/<Type>Tests+Mocks.swift`: test data for one suite (`Scenario`, `Action`, sample models) as an extension of the suite.
 - `Stubs/<Area>/<Type>Stub.swift`: one per file, `internal`, shared by all tests.
 - Fixed data or closures set by the test. No logic, randomness or assertions inside.
 - To verify a call, record it through a closure passed by the test and assert in the test.

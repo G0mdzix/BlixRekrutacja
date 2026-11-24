@@ -93,7 +93,7 @@ custom_rules:
   no_print:
     regex: '\bprint\('
     match_kinds: identifier
-    message: "Use Logger.app / .storage"
+    message: "Use Logger instead of print"
     severity: error
   no_text_literals:
     excluded: '/BlixRekrtuacjaTests/'
