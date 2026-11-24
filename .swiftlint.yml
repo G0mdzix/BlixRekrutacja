@@ -1,0 +1,69 @@
+# SwiftLint — base from ios-project-conventions + project rules
+included:
+  - BlixRekrtuacja
+  - BlixRekrtuacjaTests
+excluded:
+  - DerivedData
+  - .build
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - empty_count
+  - first_where
+  - contains_over_first_not_nil
+  - sorted_first_last
+  - redundant_nil_coalescing
+  - fatal_error_message
+  - closure_spacing
+  - vertical_whitespace_closing_braces
+  - explicit_init
+  - toggle_bool
+  - prefer_self_type_over_type_of_self
+
+disabled_rules:
+  - todo
+
+line_length:
+  warning: 120
+  error: 160
+function_body_length:
+  warning: 20
+  error: 40
+type_body_length:
+  warning: 200
+  error: 300
+file_length:
+  warning: 300
+  error: 400
+cyclomatic_complexity:
+  warning: 8
+  error: 12
+nesting:
+  type_level: 2
+identifier_name:
+  excluded: [id, x, y]
+
+reporter: xcode
+
+custom_rules:
+  no_print:
+    regex: '\bprint\('
+    match_kinds: identifier
+    message: "Use Logger.app / .storage"
+    severity: error
+  no_text_literals:
+    excluded: '/BlixRekrtuacjaTests/'
+    regex: '\b(Text|Button|Label|Toggle|navigationTitle|alert|confirmationDialog)\(\s*"|\b(title|message|value):\s*"'
+    message: "User-facing text must come from Localizable.xcstrings via generated symbols"
+    severity: error
+  no_raw_colors:
+    excluded: '/(BlixRekrtuacjaTests|Tokens)/'
+    regex: '\.(red|green|blue|black|white|gray|orange|yellow|pink|purple|mint|teal|cyan|indigo|brown)\b|Color\((red|white):'
+    message: "Use AppColor tokens"
+    severity: error
+  no_magic_numbers:
+    excluded: '/(BlixRekrtuacjaTests|Tokens)/'
+    regex: '(\.padding\(\s*(\.\w+\s*,\s*)?|spacing:\s*|cornerRadius:\s*|(min|max)?([Ww]idth|[Hh]eight):\s*|size:\s*)\d'
+    message: "Use Spacing / Radius / Size tokens and Typography"
+    severity: error

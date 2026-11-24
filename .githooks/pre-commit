@@ -1,0 +1,7 @@
+#!/bin/sh
+# Lints staged Swift files. Enable once: git config core.hooksPath .githooks
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.swift')
+[ -z "$files" ] && exit 0
+command -v swiftlint >/dev/null || { echo "❌ SwiftLint missing: brew install swiftlint"; exit 1; }
+swiftlint lint --strict --quiet $files || { echo "❌ Fix SwiftLint violations before committing"; exit 1; }
