@@ -3,7 +3,7 @@
 The visual layer: tokens, colors, components and view modifiers. It knows nothing about Core, Data or features.
 
 ## Tokens
-- Sizes and fonts come from `Spacing`, `Radius`, `Size` and `Typography` in `Tokens/`.
+- Sizes, fonts and motion come from `Spacing`, `Radius`, `Size`, `Opacity`, `Motion` and `Typography` in `Tokens/`.
 - Colors come from `Resources/Assets.xcassets/Colors` (light + dark) through the generated symbols:
   `.brandPrimary/Secondary`, `.backgroundPrimary/Secondary`, `.textPrimary/Secondary`, `.textPositive/Negative`, `.textOnBrand`,
   `.hairline`, `.fillMuted`, `.selectedBackground`, `.errorSubtle`, `.success`, `.warning`, `.error`, `.info`.
@@ -18,7 +18,7 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
   - Actions are `@MainActor () -> Void`; optional only when the component can be non-interactive (`BlixRateRow`).
   - Configurators take `Content` and expose computed label configurators: `label` for one text, `<field>Label` for several.
 - Text goes through `BlixLabel`: `.localized` for catalog keys, `.verbatim` for user data, `.number`/`.percent` for decimals
-  (`monospacedDigits: true` in columns). Styles: `.accent` for interactive text, `.positive`/`.negative` only for gains and losses.
+  (`monospacedDigits: true` in columns), `.date(_, FormatStyle)` for dates. Styles: `.accent` for interactive text, `.positive`/`.negative` only for gains and losses.
 - Containers take `@ViewBuilder` content (`BlixList`, `BlixAdaptiveRow`).
   `BlixList`: `ViewThatFits` (still stack or `ScrollView`) in portrait, always `ScrollView` at compact height:
   switching branches while a list loads more of itself crashed in landscape.
@@ -29,6 +29,7 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
 
 ## Modifiers and styles
 - `Modifiers/BlixSurface.swift`: the `BlixSurface` view modifier (fill + optional border) and its shortcuts `cardBackground`, `circled`.
+- `Modifiers/BlixFailureFeedback.swift`: `failureFeedback(trigger:)` shakes a failed element in place and plays error haptics.
 - `Extensions/View+DesignSystem.swift`: `typography`.
 - Buttons get their look from a `ButtonStyle` (`BlixButtonStyle`): pressed and disabled dim the content, never the fill.
 

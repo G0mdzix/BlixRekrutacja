@@ -11,6 +11,8 @@ enum SFSymbol: String {
     case minus
     case moon
     case paintbrush
+    case search = "magnifyingglass"
+    case settings = "gearshape"
     case wifiSlash = "wifi.slash"
     case xmark
 

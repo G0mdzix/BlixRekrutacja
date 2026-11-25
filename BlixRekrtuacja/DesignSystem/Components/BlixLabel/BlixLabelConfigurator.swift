@@ -6,6 +6,7 @@ struct BlixLabelConfigurator {
         case verbatim(String)
         case number(Decimal, fractionLength: Int)
         case percent(Decimal, fractionLength: Int)
+        case date(Date, Date.FormatStyle)
 
         var text: Text {
             switch self {
@@ -13,6 +14,7 @@ struct BlixLabelConfigurator {
             case .verbatim(let string): Text(verbatim: string)
             case let .number(value, digits): Text(value, format: .number.precision(.fractionLength(digits)))
             case let .percent(value, digits): Text(value, format: .percent.precision(.fractionLength(digits)))
+            case let .date(value, format): Text(value, format: format)
             }
         }
     }
