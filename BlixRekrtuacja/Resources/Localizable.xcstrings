@@ -73,6 +73,24 @@
         }
       }
     },
+    "commonRetry": {
+      "comment": "Button that retries a failed action.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spróbuj ponownie"
+          }
+        }
+      }
+    },
     "errorBadRequestMessage": {
       "comment": "Error alert message: HTTP 400, the request was rejected.",
       "extractionState": "manual",
@@ -339,6 +357,204 @@
           "stringUnit": {
             "state": "translated",
             "value": "Systemowy"
+          }
+        }
+      }
+    },
+    "ratesClosingRate": {
+      "comment": "Caption under a past day's title: the rate is that day's closing rate.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Closing rate"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurs zamknięcia"
+          }
+        }
+      }
+    },
+    "ratesCopyRate": {
+      "comment": "Button that copies the exact rate to the clipboard.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy rate"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopiuj kurs"
+          }
+        }
+      }
+    },
+    "ratesInverseRate": {
+      "comment": "Label of the inverse rate row in rate details.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inverse rate"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurs odwrotny"
+          }
+        }
+      }
+    },
+    "ratesLoadFailedTitle": {
+      "comment": "Title of the card shown when the next day failed to load.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't load the next day"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się wczytać kolejnego dnia"
+          }
+        }
+      }
+    },
+    "ratesLoadOlder": {
+      "comment": "Button at the end of the rates list that loads older days.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load older days"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wczytaj starsze dni"
+          }
+        }
+      }
+    },
+    "ratesLoadingNextDay": {
+      "comment": "Footer shown while the next older day is loading.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading the next day…"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wczytywanie kolejnego dnia…"
+          }
+        }
+      }
+    },
+    "ratesQuotaMessage": {
+      "comment": "Message of the monthly API limit card.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can load more days once the limit renews. Loaded days are still available."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolejne dni wczytasz po odnowieniu limitu. Wczytane dni są nadal dostępne."
+          }
+        }
+      }
+    },
+    "ratesQuotaTitle": {
+      "comment": "Title of the card shown when the monthly API request limit is used up.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly request limit reached"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wykorzystano miesięczny limit zapytań"
+          }
+        }
+      }
+    },
+    "ratesSelectCurrencyMessage": {
+      "comment": "Landscape detail pane message when no rate is selected.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap a rate in the list to see its exact value, date and change since the previous day."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dotknij kursu na liście, aby zobaczyć dokładną wartość, datę i zmianę względem poprzedniego dnia."
+          }
+        }
+      }
+    },
+    "ratesSelectCurrencyTitle": {
+      "comment": "Landscape detail pane title when no rate is selected.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a currency"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wybierz walutę"
+          }
+        }
+      }
+    },
+    "ratesToday": {
+      "comment": "Badge next to today's date in the rates list.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dziś"
           }
         }
       }
