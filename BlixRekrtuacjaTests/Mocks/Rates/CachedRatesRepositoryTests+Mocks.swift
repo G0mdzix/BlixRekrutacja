@@ -12,11 +12,11 @@ extension CachedRatesRepositoryTests {
         let expectedCached: CachedRates?
     }
 
-    static let freshPLN = "4.470000"
+    nonisolated static let freshPLN = "4.470000"
 
-    static let scenarios: [Scenario] = closedDays + latestDays
+    nonisolated static let scenarios: [Scenario] = closedDays + latestDays
 
-    private static let closedDays: [Scenario] = [
+    nonisolated private static let closedDays: [Scenario] = [
         Scenario(
             now: RatesSamples.wednesdayNoon,
             cached: [stored(RatesSamples.saturday, isFinal: true)],
@@ -46,7 +46,7 @@ extension CachedRatesRepositoryTests {
         )
     ]
 
-    private static let latestDays: [Scenario] = [
+    nonisolated private static let latestDays: [Scenario] = [
         Scenario(
             now: RatesSamples.wednesdayNoon,
             cached: [stored(RatesSamples.wednesday, isFinal: false, latestAt: RatesSamples.wednesdayNoon - 59 * 60)],
@@ -98,15 +98,15 @@ extension CachedRatesRepositoryTests {
         )
     ]
 
-    private static func fresh(_ day: Date) -> DailyRates {
+    nonisolated private static func fresh(_ day: Date) -> DailyRates {
         RatesSamples.rates(on: day, pln: freshPLN)
     }
 
-    private static func stored(_ day: Date, isFinal: Bool, latestAt: Date? = nil) -> CachedRates {
+    nonisolated private static func stored(_ day: Date, isFinal: Bool, latestAt: Date? = nil) -> CachedRates {
         stored(RatesSamples.rates(on: day), isFinal: isFinal, latestAt: latestAt)
     }
 
-    private static func stored(_ rates: DailyRates, isFinal: Bool, latestAt: Date? = nil) -> CachedRates {
+    nonisolated private static func stored(_ rates: DailyRates, isFinal: Bool, latestAt: Date? = nil) -> CachedRates {
         CachedRates(rates: rates, isFinal: isFinal, latestFetchedAt: latestAt)
     }
 }

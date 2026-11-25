@@ -5,28 +5,28 @@ import Testing
 @Suite(.tags(.unit, .storage))
 struct UserDefaultsStoreTests {
     @Test(arguments: Self.valueScenarios)
-    func readsLastSavedValueOrDefault(_ scenario: Scenario) throws {
+    func readsLastSavedValueOrDefault(_ scenario: Scenario) {
         let sut = UserDefaultsStore.isolated()
 
-        try scenario.actions.forEach { try perform($0, on: sut) }
+        scenario.actions.forEach { perform($0, on: sut) }
 
         #expect(sut.value(for: .sample) == scenario.expectedValue)
     }
 
-    @Test func keepsPreviousValueWhenSaveFails() throws {
+    @Test func keepsPreviousValueWhenSaveFails() {
         let sut = UserDefaultsStore.isolated()
-        try sut.set(1, for: .unencodable)
+        sut.set(1, for: .unencodable)
 
-        #expect(throws: AppError.storage) { try sut.set(Double.infinity, for: .unencodable) }
+        sut.set(Double.infinity, for: .unencodable)
 
         #expect(sut.value(for: .unencodable) == 1)
     }
 
     // MARK: - Helpers
 
-    private func perform(_ action: Action, on store: UserDefaultsStore) throws {
+    private func perform(_ action: Action, on store: UserDefaultsStore) {
         switch action {
-        case .save(let value): try store.set(value, for: .sample)
+        case .save(let value): store.set(value, for: .sample)
         case .corruptStoredData: store.defaults.set(Data("not json".utf8), forKey: StorageKey.sample.name)
         }
     }

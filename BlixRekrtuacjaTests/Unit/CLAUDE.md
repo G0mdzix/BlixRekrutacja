@@ -8,6 +8,10 @@ General rules: `../CLAUDE.md`. Reference file: `Coordinator/CoordinatorTests.swi
 - Argument lists live in the Mocks file as `static let` named after the behaviour (`pathScenarios`, `mappings`) and are passed as `@Test(arguments: Self.pathScenarios)`.
   On a `@MainActor` suite mark them `nonisolated static let`.
 
+## Suite setup
+- Spies and `sut` are stored properties; a suite whose `sut` needs them builds it in `init()`. Each test gets a fresh
+  instance, so tests only change what they need (`repository.answer = …`). No `makeSUT` returning tuples.
+
 ## Parameterization
 - One `@Test` per behaviour, every case in `arguments:`.
 - A case is a `Scenario` with named fields: input and expected result.
@@ -17,5 +21,5 @@ General rules: `../CLAUDE.md`. Reference file: `Coordinator/CoordinatorTests.swi
 - Happy path, every error path, initial and empty state, boundaries, repeated operations.
 - Error paths assert the exact error: `#expect(throws: APIError.status(404)) { try … }`.
 - Async: `await sut.load()`, then assert state. Never start a `Task {}` inside a test.
-- ViewModels: drive them through the component configurators they expose (`sut.saveButtonConfigurator.action()`) and assert state. No UI.
+- ViewModels: drive them through the component configurators they expose (`sut.copyButtonConfigurator.action()`) and assert state. No UI.
 - State the UI observes: verify change notification with `withObservationTracking` and `confirmation`.

@@ -2,21 +2,11 @@
 import Foundation
 
 extension MainCoordinatorTests {
-    enum RootIntent {
+    enum RootIntent: CaseIterable {
         case tapRate
         case showAll
         case openSettings
     }
-
-    struct RootIntentScenario {
-        let intent: RootIntent
-    }
-
-    nonisolated static let rootIntents: [RootIntentScenario] = [
-        RootIntentScenario(intent: .tapRate),
-        RootIntentScenario(intent: .showAll),
-        RootIntentScenario(intent: .openSettings)
-    ]
 }
 
 /// The ViewModel a route carries, or `nil` for another route.

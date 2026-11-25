@@ -45,8 +45,8 @@ which creates every ViewModel: the root once (`root`), pushed screens when they 
 Never inside `body`.
 
 ## Tests
-`Unit/Features/<Name>ViewModelTests.swift` and `MainCoordinatorTests.swift`, tags `.unit, .feature`.
-Screens: `Snapshot/Features/<Name>ViewSnapshotTests.swift` in a `NavigationStack`, `configurator: .screen`, data from
-repository stubs (`RatesRepositoryStub`, `RatesSamples.market`). Rules: `BlixRekrtuacjaTests/Unit/CLAUDE.md`,
+Tests mirror this folder: `Unit/Features/Navigation/`, `Unit/Features/Screens/<Name>/`, `Snapshot/Features/Screens/<Name>/`,
+`Mocks/Features/…`; tags `.unit|.snapshot, .feature`. Dependencies are spies (`RatesRepositorySpy`, `MainNavigatingSpy`,
+`ClipboardSpy`); screens in a `NavigationStack`, `configurator: .screen`. Rules: `BlixRekrtuacjaTests/Unit/CLAUDE.md`,
 `BlixRekrtuacjaTests/Snapshot/CLAUDE.md`.
-Failure paths use stubs (`FailingKeyValueStoreStub`). State the view reads from `UserPreferences` is tested there, not here.
+State the view reads from `UserPreferences` is tested there, not here.

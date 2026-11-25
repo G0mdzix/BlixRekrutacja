@@ -18,3 +18,15 @@ extension DayRatesViewModelTests {
         SearchScenario(query: "xyz", expectedCodes: [])
     ]
 }
+
+extension DayRatesViewModel.Results {
+    var rows: [BlixRateRowConfigurator] {
+        guard case .rows(let rows) = self else { return [] }
+        return rows
+    }
+
+    var isNoResults: Bool {
+        guard case .noResults = self else { return false }
+        return true
+    }
+}

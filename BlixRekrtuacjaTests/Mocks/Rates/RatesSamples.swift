@@ -42,6 +42,9 @@ enum RatesSamples {
 
     // MARK: - Screens
 
+    /// Wednesday noon in UTC: Wednesday is today.
+    static let dates = DateProvider(now: { wednesdayNoon }, timeZone: .gmt)
+
     static let tuesday = Date(iso: "2026-11-24T00:00:00Z")
     static let wednesdayUpdate = Date(iso: "2026-11-25T11:00:00Z")
 
@@ -59,6 +62,11 @@ enum RatesSamples {
             updatedAt: day == wednesday ? wednesdayUpdate : day,
             rates: values.map { CurrencyRate(code: $0.key, value: Decimal(exact: $0.value)) }.sorted()
         )
+    }
+
+    /// The market for a request: `latest` answers Wednesday.
+    static func market(for request: RatesRequest) -> DailyRates {
+        market(on: request.day ?? wednesday)
     }
 
     /// Only two currencies, so a whole day and the footer below it fit on one screen.

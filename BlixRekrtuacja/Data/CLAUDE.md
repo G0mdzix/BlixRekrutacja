@@ -35,5 +35,5 @@ It knows Domain and Core.
 
 ## Tests
 - Client: `Unit/Networking` with `URLProtocolStub`.
-- Repositories: a stubbed `HTTPClient` that returns fixed DTOs or `APIError`s.
-- Cache: `SwiftDataRatesCache(isStoredInMemoryOnly: true)`; cache failures use `RatesCacheStub`.
+- Repositories: `HTTPClientSpy` (returns fixed DTOs or `APIError`s, records requests); `RatesRepositorySpy` as a remote.
+- Cache: `SwiftDataRatesCache(isStoredInMemoryOnly: true)`.

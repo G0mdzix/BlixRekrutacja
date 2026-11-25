@@ -5,18 +5,16 @@ import Testing
 @MainActor
 @Suite(.tags(.snapshot, .feature))
 struct RatesViewSnapshotTests {
+    let navigator = MainNavigatingSpy()
+
     @Test(arguments: Self.variants)
-    func recordSnapshot(_ scenario: Scenario) async throws {
-        let preferences = UserPreferences(store: UserDefaultsStore.isolated())
-        try preferences.set(Language.polish)
+    func recordSnapshot(_ scenario: Scenario) async {
+        let preferences = UserPreferences.isolated(language: .polish)
         let viewModel = RatesViewModel(
-            repository: scenario.repository,
+            repository: RatesRepositorySpy(answer: scenario.answer),
             preferences: preferences,
-            now: { RatesSamples.wednesdayNoon },
-            timeZone: .gmt,
-            onSelectRate: { _ in },
-            onShowDay: { _ in },
-            onOpenSettings: {}
+            dates: RatesSamples.dates,
+            navigator: navigator
         )
         await viewModel.start()
         // Settle the paging, so no footer task can load a day while the window renders.

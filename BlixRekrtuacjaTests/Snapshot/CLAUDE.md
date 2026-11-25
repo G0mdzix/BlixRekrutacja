@@ -20,7 +20,7 @@ General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:named:configurator:)`
 - Logic belongs in unit tests, not snapshots.
 
 ## Stable images
-- State comes from stubs and is set before rendering. No network, async loading, animations or current date.
+- State comes from spies and fixtures and is set before rendering. No network, async loading, animations or current date.
 - Pinned simulator: iPhone 17, iOS 26.3.1 — `SnapshotHelper` fails any other device or OS.
 - Texts come from the String Catalog in the development language.
 

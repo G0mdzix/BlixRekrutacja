@@ -8,8 +8,8 @@ struct UserPreferencesTests {
     @Test(arguments: Self.savedPreferences)
     func loadsSavedPreferences(_ scenario: LoadScenario) throws {
         let store = UserDefaultsStore.isolated()
-        if let appearance = scenario.savedAppearance { try store.set(appearance, for: .appearance) }
-        if let language = scenario.savedLanguage { try store.set(language, for: .language) }
+        if let appearance = scenario.savedAppearance { store.set(appearance, for: .appearance) }
+        if let language = scenario.savedLanguage { store.set(language, for: .language) }
 
         let sut = UserPreferences(store: store)
 
@@ -20,10 +20,10 @@ struct UserPreferencesTests {
     @Test(arguments: Self.appearanceSaves)
     func persistsSelectedAppearance(_ scenario: AppearanceSaveScenario) throws {
         let store = UserDefaultsStore.isolated()
-        try store.set(scenario.saved, for: .appearance)
+        store.set(scenario.saved, for: .appearance)
         let sut = UserPreferences(store: store)
 
-        try sut.set(scenario.selected)
+        sut.set(scenario.selected)
 
         #expect(sut.appearance == scenario.selected)
         #expect(UserPreferences(store: store).appearance == scenario.selected)
@@ -32,39 +32,32 @@ struct UserPreferencesTests {
     @Test(arguments: Self.languageSaves)
     func persistsSelectedLanguage(_ scenario: LanguageSaveScenario) throws {
         let store = UserDefaultsStore.isolated()
-        try store.set(scenario.saved, for: .language)
+        store.set(scenario.saved, for: .language)
         let sut = UserPreferences(store: store)
 
-        try sut.set(scenario.selected)
+        sut.set(scenario.selected)
 
         #expect(sut.language == scenario.selected)
         #expect(UserPreferences(store: store).language == scenario.selected)
     }
 
     @Test(arguments: Self.preferences)
-    func keepsPreferencesWhenSaveFails(_ preference: Preference) {
-        let sut = UserPreferences(store: FailingKeyValueStoreStub())
-
-        #expect(throws: AppError.storage) { try change(preference, on: sut) }
-
-        #expect(sut.appearance == .system)
-        #expect(sut.language == .system)
-    }
-
-    @Test(arguments: Self.preferences)
-    func skipsSavingUnchangedPreference(_ preference: Preference) {
-        let sut = UserPreferences(store: FailingKeyValueStoreStub())
-
-        #expect(throws: Never.self) { try keep(preference, on: sut) }
-    }
-
-    @Test(arguments: Self.preferences)
-    func notifiesObserversWhenPreferenceChanges(_ preference: Preference) async throws {
+    func ignoresAnUnchangedPreference(_ preference: Preference) async {
         let sut = UserPreferences(store: UserDefaultsStore.isolated())
 
-        try await confirmation { changed in
+        await confirmation(expectedCount: 0) { changed in
             withObservationTracking { read(preference, from: sut) } onChange: { changed() }
-            try change(preference, on: sut)
+            keep(preference, on: sut)
+        }
+    }
+
+    @Test(arguments: Self.preferences)
+    func notifiesObserversWhenPreferenceChanges(_ preference: Preference) async {
+        let sut = UserPreferences(store: UserDefaultsStore.isolated())
+
+        await confirmation { changed in
+            withObservationTracking { read(preference, from: sut) } onChange: { changed() }
+            change(preference, on: sut)
         }
     }
 
@@ -77,17 +70,17 @@ struct UserPreferencesTests {
         }
     }
 
-    private func change(_ preference: Preference, on sut: UserPreferences) throws {
+    private func change(_ preference: Preference, on sut: UserPreferences) {
         switch preference {
-        case .appearance: try sut.set(Appearance.dark)
-        case .language: try sut.set(Language.english)
+        case .appearance: sut.set(Appearance.dark)
+        case .language: sut.set(Language.english)
         }
     }
 
-    private func keep(_ preference: Preference, on sut: UserPreferences) throws {
+    private func keep(_ preference: Preference, on sut: UserPreferences) {
         switch preference {
-        case .appearance: try sut.set(Appearance.system)
-        case .language: try sut.set(Language.system)
+        case .appearance: sut.set(Appearance.system)
+        case .language: sut.set(Language.system)
         }
     }
 }
