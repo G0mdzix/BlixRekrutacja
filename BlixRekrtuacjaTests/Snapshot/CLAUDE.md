@@ -1,13 +1,14 @@
 # Snapshot tests
 
-General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:named:configurator:)` in `SnapshotHelper.swift`;
-`SnapshotConfigurator` sets interface styles (default light + dark), text sizes (default large + accessibility5) and layout.
+General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:named:configurator:)` in `Support/SnapshotHelper.swift`;
+`SnapshotConfigurator` sets interface styles (light + dark), text sizes and layout; every test passes one explicitly.
 
 ## Layout
 - `Snapshot/<Area>/<Type>SnapshotTests.swift`: one parameterized test per component or screen, every variant an argument.
 - The test function is always `recordSnapshot(_ scenario: Scenario)`. The file name must match the suite name — it names the `Snapshots/` folder.
 - Suite tags: `.snapshot` plus the area, e.g. `@Suite(.tags(.snapshot, .feature))`.
-- Screens: `configurator: .screen` (default; iPhone 13 frame 390×844; large + ax5). Components: `.component` (width 390, height fits content; xSmall + large + ax5).
+- Screens: `configurator: .screen` (iPhone 13 frame 390×844 in a real window; light + dark, large only; settled states,
+  no spinners). Components: `.component` (width 390, height fits content; xSmall + large + ax5).
   Containers whose behaviour depends on height (scrolling lists): `.component.layout(.screen)` or `.component.layout(.fixed(width:height:))`.
   Custom: `SnapshotConfigurator(textSizes: [.extraSmall, .accessibility5], layout: .fixed(width: 390, height: 300))`.
 - Files: `Snapshots/<Suite>/<textSize>/<scenario>.<style>.png` at the repo root, e.g. `Snapshots/BlixListSnapshotTests/ax5/fits.dark.png`.

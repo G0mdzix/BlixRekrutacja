@@ -7,7 +7,7 @@ import Testing
 func assertSnapshots(
     of view: some View,
     named name: String,
-    configurator: SnapshotConfigurator = .screen,
+    configurator: SnapshotConfigurator,
     fileID: StaticString = #fileID,
     file: StaticString = #filePath,
     line: UInt = #line,
@@ -16,6 +16,11 @@ func assertSnapshots(
     let location = SnapshotLocation(fileID: fileID, file: file, line: line, column: column)
     guard PinnedSimulator.isCurrent else {
         Issue.record("\(PinnedSimulator.mismatchMessage)", sourceLocation: location.sourceLocation)
+        return
+    }
+    guard FileManager.default.fileExists(atPath: snapshotsRoot.path(percentEncoded: false)) else {
+        let message = "No Snapshots folder at \(snapshotsRoot.path()): was SnapshotHelper moved?"
+        Issue.record("\(message)", sourceLocation: location.sourceLocation)
         return
     }
     let width = configurator.layout.width
@@ -66,7 +71,9 @@ private struct SnapshotLocation {
 }
 
 /// `<repo>/Snapshots` — outside the synchronized test folder, so images are never copied into the test bundle.
+/// This file lives in `<repo>/BlixRekrtuacjaTests/Snapshot/Support/`.
 private let snapshotsRoot = URL(filePath: #filePath)
+    .deletingLastPathComponent()
     .deletingLastPathComponent()
     .deletingLastPathComponent()
     .deletingLastPathComponent()
@@ -83,7 +90,11 @@ private extension SnapshotConfigurator {
     ) {
         let failure = verifySnapshot(
             of: view.environment(\.dynamicTypeSize, size.dynamicTypeSize),
-            as: .image(layout: layout.snapshotLayout, traits: traits(style, size)),
+            as: .image(
+                drawHierarchyInKeyWindow: drawsInWindow,
+                layout: layout.snapshotLayout,
+                traits: traits(style, size)
+            ),
             named: style.rawValue,
             snapshotDirectory: location.directory(for: size),
             fileID: location.fileID,
