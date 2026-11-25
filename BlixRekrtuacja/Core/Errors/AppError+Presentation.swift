@@ -5,13 +5,10 @@ extension AppError {
         switch self {
         case .offline: .errorOfflineMessage
         case .timeout: .errorTimeoutMessage
-        case .badRequest: .errorBadRequestMessage
-        case .unauthorized: .errorUnauthorizedMessage
-        case .forbidden: .errorForbiddenMessage
-        case .notFound: .errorNotFoundMessage
         case .tooManyRequests: .errorTooManyRequestsMessage
+        case .invalidAPIKey: .errorInvalidAPIKeyMessage
+        case .quotaExceeded: .errorQuotaExceededMessage
         case .server: .errorServerMessage
-        case .decoding: .errorDecodingMessage
         case .storage: .errorStorageMessage
         case .unknown: .errorGenericMessage
         }

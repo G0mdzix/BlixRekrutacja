@@ -14,7 +14,8 @@ Feature-agnostic infrastructure. Core knows only Domain, never Data, DesignSyste
 - Extensions of Apple types (`Extensions/`) never return user-facing text, except `errorAlert`. Extensions of our own types stay next to the type; `AppError` (Domain) is extended in `Errors/`.
 - Logging: `Logger.app`, `.network` or `.storage`, once, where the error originates. Add new categories in `Logger+Extension.swift`.
 - Errors:
-  - A new user-visible error is an `AppError` case plus a message key.
+  - A new user-visible error is an `AppError` case plus a message key, only when the user can act on it differently
+    from the existing cases; otherwise map to an existing case.
   - Layers that depend on Core (Data) map their errors with `AppErrorConvertible`. Core never imports their types.
 - Storage:
   - Reads fall back to the key's `defaultValue` and log corrupt data.

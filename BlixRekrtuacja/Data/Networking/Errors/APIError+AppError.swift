@@ -6,7 +6,7 @@ extension APIError: AppErrorConvertible {
         case .cancelled: nil
         case .transport(let code): AppError(transport: code)
         case .status(let status): AppError(status: status)
-        case .decoding: .decoding
+        case .decoding: .server
         case .invalidResponse: .unknown
         }
     }
@@ -24,13 +24,10 @@ private extension AppError {
 
     init(status: Int) {
         switch status {
-        case 400: self = .badRequest
-        case 401: self = .unauthorized
-        case 403: self = .forbidden
-        case 404: self = .notFound
-        case 408: self = .timeout
-        case 429: self = .tooManyRequests
-        case 500..<600: self = .server
+        case HTTPStatus.unauthorized, HTTPStatus.forbidden: self = .invalidAPIKey
+        case HTTPStatus.requestTimeout: self = .timeout
+        case HTTPStatus.tooManyRequests: self = .tooManyRequests
+        case HTTPStatus.serverError: self = .server
         default: self = .unknown
         }
     }

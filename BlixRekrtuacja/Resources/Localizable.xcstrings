@@ -91,60 +91,6 @@
         }
       }
     },
-    "errorBadRequestMessage": {
-      "comment": "Error alert message: HTTP 400, the request was rejected.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The request couldn't be processed."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie udało się przetworzyć żądania."
-          }
-        }
-      }
-    },
-    "errorDecodingMessage": {
-      "comment": "Error alert message: the server returned data the app can't read.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We received unexpected data. Try again later."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otrzymaliśmy nieoczekiwane dane. Spróbuj ponownie później."
-          }
-        }
-      }
-    },
-    "errorForbiddenMessage": {
-      "comment": "Error alert message: HTTP 403, no access to the resource.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You don't have access to this content."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie masz dostępu do tych danych."
-          }
-        }
-      }
-    },
     "errorGenericMessage": {
       "comment": "Error alert message for an unexpected error.",
       "extractionState": "manual",
@@ -163,20 +109,20 @@
         }
       }
     },
-    "errorNotFoundMessage": {
-      "comment": "Error alert message: HTTP 404, the resource doesn't exist.",
+    "errorInvalidAPIKeyMessage": {
+      "comment": "Error alert message: the rate service rejected the access key (HTTP 401/403, Fixer codes 101 and 102). Developers fix it in Config/Secrets.xcconfig.",
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The requested content couldn't be found."
+            "value": "The rate service rejected the app's access key."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nie znaleziono szukanych danych."
+            "value": "Serwis kursów odrzucił klucz dostępu aplikacji."
           }
         }
       }
@@ -199,8 +145,26 @@
         }
       }
     },
+    "errorQuotaExceededMessage": {
+      "comment": "Error alert message: the monthly limit of rate requests is used up (Fixer code 104).",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The monthly limit of rate requests is used up. Loaded days are still available."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wykorzystano miesięczny limit zapytań o kursy. Wczytane dni są nadal dostępne."
+          }
+        }
+      }
+    },
     "errorServerMessage": {
-      "comment": "Error alert message: HTTP 5xx or the server can't be reached.",
+      "comment": "Error alert message: HTTP 5xx, host unreachable, unreadable response, or an unrecognised Fixer error code.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -285,24 +249,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zbyt wiele prób. Odczekaj chwilę i spróbuj ponownie."
-          }
-        }
-      }
-    },
-    "errorUnauthorizedMessage": {
-      "comment": "Error alert message: HTTP 401, the user is not signed in or the session expired.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your session has expired. Please sign in again."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sesja wygasła. Zaloguj się ponownie."
           }
         }
       }

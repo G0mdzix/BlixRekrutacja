@@ -8,8 +8,8 @@ extension AppErrorTests {
     }
 
     static let mappings: [Scenario] = [
-        Scenario(error: AppError.notFound, expectedError: .notFound),
-        Scenario(error: AppErrorConvertibleStub(appError: .notFound), expectedError: .notFound),
+        Scenario(error: AppError.quotaExceeded, expectedError: .quotaExceeded),
+        Scenario(error: AppErrorConvertibleStub(appError: .server), expectedError: .server),
         Scenario(error: AppErrorConvertibleStub(appError: nil), expectedError: nil),
         Scenario(error: CancellationError(), expectedError: nil),
         Scenario(error: CocoaError(.fileWriteNoPermission), expectedError: .unknown)

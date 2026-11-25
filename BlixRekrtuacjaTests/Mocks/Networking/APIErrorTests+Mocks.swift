@@ -8,10 +8,10 @@ extension APIErrorTests {
     }
 
     static let mappings: [Scenario] = [
-        Scenario(error: .status(400), expectedError: .badRequest),
-        Scenario(error: .status(401), expectedError: .unauthorized),
-        Scenario(error: .status(403), expectedError: .forbidden),
-        Scenario(error: .status(404), expectedError: .notFound),
+        Scenario(error: .status(400), expectedError: .unknown),
+        Scenario(error: .status(401), expectedError: .invalidAPIKey),
+        Scenario(error: .status(403), expectedError: .invalidAPIKey),
+        Scenario(error: .status(404), expectedError: .unknown),
         Scenario(error: .status(408), expectedError: .timeout),
         Scenario(error: .status(418), expectedError: .unknown),
         Scenario(error: .status(429), expectedError: .tooManyRequests),
@@ -25,7 +25,7 @@ extension APIErrorTests {
         Scenario(error: .transport(.timedOut), expectedError: .timeout),
         Scenario(error: .transport(.cannotConnectToHost), expectedError: .server),
         Scenario(error: .transport(.badURL), expectedError: .unknown),
-        Scenario(error: .decoding, expectedError: .decoding),
+        Scenario(error: .decoding, expectedError: .server),
         Scenario(error: .invalidResponse, expectedError: .unknown),
         Scenario(error: .cancelled, expectedError: nil)
     ]
