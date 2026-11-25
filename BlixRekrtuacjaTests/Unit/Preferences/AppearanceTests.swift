@@ -1,7 +1,7 @@
 @testable import BlixRekrtuacja
 import Testing
 
-@Suite(.tags(.unit, .designSystem))
+@Suite(.tags(.unit, .preferences))
 struct AppearanceTests {
     @Test(arguments: Self.colorSchemes)
     func mapsToColorScheme(_ scenario: Scenario) {

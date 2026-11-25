@@ -10,22 +10,8 @@ extension View {
                 set: { if !$0 { onDismiss() } }
             ),
             presenting: error,
-            actions: { _ in },
+            actions: { _ in Button(.commonOk, role: .cancel) {} },
             message: { Text($0.message) }
         )
-    }
-}
-
-// MARK: - Card background
-extension View {
-    func cardBackground(_ background: CardBackground) -> some View {
-        self.background(background.color, in: .rect(cornerRadius: Radius.large))
-    }
-}
-
-// MARK: - Typography
-extension View {
-    func typography(_ style: Typography) -> some View {
-        font(style.font)
     }
 }

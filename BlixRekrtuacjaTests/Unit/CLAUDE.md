@@ -5,8 +5,7 @@ General rules: `../CLAUDE.md`. Reference file: `Coordinator/CoordinatorTests.swi
 ## Layout
 - `Unit/<Area>/<Type>Tests.swift` containing `struct <Type>Tests`.
 - File order: tests, then `// MARK: - Helpers`.
-- Test data (`Scenario`, `Action`, sample models) lives in `Mocks/<Area>/<Type>Tests+Mocks.swift` as `extension <Type>Tests`.
-- Argument lists live there too as `static let` named after the behaviour (`pathScenarios`, `mappings`) and are passed as `@Test(arguments: Self.pathScenarios)`.
+- Argument lists live in the Mocks file as `static let` named after the behaviour (`pathScenarios`, `mappings`) and are passed as `@Test(arguments: Self.pathScenarios)`.
   On a `@MainActor` suite mark them `nonisolated static let`.
 
 ## Parameterization

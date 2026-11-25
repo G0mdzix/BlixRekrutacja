@@ -9,5 +9,6 @@ extension Tag {
     @Tag static var networking: Self
     @Tag static var errors: Self
     @Tag static var storage: Self
+    @Tag static var preferences: Self
     @Tag static var feature: Self
 }

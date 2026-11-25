@@ -24,9 +24,9 @@ struct BlixSelectionRow: View {
 
 #Preview {
     VStack(spacing: Spacing.small) {
-        BlixSelectionRow(configurator: .init(label: .init(text: .localized(.appearanceSystem)), isSelected: true) {})
-        BlixSelectionRow(configurator: .init(label: .init(text: .localized(.appearanceLight))) {})
-        BlixSelectionRow(configurator: .init(label: .init(text: .localized(.appearanceDark), icon: .moon)) {})
+        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("Selected")), isSelected: true) {})
+        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("Unselected"))) {})
+        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("With icon"), icon: .moon)) {})
     }
     .padding(Spacing.large)
 }

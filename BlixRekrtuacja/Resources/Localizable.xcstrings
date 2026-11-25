@@ -55,6 +55,24 @@
         }
       }
     },
+    "commonOk": {
+      "comment": "Button that closes an alert.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
     "errorBadRequestMessage": {
       "comment": "Error alert message: HTTP 400, the request was rejected.",
       "extractionState": "manual",
@@ -271,6 +289,60 @@
         }
       }
     },
+    "languageEnglish": {
+      "comment": "Language option: English, always written in English.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "English"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "English"
+          }
+        }
+      }
+    },
+    "languagePolish": {
+      "comment": "Language option: Polish, always written in Polish.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Polski"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Polski"
+          }
+        }
+      }
+    },
+    "languageSystem": {
+      "comment": "Language option: follow the system language.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Systemowy"
+          }
+        }
+      }
+    },
     "settingsAppearance": {
       "comment": "Settings section: choose light, dark or system appearance.",
       "extractionState": "manual",
@@ -285,6 +357,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wygląd"
+          }
+        }
+      }
+    },
+    "settingsLanguage": {
+      "comment": "Settings section: choose the app language.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Język"
           }
         }
       }

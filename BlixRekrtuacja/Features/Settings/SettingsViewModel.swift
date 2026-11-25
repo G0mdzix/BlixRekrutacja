@@ -1,22 +1,27 @@
+import Foundation
 import Observation
 
 @MainActor @Observable
 final class SettingsViewModel {
-    private(set) var appearance: Appearance
     private(set) var error: AppError?
 
-    private let store: any KeyValueStore
+    private let preferences: UserPreferences
 
-    init(store: any KeyValueStore) {
-        self.store = store
-        appearance = store.value(for: .appearance)
+    init(preferences: UserPreferences) {
+        self.preferences = preferences
     }
 
     func select(_ appearance: Appearance) {
-        guard appearance != self.appearance else { return }
         do {
-            try store.set(appearance, for: .appearance)
-            self.appearance = appearance
+            try preferences.set(appearance)
+        } catch {
+            self.error = AppError(error)
+        }
+    }
+
+    func select(_ language: Language) {
+        do {
+            try preferences.set(language)
         } catch {
             self.error = AppError(error)
         }
@@ -30,17 +35,31 @@ final class SettingsViewModel {
 // MARK: - UI configurators
 
 extension SettingsViewModel {
-    var appearanceHeaderConfigurator: BlixLabelConfigurator {
-        BlixLabelConfigurator(text: .localized(.settingsAppearance), style: .secondary, typography: .subheadline)
-    }
+    var appearanceHeaderConfigurator: BlixLabelConfigurator { header(.settingsAppearance) }
+
+    var languageHeaderConfigurator: BlixLabelConfigurator { header(.settingsLanguage) }
 
     func appearanceRowConfigurator(_ appearance: Appearance) -> BlixSelectionRowConfigurator {
         BlixSelectionRowConfigurator(
             label: BlixLabelConfigurator(text: .localized(appearance.title)),
-            isSelected: appearance == self.appearance
+            isSelected: appearance == preferences.appearance
         ) { [weak self] in
             guard let self else { return }
             select(appearance)
         }
+    }
+
+    func languageRowConfigurator(_ language: Language) -> BlixSelectionRowConfigurator {
+        BlixSelectionRowConfigurator(
+            label: BlixLabelConfigurator(text: .localized(language.title)),
+            isSelected: language == preferences.language
+        ) { [weak self] in
+            guard let self else { return }
+            select(language)
+        }
+    }
+
+    private func header(_ text: LocalizedStringResource) -> BlixLabelConfigurator {
+        BlixLabelConfigurator(text: .localized(text), style: .secondary, typography: .subheadline)
     }
 }

@@ -6,18 +6,21 @@ struct SettingsView: View {
     var body: some View {
         BlixList {
             BlixLabel(configurator: viewModel.appearanceHeaderConfigurator)
+            selectionCard(Appearance.allCases, row: viewModel.appearanceRowConfigurator)
 
-            appearanceRows
+            BlixLabel(configurator: viewModel.languageHeaderConfigurator)
+            selectionCard(Language.allCases, row: viewModel.languageRowConfigurator)
         }
         .navigationTitle(.settingsTitle)
         .errorAlert(viewModel.error) { viewModel.dismissError() }
     }
 
-    private var appearanceRows: some View {
+    private func selectionCard<Option: Hashable>(
+        _ options: [Option],
+        row: @escaping (Option) -> BlixSelectionRowConfigurator
+    ) -> some View {
         VStack(spacing: .zero) {
-            ForEach(Appearance.allCases, id: \.self) {
-                BlixSelectionRow(configurator: viewModel.appearanceRowConfigurator($0))
-            }
+            ForEach(options, id: \.self) { BlixSelectionRow(configurator: row($0)) }
         }
         .padding(.horizontal, Spacing.large)
         .cardBackground(.secondary)
@@ -25,5 +28,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    NavigationStack { SettingsView(viewModel: SettingsViewModel(store: UserDefaultsStore.isolated())) }
+    NavigationStack {
+        SettingsView(viewModel: SettingsViewModel(preferences: UserPreferences(store: UserDefaultsStore.isolated())))
+    }
 }

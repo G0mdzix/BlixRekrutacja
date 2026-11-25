@@ -80,11 +80,24 @@
 			);
 			target = 6898D54830B6084B00348852 /* BlixRekrtuacjaTests */;
 		};
+		689E967230B6D8480068AD35 /* Exceptions for "BlixRekrtuacja" folder in "BlixRekrtuacja" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core/CLAUDE.md,
+				Data/CLAUDE.md,
+				DesignSystem/CLAUDE.md,
+				Features/CLAUDE.md,
+			);
+			target = 6898D53B30B6084A00348852 /* BlixRekrtuacja */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6898D53E30B6084A00348852 /* BlixRekrtuacja */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				689E967230B6D8480068AD35 /* Exceptions for "BlixRekrtuacja" folder in "BlixRekrtuacja" target */,
+			);
 			path = BlixRekrtuacja;
 			sourceTree = "<group>";
 		};

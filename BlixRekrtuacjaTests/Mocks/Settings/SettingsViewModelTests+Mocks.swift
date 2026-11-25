@@ -1,44 +1,51 @@
 @testable import BlixRekrtuacja
 
 extension SettingsViewModelTests {
-    struct LoadScenario {
-        let saved: Appearance?
-        let expected: Appearance
-    }
-
-    struct TapScenario {
+    struct AppearanceTapScenario {
         let saved: Appearance
         let tapped: Appearance
     }
 
+    struct LanguageTapScenario {
+        let saved: Language
+        let tapped: Language
+    }
+
+    enum Row {
+        case appearance(Appearance)
+        case language(Language)
+    }
+
     struct FailingTapScenario {
-        let tapped: Appearance
+        let row: Row
         let expectedError: AppError?
     }
 
     enum ObservedChange {
-        case appearance
-        case errorShown
-        case errorDismissed
+        case shown
+        case dismissed
     }
 
-    nonisolated static let savedAppearances: [LoadScenario] = [
-        LoadScenario(saved: nil, expected: .system),
-        LoadScenario(saved: .light, expected: .light),
-        LoadScenario(saved: .dark, expected: .dark)
+    nonisolated static let appearanceTaps: [AppearanceTapScenario] = [
+        AppearanceTapScenario(saved: .dark, tapped: .system),
+        AppearanceTapScenario(saved: .system, tapped: .light),
+        AppearanceTapScenario(saved: .light, tapped: .dark),
+        AppearanceTapScenario(saved: .dark, tapped: .dark)
     ]
 
-    nonisolated static let taps: [TapScenario] = [
-        TapScenario(saved: .dark, tapped: .system),
-        TapScenario(saved: .system, tapped: .light),
-        TapScenario(saved: .light, tapped: .dark),
-        TapScenario(saved: .dark, tapped: .dark)
+    nonisolated static let languageTaps: [LanguageTapScenario] = [
+        LanguageTapScenario(saved: .english, tapped: .system),
+        LanguageTapScenario(saved: .system, tapped: .polish),
+        LanguageTapScenario(saved: .polish, tapped: .english),
+        LanguageTapScenario(saved: .english, tapped: .english)
     ]
 
     nonisolated static let failingTaps: [FailingTapScenario] = [
-        FailingTapScenario(tapped: .dark, expectedError: .storage),
-        FailingTapScenario(tapped: .system, expectedError: nil)
+        FailingTapScenario(row: .appearance(.dark), expectedError: .storage),
+        FailingTapScenario(row: .appearance(.system), expectedError: nil),
+        FailingTapScenario(row: .language(.english), expectedError: .storage),
+        FailingTapScenario(row: .language(.system), expectedError: nil)
     ]
 
-    nonisolated static let observedChanges: [ObservedChange] = [.appearance, .errorShown, .errorDismissed]
+    nonisolated static let observedChanges: [ObservedChange] = [.shown, .dismissed]
 }

@@ -1,52 +1,57 @@
 # BlixRekrtuacja
 iOS 17+ SwiftUI app, iPhone only, portrait only. MVVM + Coordinator, Clean Architecture, constructor DI.
-Follow the `ios-project-conventions` skill; on conflict this file and the project plan win.
+Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 
 ## Commands — after every change
 - Test: `set -o pipefail && xcodebuild -scheme BuildApp -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' test | xcbeautify`
-- Lint: `swiftlint lint --strict`. Mechanical rules live in `.swiftlint.yml` — never restate them in CLAUDE.md files.
-  Fix violations; never disable or relax a rule to pass.
-- Schemes: `BuildApp` (app + all tests) · `UnitTests` (skips `.snapshot`) · `SnapshotTests` (only `.snapshot`, verifies) · `SnapshotRecord` (only `.snapshot`, records).
+- Lint: `swiftlint lint --strict`. Mechanical rules live in `.swiftlint.yml`; never restate them in CLAUDE.md files.
+  Fix violations. Never disable or relax a rule to pass.
+- Schemes:
+  - `BuildApp`: app + all tests.
+  - `UnitTests`: skips `.snapshot`.
+  - `SnapshotTests`: only `.snapshot`, verifies.
+  - `SnapshotRecord`: only `.snapshot`, records.
 
-## Layers (all inside BlixRekrtuacja/)
-- App: composition root only — the only place that creates concrete types. No logic.
-- Core: generic, feature-agnostic (DesignSystem, Errors, Extensions, Navigation, Networking, UserDefaults). May know Domain's AppError, never a feature.
-- Domain: Foundation only. Entities, enums, repository protocols.
-- Features/<Name>: View + ViewModel (+ Coordinator, Route). ViewModels: `@MainActor @Observable final class`,
-  `private(set)` state, dependencies via init as protocols.
-- ViewModels build component configurators in `// MARK: - UI configurators`: `<element>Configurator` property,
-  or `<element>Configurator(_:)` for rows; configurator actions call ViewModel methods.
-- Extensions of Apple types → `Core/Extensions/<Type>+Extension.swift`, one file per type, append if it exists,
-  `// MARK: - <Purpose>` sections. Extensions of our own types stay next to the type. Never return user-facing text from them.
-- Default actor isolation is `nonisolated`: mark ViewModels and other UI-bound types `@MainActor` explicitly.
-- Escaping closures capture `[weak self]` and start with `guard let self else { return }` — never `self?.`.
+## Layers (BlixRekrtuacja/): read the layer's CLAUDE.md before changing it
+- App: composition root only. It is the only place that creates concrete types and wires them. No logic.
+- Domain: Foundation only. Entities, repository protocols, `AppError`.
+- Data (`Data/CLAUDE.md`): networking, repositories, DTOs.
+- Core (`Core/CLAUDE.md`): feature-agnostic infrastructure: errors, extensions, navigation, preferences, storage.
+- DesignSystem (`DesignSystem/CLAUDE.md`): tokens, colors, components.
+- Features (`Features/CLAUDE.md`): screens, each a View + ViewModel.
+- Resources: String Catalog, assets, `SFSymbol`; usable by every layer except Domain.
+- Dependencies point one way:
+  - Features → DesignSystem, Core, Domain
+  - Data → Core, Domain
+  - Core → Domain
 
-## Errors & networking
-- ViewModels: `private(set) var error: AppError?`, set in `catch` with `AppError(error)` (nil for cancellation), cleared by `dismissError()`.
-- Views: `.errorAlert(viewModel.error) { viewModel.dismissError() }` — no `Binding` in ViewModels.
-- Requests only through the `HTTPClient` protocol and `Endpoint<Response>` — never `URLSession` in features.
-- Log with `Logger` once, where the error originates.
+  Nothing depends on Features.
+
+## Swift
+- Default actor isolation is `nonisolated`. Mark ViewModels and other UI-bound types `@MainActor` explicitly.
+- Escaping closures capture `[weak self]` and start with `guard let self else { return }`, never `self?.`.
+- `ViewModel` is reserved for `@Observable` classes with logic.
 
 ## Text
-Every user-facing string comes from Resources/Localizable.xcstrings via generated symbols: `Text(.settingsTitle)`.
-Add keys manually (camelCase, feature prefix: settings…, about…, common…, error…) with PL + EN and a comment.
-Values in sentences = key with arguments, plurals = Vary by Plural, numbers/dates = FormatStyle. Never literals or concatenation.
-Not user-facing (plain String): Logger messages, fatalError, storage keys, SF Symbol names. User data is shown as-is (`.verbatim`).
-
-## UI
-Feature views only compose Design System components: View + `<Name>Configurator` struct; containers take `@ViewBuilder`.
-`ViewModel` is reserved for `@Observable` classes with logic.
-Dynamic Type from xSmall to accessibility5: no truncation, no fixed text heights.
-Colors only from `Resources/Assets.xcassets/Colors` via generated symbols (`.textPrimary`); cards via `.cardBackground(.primary/.secondary)`.
+- Every user-facing string comes from Resources/Localizable.xcstrings through generated symbols: `Text(.settingsTitle)`.
+- Add keys manually (camelCase, feature prefix: settings…, about…, common…, error…) with PL + EN and a comment.
+- Values in sentences use a key with arguments, plurals use Vary by Plural, numbers and dates use FormatStyle. Never use literals or concatenation.
+- Not user-facing (plain String): Logger messages, fatalError, storage keys, SF Symbol names. User data is shown as-is (`.verbatim`).
 
 ## Tests
 Before writing or changing any test, read and follow BlixRekrtuacjaTests/CLAUDE.md (strict rules, stubs, snapshots).
 
 ## Definition of done
-Builds without warnings · tests green · zero SwiftLint violations · new keys have PL + EN ·
-new component/screen has snapshot tests · every commit builds and passes tests on its own ·
-Conventional Commit `type(scope): summary` (feat, fix, refactor, test, docs, chore).
+- Builds without warnings.
+- Tests are green.
+- Zero SwiftLint violations.
+- New keys have PL + EN.
+- New components and screens have snapshot tests.
+- Every commit builds and passes tests on its own.
+- Conventional Commit `type(scope): summary` (feat, fix, refactor, test, docs, chore).
 
 ## Never
-Edit project.pbxproj by hand · add dependencies · hardcode user-facing text or URLs · logic in component views ·
-APIs above iOS 17 without `if #available`.
+- Edit project.pbxproj by hand.
+- Add dependencies.
+- Hardcode URLs.
+- Use APIs above iOS 17 without `if #available`.

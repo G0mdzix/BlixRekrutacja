@@ -26,7 +26,7 @@ struct BlixList<Content: View>: View {
 
 #Preview("Fits — no scroll") {
     BlixList {
-        ForEach(Appearance.allCases, id: \.self) { Text($0.title) }
+        ForEach(1...3, id: \.self) { Text($0, format: .number) }
     }
 }
 
