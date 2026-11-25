@@ -16,8 +16,8 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 
 ## Layers (BlixRekrtuacja/): read the layer's CLAUDE.md before changing it
 - App: composition root only. It is the only place that creates concrete types and wires them. No logic.
-- Domain: Foundation only. Entities, repository protocols, `AppError`.
-- Data (`Data/CLAUDE.md`): networking, repositories, DTOs.
+- Domain: Foundation only. Entities, repository protocols, pure rules (`BusinessDays`), `AppError`.
+- Data (`Data/CLAUDE.md`): networking, repositories, DTOs, the SwiftData cache.
 - Core (`Core/CLAUDE.md`): feature-agnostic infrastructure: errors, extensions, navigation, preferences, storage.
 - DesignSystem (`DesignSystem/CLAUDE.md`): tokens, colors, components.
 - Features (`Features/CLAUDE.md`): screens, each a View + ViewModel.

@@ -11,4 +11,5 @@ extension Tag {
     @Tag static var storage: Self
     @Tag static var preferences: Self
     @Tag static var feature: Self
+    @Tag static var rates: Self
 }

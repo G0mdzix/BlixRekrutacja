@@ -33,6 +33,7 @@ Swift Testing suite. Area rules: `Unit/CLAUDE.md`, `Snapshot/CLAUDE.md`.
 ## Mocks and stubs
 - `Mocks/<Area>/<Type>Tests+Mocks.swift`: test data for one suite (`Scenario`, `Action`, sample models) as an extension of the suite.
 - `Stubs/<Area>/<Type>Stub.swift`: one per file, `internal`, shared by all tests.
+- `Mocks/Shared/`: value helpers used across areas (`Decimal(exact:)`, `Date(iso:)`); they stop the test on a typo.
 - Fixed data or closures set by the test. No logic, randomness or assertions inside.
 - To verify a call, record it through a closure passed by the test and assert in the test.
 - Closures that run on other threads (e.g. `URLProtocol` handlers) only record; assert after `await`.
