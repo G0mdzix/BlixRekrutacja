@@ -6,6 +6,7 @@ extension AppError {
         case .offline: .errorOfflineMessage
         case .timeout: .errorTimeoutMessage
         case .tooManyRequests: .errorTooManyRequestsMessage
+        case .missingAPIKey: .errorMissingAPIKeyMessage
         case .invalidAPIKey: .errorInvalidAPIKeyMessage
         case .quotaExceeded: .errorQuotaExceededMessage
         case .server: .errorServerMessage

@@ -10,13 +10,16 @@ It knows Domain and Core.
 - Use `EmptyResponse` for requests without a body in the reply.
 - Errors reach Features as `AppError`: `APIError` through `AppErrorConvertible` (`APIError+AppError.swift`); Fixer error
   codes, incomplete Fixer bodies and storage failures throw `AppError` directly. Never map them in ViewModels.
-- Extensions of Apple types used only by Data live in `Extensions/<Type>+Extension.swift`.
+- Extensions of Apple types used only by Data live in `Extensions/<Type>+<Purpose>.swift` (`Bundle+Fixer.swift`):
+  one target, so a name already used in Core (`Bundle+Extension.swift`) would clash at build time.
 
 ## Repositories (`Repositories/<Name>/`)
 - The protocol `<Name>Repository` and its entities live in `Domain/`. `Remote<Name>Repository` takes an `HTTPClient`.
 - DTOs (`<Source><Name>Response`, e.g. `FixerRatesResponse`) sit next to the repository, are `Decodable` and `Sendable`,
   map themselves to Domain (`dailyRates()`) and never leave Data.
-- The base URL and the API key are injected in App, never hardcoded. The key travels in the query, so URLs are never logged.
+- The base URL and the API key come from Info.plist (`Bundle.fixerBaseURL`, `fixerAPIKey`);
+  App injects them. The key travels in the query, so URLs are never logged.
+- An empty key throws `AppError.missingAPIKey` before the network: no request is spent on a certain 101.
 
 ## Rates (`Repositories/Rates/`)
 - Fixer reports errors in HTTP 200 bodies: `success == false` maps its code to `AppError` in the DTO.

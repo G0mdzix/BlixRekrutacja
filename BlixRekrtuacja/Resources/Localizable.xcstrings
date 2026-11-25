@@ -127,6 +127,24 @@
         }
       }
     },
+    "errorMissingAPIKeyMessage": {
+      "comment": "Error message: the app was built without a rates API key.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app has no API key for rates. Add it to Config/Secrets.xcconfig and build the app again."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikacja nie ma klucza API do kursów. Dodaj go w pliku Config/Secrets.xcconfig i zbuduj aplikację ponownie."
+          }
+        }
+      }
+    },
     "errorOfflineMessage": {
       "comment": "Error alert message: no internet connection.",
       "extractionState": "manual",

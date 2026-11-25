@@ -10,10 +10,20 @@ struct RemoteRatesRepository: RatesRepository {
     }
 
     func latest() async throws -> DailyRates {
-        try await client.send(.fixerLatest(apiKey: apiKey)).dailyRates()
+        try await send(.fixerLatest(apiKey: validKey()))
     }
 
     func rates(on day: Date) async throws -> DailyRates {
-        try await client.send(.fixerRates(on: day, apiKey: apiKey)).dailyRates()
+        try await send(.fixerRates(on: day, apiKey: validKey()))
+    }
+
+    /// An empty key would cost a request and come back as 101, so it fails before the network.
+    private func validKey() throws -> String {
+        guard !apiKey.isEmpty else { throw AppError.missingAPIKey }
+        return apiKey
+    }
+
+    private func send(_ endpoint: Endpoint<FixerRatesResponse>) async throws -> DailyRates {
+        try await client.send(endpoint).dailyRates()
     }
 }

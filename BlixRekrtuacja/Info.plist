@@ -4,5 +4,7 @@
 <dict>
 	<key>FixerAPIKey</key>
 	<string>$(FIXER_API_KEY)</string>
+	<key>FixerBaseURL</key>
+	<string>https://data.fixer.io/api</string>
 </dict>
 </plist>

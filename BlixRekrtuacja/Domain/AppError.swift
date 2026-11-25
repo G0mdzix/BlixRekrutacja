@@ -3,6 +3,7 @@ enum AppError: Error, Equatable, Sendable {
     case offline
     case timeout
     case tooManyRequests
+    case missingAPIKey
     case invalidAPIKey
     case quotaExceeded
     case server

@@ -21,6 +21,20 @@ struct RemoteRatesRepositoryTests {
         #expect(request.query == [URLQueryItem(name: "access_key", value: Self.apiKey)])
     }
 
+    @Test(arguments: Self.requests)
+    func failsWithoutAKeyBeforeTheNetwork(_ scenario: RequestScenario) async throws {
+        let response = try RatesSamples.fixerResponse()
+        let sent = OSAllocatedUnfairLock(initialState: false)
+        let client = HTTPClientStub { _, _ in
+            sent.withLock { $0 = true }
+            return response
+        }
+        let sut = RemoteRatesRepository(client: client, apiKey: "")
+
+        await #expect(throws: AppError.missingAPIKey) { try await scenario.request.perform(on: sut) }
+        #expect(!sent.withLock { $0 })
+    }
+
     @Test func returnsTheMappedResponse() async throws {
         let response = try RatesSamples.fixerResponse()
         let sut = Self.makeSUT { _, _ in response }

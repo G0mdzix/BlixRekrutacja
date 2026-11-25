@@ -50,4 +50,17 @@ extension SwiftDataRatesCache {
         let configuration = ModelConfiguration(isStoredInMemoryOnly: isStoredInMemoryOnly)
         self.init(modelContainer: try ModelContainer(for: CachedDay.self, configurations: configuration))
     }
+
+    static func onDiskOrInMemory() -> SwiftDataRatesCache {
+        do {
+            return try SwiftDataRatesCache(isStoredInMemoryOnly: false)
+        } catch {
+            Logger.storage.error("Failed to open the rates store, using memory: \(error, privacy: .public)")
+        }
+        do {
+            return try SwiftDataRatesCache(isStoredInMemoryOnly: true)
+        } catch {
+            preconditionFailure("Failed to create an in-memory rates store: \(error)")
+        }
+    }
 }
