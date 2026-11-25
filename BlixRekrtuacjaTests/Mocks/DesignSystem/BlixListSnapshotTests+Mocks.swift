@@ -5,7 +5,6 @@ extension BlixListSnapshotTests {
         let name: String
         let items: [String]
         let snapshot: SnapshotConfigurator
-        var verticalSizeClass = UserInterfaceSizeClass.regular
     }
 
     nonisolated static let contents: [Scenario] = [
@@ -19,13 +18,12 @@ extension BlixListSnapshotTests {
         Scenario(
             name: "fits-landscape",
             items: Array(cities.prefix(3)),
-            snapshot: .component.layout(.fixed(width: Landscape.width, height: Landscape.height)),
-            verticalSizeClass: .compact
+            snapshot: .component.layout(.fixed(width: Landscape.width, height: Landscape.height))
         )
     ]
 }
 
-/// iPhone 13 turned sideways: the compact height that always scrolls.
+/// iPhone 13 turned sideways.
 private enum Landscape {
     static let width: CGFloat = 844
     static let height: CGFloat = 390

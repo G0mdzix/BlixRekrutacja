@@ -47,7 +47,8 @@ Reference files: simple screen `Screens/Settings/`, several states `Screens/Rate
   `selectionCard(Appearance.allCases, row: viewModel.appearanceRowConfigurator)`.
 - Only Design System components fed by configurators, plus layout (`VStack`, `ForEach`, `.cardBackground`, `Spacing`).
   No formatting, filtering or business `if`s in the view.
-- Lists go through `BlixList`. Paging triggers are `.task(id:)` on the footer, keyed on a value that changes per load.
+- Lists go through `BlixList`. Paging triggers are `.task(id:)` on the footer, keyed on a value that changes per load
+  (`nextDay`); the `LazyVStack` builds the footer only near the screen, so loading starts with the user's scroll.
 - `#Preview` uses real types on isolated storage (`UserDefaultsStore.isolated()`).
 
 ## Style

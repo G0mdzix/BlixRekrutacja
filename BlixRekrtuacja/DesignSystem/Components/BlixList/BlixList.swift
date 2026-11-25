@@ -1,11 +1,8 @@
 import SwiftUI
 
-/// Short content sits still, long content scrolls. In landscape (compact height) it always scrolls: there content
-/// that loads more of itself (a footer `.task`) keeps crossing the fit boundary, and `ViewThatFits` swapping
-/// between its children on every load crashed the app.
+/// Always a `ScrollView`; `.basedOnSize` keeps short content still. A `ViewThatFits` that swapped a still stack for a
+/// scroll view crashed while the content changed (paging, search) and left the screen blank after a back swipe.
 struct BlixList<Content: View>: View {
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-
     private let spacing: CGFloat
     private let content: Content
 
@@ -15,37 +12,17 @@ struct BlixList<Content: View>: View {
     }
 
     var body: some View {
-        if verticalSizeClass == .compact {
-            scrolling
-        } else {
-            ViewThatFits(in: .vertical) {
-                stack
-                scrolling
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: spacing) { content }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(Spacing.large)
         }
-    }
-
-    private var scrolling: some View {
-        ScrollView { stack }
-            .scrollBounceBehavior(.basedOnSize)
-            .scrollIndicators(.hidden)
-    }
-
-    private var stack: some View {
-        LazyVStack(alignment: .leading, spacing: spacing) { content }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(Spacing.large)
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
     }
 }
 
 #Preview("Fits — no scroll") {
-    BlixList {
-        ForEach(1...3, id: \.self) { Text($0, format: .number) }
-    }
-}
-
-#Preview("Landscape — always scrolls", traits: .landscapeLeft) {
     BlixList {
         ForEach(1...3, id: \.self) { Text($0, format: .number) }
     }

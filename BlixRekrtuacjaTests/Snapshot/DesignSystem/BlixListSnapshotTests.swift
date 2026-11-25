@@ -10,7 +10,6 @@ struct BlixListSnapshotTests {
         let sut = BlixList {
             ForEach(scenario.items, id: \.self) { Text($0) }
         }
-        .environment(\.verticalSizeClass, scenario.verticalSizeClass)
 
         assertSnapshots(of: sut, named: scenario.name, configurator: scenario.snapshot)
     }
