@@ -1,6 +1,6 @@
 # Features
 
-One folder per screen or flow. Reference: `Settings/`.
+One folder per screen or flow. Reference: `Screens/Settings/`.
 Files: `<Name>View.swift`, `<Name>ViewModel.swift`, plus `<Name>Coordinator` and `<Name>Route` once it navigates.
 Features use Domain, Core and DesignSystem. They never use each other or Data types directly.
 
@@ -28,5 +28,5 @@ Features use Domain, Core and DesignSystem. They never use each other or Data ty
 App builds dependencies once. Root ViewModels live in App `@State`; pushed screens get theirs from their Coordinator through factories injected by App. Never inside `body`.
 
 ## Tests
-`Unit/<Name>/<Name>ViewModelTests.swift`, tags `.unit, .feature`. Rules: `BlixRekrtuacjaTests/Unit/CLAUDE.md`.
+`Unit/Features/<Name>ViewModelTests.swift`, tags `.unit, .feature`. Rules: `BlixRekrtuacjaTests/Unit/CLAUDE.md`.
 Failure paths use stubs (`FailingKeyValueStoreStub`). State the view reads from `UserPreferences` is tested there, not here.
