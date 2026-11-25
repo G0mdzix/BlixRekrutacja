@@ -97,7 +97,7 @@ custom_rules:
     severity: error
   no_text_literals:
     excluded: '/BlixRekrtuacjaTests/'
-    regex: '\b(Text|Button|Label|Toggle|navigationTitle|alert|confirmationDialog)\(\s*"|\b(title|message|value):\s*"'
+    regex: '\b(Text|Button|Label|Toggle|navigationTitle|alert|confirmationDialog)\(\s*"|\b(title|message|value|text):\s*"'
     message: "User-facing text must come from Localizable.xcstrings via generated symbols"
     severity: error
   no_raw_colors:
@@ -113,6 +113,11 @@ custom_rules:
   no_observable_object:
     regex: '\bObservableObject\b|@(Published|StateObject|ObservedObject|EnvironmentObject)\b'
     message: "Use @Observable (Observation) instead of ObservableObject"
+    severity: error
+  no_raw_sf_symbols:
+    excluded: '/Resources/SFSymbol\.swift$'
+    regex: '\bsystemName:|\bsystemImage:\s*"'
+    message: "Declare SF Symbols in Resources/SFSymbol.swift and use SFSymbol.x.image"
     severity: error
   no_dispatch_queue:
     regex: '\bDispatchQueue\b'

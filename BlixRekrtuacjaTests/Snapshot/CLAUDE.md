@@ -1,11 +1,17 @@
 # Snapshot tests
 
-General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:layout:)` in `SnapshotHelper.swift` renders light/dark × large/accessibility5.
+General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:named:configurator:)` in `SnapshotHelper.swift`;
+`SnapshotConfigurator` sets interface styles (default light + dark), text sizes (default large + accessibility5) and layout.
 
 ## Layout
 - `Snapshot/<Area>/<Type>SnapshotTests.swift`: one parameterized test per component or screen, every variant an argument.
+- The test function is always `recordSnapshot(_ scenario: Scenario)`. The file name must match the suite name — it names the `Snapshots/` folder.
 - Suite tags: `.snapshot` plus the area, e.g. `@Suite(.tags(.snapshot, .feature))`.
-- Components: `view.frame(width: 390)` with `layout: .sizeThatFits`. Screens: default `.device`.
+- Screens: `configurator: .screen` (default; iPhone 13 frame 390×844; large + ax5). Components: `.component` (width 390, height fits content; xSmall + large + ax5).
+  Containers whose behaviour depends on height (scrolling lists): `.component.layout(.screen)` or `.component.layout(.fixed(width:height:))`.
+  Custom: `SnapshotConfigurator(textSizes: [.extraSmall, .accessibility5], layout: .fixed(width: 390, height: 300))`.
+- Files: `Snapshots/<Suite>/<textSize>/<scenario>.<style>.png` at the repo root, e.g. `Snapshots/BlixListSnapshotTests/ax5/fits.dark.png`.
+  Outside the test folder on purpose — never move them inside it (Xcode would copy them into the test bundle). `named:` = scenario name.
 
 ## Scope
 - Every visual variant and state: default, empty, error, loading, disabled.
@@ -14,13 +20,12 @@ General rules: `../CLAUDE.md`. Helper: `assertSnapshots(of:layout:)` in `Snapsho
 
 ## Stable images
 - State comes from stubs and is set before rendering. No network, async loading, animations or current date.
-- Pinned simulator: iPhone 16, iOS 18.6.
+- Pinned simulator: iPhone 17, iOS 26.3.1 — `SnapshotHelper` fails any other device or OS.
 - Texts come from the String Catalog in the development language.
 
 ## Recording
-- Only for an intended UI change. Xcode: scheme `BlixRekrtuacja-SnapshotTests` → Edit Test Plan → Configurations →
-  Environment Variables → tick `SNAPSHOT_TESTING_RECORD` (untick to verify). CLI: prefix with `TEST_RUNNER_SNAPSHOT_TESTING_RECORD=all`.
+- Only for an intended UI change: run scheme `SnapshotRecord` (re-records only missing or changed images and fails those tests),
+  then `SnapshotTests` must pass. Never add a record switch to `SnapshotTests.xctestplan`.
 - Review every new image before committing. Never re-record to make a failing test pass.
-- Never commit `SnapshotTests.xctestplan` with `SNAPSHOT_TESTING_RECORD` ticked — untick it after recording.
 - Never lower `precision` / `perceptualPrecision` to make a test pass.
-- `__Snapshots__/` is committed and excluded from target membership.
+- `Snapshots/` is committed.

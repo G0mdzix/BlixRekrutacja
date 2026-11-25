@@ -15,7 +15,7 @@ Swift Testing suite. Area rules: `Unit/CLAUDE.md`, `Snapshot/CLAUDE.md`.
 
 ## Determinism
 - Same result on every run, in any order, in parallel.
-- Forbidden: timeouts, `Date()`, randomness, network, file system, `UserDefaults.standard`, shared mutable state.
+- Forbidden: timeouts, `Date()`, randomness, network, file system, `UserDefaults.standard` (use `UserDefaultsStore.isolated()`), shared mutable state.
 - Inject time, IDs and side effects; fix their values in tests.
 - Events: `confirmation` (exact count). Async results: `await` directly, never poll.
 - Unavoidable static state: `@Suite(.serialized)`.

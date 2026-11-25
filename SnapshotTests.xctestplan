@@ -7,14 +7,7 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
-    "environmentVariableEntries" : [
-      {
-        "enabled" : false,
-        "key" : "SNAPSHOT_TESTING_RECORD",
-        "value" : "all"
-      }
-    ]
+    "codeCoverage" : false
   },
   "testTargets" : [
     {

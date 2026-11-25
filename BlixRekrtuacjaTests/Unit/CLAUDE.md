@@ -18,5 +18,5 @@ General rules: `../CLAUDE.md`. Reference file: `Coordinator/CoordinatorTests.swi
 - Happy path, every error path, initial and empty state, boundaries, repeated operations.
 - Error paths assert the exact error: `#expect(throws: APIError.status(404)) { try … }`.
 - Async: `await sut.load()`, then assert state. Never start a `Task {}` inside a test.
-- ViewModels: drive them through component view models (`sut.saveButtonViewModel.action()`) and assert state. No UI.
+- ViewModels: drive them through the component configurators they expose (`sut.saveButtonConfigurator.action()`) and assert state. No UI.
 - State the UI observes: verify change notification with `withObservationTracking` and `confirmation`.
