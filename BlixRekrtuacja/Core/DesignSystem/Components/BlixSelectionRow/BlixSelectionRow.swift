@@ -12,7 +12,7 @@ struct BlixSelectionRow: View {
                 BlixLabel(configurator: configurator.label)
                 Spacer()
                 if configurator.isSelected {
-                    SFSymbol.checkmark.image.foregroundStyle(.tint)
+                    SFSymbol.checkmark.image.foregroundStyle(.brandPrimary)
                 }
             }
             .frame(minHeight: Size.minTapTarget)

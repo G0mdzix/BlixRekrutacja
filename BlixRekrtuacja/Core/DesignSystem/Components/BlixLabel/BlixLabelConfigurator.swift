@@ -17,10 +17,10 @@ struct BlixLabelConfigurator {
         case primary
         case secondary
 
-        var color: HierarchicalShapeStyle {
+        var color: Color {
             switch self {
-            case .primary: .primary
-            case .secondary: .secondary
+            case .primary: .textPrimary
+            case .secondary: .textSecondary
             }
         }
     }

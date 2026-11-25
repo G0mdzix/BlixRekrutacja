@@ -37,6 +37,7 @@ Not user-facing (plain String): Logger messages, fatalError, storage keys, SF Sy
 Feature views only compose Design System components: View + `<Name>Configurator` struct; containers take `@ViewBuilder`.
 `ViewModel` is reserved for `@Observable` classes with logic.
 Dynamic Type from xSmall to accessibility5: no truncation, no fixed text heights.
+Colors only from `Resources/Assets.xcassets/Colors` via generated symbols (`.textPrimary`); cards via `.cardBackground(.primary/.secondary)`.
 
 ## Tests
 Before writing or changing any test, read and follow BlixRekrtuacjaTests/CLAUDE.md (strict rules, stubs, snapshots).

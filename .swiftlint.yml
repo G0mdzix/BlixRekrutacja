@@ -103,7 +103,7 @@ custom_rules:
   no_raw_colors:
     excluded: '/(BlixRekrtuacjaTests|Tokens)/'
     regex: '\.(red|green|blue|black|white|gray|orange|yellow|pink|purple|mint|teal|cyan|indigo|brown)\b|Color\((red|white):'
-    message: "Use AppColor tokens"
+    message: "Use color tokens from Assets.xcassets/Colors"
     severity: error
   no_magic_numbers:
     excluded: '/(BlixRekrtuacjaTests|Tokens)/'

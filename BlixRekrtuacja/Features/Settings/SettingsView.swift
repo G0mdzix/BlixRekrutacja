@@ -14,9 +14,13 @@ struct SettingsView: View {
     }
 
     private var appearanceRows: some View {
-        ForEach(Appearance.allCases, id: \.self) {
-            BlixSelectionRow(configurator: viewModel.appearanceRowConfigurator($0))
+        VStack(spacing: .zero) {
+            ForEach(Appearance.allCases, id: \.self) {
+                BlixSelectionRow(configurator: viewModel.appearanceRowConfigurator($0))
+            }
         }
+        .padding(.horizontal, Spacing.large)
+        .cardBackground(.secondary)
     }
 }
 
