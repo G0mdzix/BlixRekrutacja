@@ -8,6 +8,7 @@ Feature-agnostic infrastructure. Core knows only Domain, never Data, DesignSyste
 | Extensions | Extensions of Apple types: `<Type>+Extension.swift`, one file per type per layer, `// MARK: - <Purpose>` sections |
 | Navigation | `Coordinator` (`push`, `pop`, `popToRoot`) and `CoordinatedStack` |
 | Preferences | App-wide settings: `UserPreferences` and its values (`Appearance`, `Language`) |
+| Services | Side effects and environment the app injects: `Clipboard` (protocol; `SystemClipboard` in App), `DateProvider` (value; `.system`) |
 | UserDefaults | `KeyValueStore`, `UserDefaultsStore`, `StorageKey`; every key goes in `StorageKeys.swift` |
 
 ## Rules
