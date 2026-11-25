@@ -12,7 +12,8 @@ Feature-agnostic infrastructure. Core knows only Domain, never Data, DesignSyste
 | UserDefaults | `KeyValueStore`, `UserDefaultsStore`, `StorageKey`; every key goes in `StorageKeys.swift` |
 
 ## Rules
-- Extensions of Apple types (`Extensions/`) never return user-facing text, except `errorAlert`. Extensions of our own types stay next to the type; `AppError` (Domain) is extended in `Errors/`.
+- Extensions of Apple types (`Extensions/`) never return user-facing text. Extensions of our own types stay next to the type. `AppError` (Domain) gets its `message` in `Errors/`;
+  how a screen shows it lives in `Features/Shared/Presentation/`.
 - Logging: `Logger.app`, `.network` or `.storage`, once, where the error originates. Add new categories in `Logger+Extension.swift`.
 - Errors:
   - A new user-visible error is an `AppError` case plus a message key, only when the user can act on it differently
@@ -20,10 +21,10 @@ Feature-agnostic infrastructure. Core knows only Domain, never Data, DesignSyste
   - Layers that depend on Core (Data) map their errors with `AppErrorConvertible`. Core never imports their types.
 - Storage:
   - Reads fall back to the key's `defaultValue` and log corrupt data.
-  - Failed writes log and throw `AppError.storage`.
+  - Writes never throw: settings are `Codable` values that always encode; a failure only logs.
 - New app-wide setting:
   1. A value type in `Preferences/` with `title` and its system mapping.
   2. A key in `StorageKeys.swift`.
-  3. A property and `set(_:) throws` in `UserPreferences`. The setter skips unchanged values.
+  3. A property and `set(_:)` in `UserPreferences`. The setter skips unchanged values.
 
-  The App root reads the setting. ViewModels change it and catch the error.
+  The App root reads the setting. ViewModels change it.

@@ -7,5 +7,5 @@ protocol RatesCache: Sendable {
     func latest() async -> CachedRates?
 
     /// Intraday rates never replace closing ones; `latestFetchedAt` only moves forward.
-    func save(_ cached: CachedRates) async throws
+    func save(_ cached: CachedRates) async
 }

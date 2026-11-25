@@ -12,7 +12,6 @@ struct SettingsView: View {
             selectionCard(Language.allCases, row: viewModel.languageRowConfigurator)
         }
         .navigationTitle(.settingsTitle)
-        .errorAlert(viewModel.error) { viewModel.dismissError() }
     }
 
     private func selectionCard<Option: Hashable>(

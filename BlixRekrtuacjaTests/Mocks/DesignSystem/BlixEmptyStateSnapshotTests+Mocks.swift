@@ -21,7 +21,7 @@ extension BlixEmptyStateSnapshotTests {
             configurator: .init(
                 icon: .key,
                 badge: .xmark,
-                title: .localized(.errorTitle),
+                title: .localized(.ratesInvalidKeyTitle),
                 message: .localized(.errorGenericMessage)
             )
         )

@@ -3,8 +3,6 @@ import Observation
 
 @MainActor @Observable
 final class SettingsViewModel {
-    private(set) var error: AppError?
-
     private let preferences: UserPreferences
 
     init(preferences: UserPreferences) {
@@ -12,23 +10,11 @@ final class SettingsViewModel {
     }
 
     func select(_ appearance: Appearance) {
-        do {
-            try preferences.set(appearance)
-        } catch {
-            self.error = AppError(error)
-        }
+        preferences.set(appearance)
     }
 
     func select(_ language: Language) {
-        do {
-            try preferences.set(language)
-        } catch {
-            self.error = AppError(error)
-        }
-    }
-
-    func dismissError() {
-        error = nil
+        preferences.set(language)
     }
 }
 

@@ -15,7 +15,8 @@ actor SwiftDataRatesCache: RatesCache {
         ))?.cachedRates
     }
 
-    func save(_ cached: CachedRates) throws {
+    /// The cache is best effort: a failed save only logs, the fetched rates are shown anyway.
+    func save(_ cached: CachedRates) {
         if let existing = row(on: cached.rates.day) {
             existing.update(with: cached)
         } else {
@@ -24,8 +25,8 @@ actor SwiftDataRatesCache: RatesCache {
         do {
             try modelContext.save()
         } catch {
+            modelContext.rollback()
             Logger.storage.error("Failed to save cached rates: \(error, privacy: .public)")
-            throw AppError.storage
         }
     }
 

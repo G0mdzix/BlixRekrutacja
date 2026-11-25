@@ -32,10 +32,10 @@ struct CachedRatesRepository: RatesRepository {
         return rates
     }
 
-    /// A day before today (UTC) is closed. The cache only saves requests: when it fails, the rates are still returned.
+    /// A day before today (UTC) is closed.
     private func store(_ rates: DailyRates, at now: Date, fromLatest: Bool) async {
         let isFinal = rates.day < BusinessDays.day(containing: now)
-        try? await cache.save(CachedRates(rates: rates, isFinal: isFinal, latestFetchedAt: fromLatest ? now : nil))
+        await cache.save(CachedRates(rates: rates, isFinal: isFinal, latestFetchedAt: fromLatest ? now : nil))
     }
 }
 

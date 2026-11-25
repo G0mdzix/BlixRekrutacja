@@ -10,7 +10,6 @@ extension AppError {
         case .invalidAPIKey: .errorInvalidAPIKeyMessage
         case .quotaExceeded: .errorQuotaExceededMessage
         case .server: .errorServerMessage
-        case .storage: .errorStorageMessage
         case .unknown: .errorGenericMessage
         }
     }

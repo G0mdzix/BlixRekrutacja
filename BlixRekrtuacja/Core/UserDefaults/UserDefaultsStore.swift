@@ -14,13 +14,12 @@ struct UserDefaultsStore: KeyValueStore {
         }
     }
 
-    func set<Value>(_ value: Value, for key: StorageKey<Value>) throws {
+    /// Settings are small `Codable` values that always encode; a failure only logs and keeps the stored value.
+    func set<Value>(_ value: Value, for key: StorageKey<Value>) {
         do {
-            let data = try JSONEncoder().encode(value)
-            defaults.set(data, forKey: key.name)
+            defaults.set(try JSONEncoder().encode(value), forKey: key.name)
         } catch {
             Logger.storage.error("Failed to save \(key.name, privacy: .public): \(error, privacy: .public)")
-            throw AppError.storage
         }
     }
 }

@@ -13,15 +13,15 @@ final class UserPreferences {
         language = store.value(for: .language)
     }
 
-    func set(_ appearance: Appearance) throws {
+    func set(_ appearance: Appearance) {
         guard appearance != self.appearance else { return }
-        try store.set(appearance, for: .appearance)
+        store.set(appearance, for: .appearance)
         self.appearance = appearance
     }
 
-    func set(_ language: Language) throws {
+    func set(_ language: Language) {
         guard language != self.language else { return }
-        try store.set(language, for: .language)
+        store.set(language, for: .language)
         self.language = language
     }
 }

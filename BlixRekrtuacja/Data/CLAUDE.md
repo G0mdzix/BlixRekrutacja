@@ -9,7 +9,7 @@ It knows Domain and Core.
 - The client throws typed `APIError` and logs once with `Logger.network`.
 - Use `EmptyResponse` for requests without a body in the reply.
 - Errors reach Features as `AppError`: `APIError` through `AppErrorConvertible` (`APIError+AppError.swift`); Fixer error
-  codes, incomplete Fixer bodies and storage failures throw `AppError` directly. Never map them in ViewModels.
+  codes and incomplete Fixer bodies throw `AppError` directly. Never map them in ViewModels.
 - Extensions of Apple types used only by Data live in `Extensions/<Type>+<Purpose>.swift` (`Bundle+Fixer.swift`):
   one target, so a name already used in Core (`Bundle+Extension.swift`) would clash at build time.
 
@@ -30,6 +30,7 @@ It knows Domain and Core.
 
 ## Storage (`Storage/<Name>/`)
 - On-device caches, separate from networking. A repository reads them through a protocol (`RatesCache`).
+- The cache is best effort: a failed save rolls back and only logs.
 - `SwiftDataRatesCache` (`@ModelActor`) stores rates as decimal strings, so no digit is lost. `@Model` types never leave Data.
 
 ## Tests

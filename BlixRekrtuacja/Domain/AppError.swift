@@ -7,6 +7,5 @@ enum AppError: Error, Equatable, Sendable {
     case invalidAPIKey
     case quotaExceeded
     case server
-    case storage
     case unknown
 }

@@ -55,24 +55,6 @@
         }
       }
     },
-    "commonOk": {
-      "comment": "Button that closes an alert.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
-          }
-        }
-      }
-    },
     "commonRetry": {
       "comment": "Button that retries a failed action.",
       "extractionState": "manual",
@@ -92,7 +74,7 @@
       }
     },
     "errorGenericMessage": {
-      "comment": "Error alert message for an unexpected error.",
+      "comment": "Inline error message (empty state or footer card) for an unexpected error.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -110,7 +92,7 @@
       }
     },
     "errorInvalidAPIKeyMessage": {
-      "comment": "Error alert message: the rate service rejected the access key (HTTP 401/403, Fixer codes 101 and 102). Developers fix it in Config/Secrets.xcconfig.",
+      "comment": "Inline error message (empty state or footer card): the rate service rejected the access key (HTTP 401/403, Fixer codes 101 and 102). Developers fix it in Config/Secrets.xcconfig.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -146,7 +128,7 @@
       }
     },
     "errorOfflineMessage": {
-      "comment": "Error alert message: no internet connection.",
+      "comment": "Inline error message (empty state or footer card): no internet connection.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -164,7 +146,7 @@
       }
     },
     "errorQuotaExceededMessage": {
-      "comment": "Error alert message: the monthly limit of rate requests is used up (Fixer code 104).",
+      "comment": "Inline error message (empty state or footer card): the monthly limit of rate requests is used up (Fixer code 104).",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -182,7 +164,7 @@
       }
     },
     "errorServerMessage": {
-      "comment": "Error alert message: HTTP 5xx, host unreachable, unreadable response, or an unrecognised Fixer error code.",
+      "comment": "Inline error message (empty state or footer card): HTTP 5xx, host unreachable, unreadable response, or an unrecognised Fixer error code.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -199,26 +181,8 @@
         }
       }
     },
-    "errorStorageMessage": {
-      "comment": "Error alert message: saving a setting failed.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Couldn't save your changes. Try again."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie udało się zapisać zmian. Spróbuj ponownie."
-          }
-        }
-      }
-    },
     "errorTimeoutMessage": {
-      "comment": "Error alert message: the server took too long to respond.",
+      "comment": "Inline error message (empty state or footer card): the server took too long to respond.",
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -235,26 +199,8 @@
         }
       }
     },
-    "errorTitle": {
-      "comment": "Title of the error alert.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Something went wrong"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coś poszło nie tak"
-          }
-        }
-      }
-    },
     "errorTooManyRequestsMessage": {
-      "comment": "Error alert message: HTTP 429, rate limit exceeded.",
+      "comment": "Inline error message (empty state or footer card): HTTP 429, rate limit exceeded.",
       "extractionState": "manual",
       "localizations": {
         "en": {
