@@ -325,6 +325,60 @@
         }
       }
     },
+    "ratesAllCurrencies": {
+      "comment": "Caption under the date on the all-currencies screen; the argument is the number of currencies.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All currencies (%lld)"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wszystkie waluty (%lld)"
+          }
+        }
+      }
+    },
+    "ratesBaseInfo": {
+      "comment": "Line under the title; the argument is the base currency code, e.g. EUR.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much 1 %@ is in other currencies"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ile kosztuje 1 %@ w innych walutach"
+          }
+        }
+      }
+    },
+    "ratesChange": {
+      "comment": "Rate detail row: change since the previous loaded day.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change since the previous day"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zmiana od poprzedniego dnia"
+          }
+        }
+      }
+    },
     "ratesClosingRate": {
       "comment": "Caption under a past day's title: the rate is that day's closing rate.",
       "extractionState": "manual",
@@ -343,6 +397,24 @@
         }
       }
     },
+    "ratesCopied": {
+      "comment": "Copy button after the rate was copied.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skopiowano"
+          }
+        }
+      }
+    },
     "ratesCopyRate": {
       "comment": "Button that copies the exact rate to the clipboard.",
       "extractionState": "manual",
@@ -357,6 +429,60 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kopiuj kurs"
+          }
+        }
+      }
+    },
+    "ratesDate": {
+      "comment": "Rate detail row: the day of the rate.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dzień"
+          }
+        }
+      }
+    },
+    "ratesFirstLoadFailedTitle": {
+      "comment": "Title of the screen shown when no rates could be loaded.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't load the rates"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się wczytać kursów"
+          }
+        }
+      }
+    },
+    "ratesInvalidKeyTitle": {
+      "comment": "Title of the screen shown when the rate service rejects the access key.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access to rates"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brak dostępu do kursów"
           }
         }
       }
@@ -415,6 +541,24 @@
         }
       }
     },
+    "ratesLoading": {
+      "comment": "Shown while the first rates load.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading rates…"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wczytywanie kursów…"
+          }
+        }
+      }
+    },
     "ratesLoadingNextDay": {
       "comment": "Footer shown while the next older day is loading.",
       "extractionState": "manual",
@@ -429,6 +573,60 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wczytywanie kolejnego dnia…"
+          }
+        }
+      }
+    },
+    "ratesMissingKeyTitle": {
+      "comment": "Title of the screen shown when the app was built without a rates API key.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No API key"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brak klucza API"
+          }
+        }
+      }
+    },
+    "ratesNoResultsMessage": {
+      "comment": "Message shown when no currency matches the search; the argument is the typed text.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing matches “%@”. Type a code or a name."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie znaleziono waluty dla „%@”. Wpisz kod lub nazwę."
+          }
+        }
+      }
+    },
+    "ratesNoResultsTitle": {
+      "comment": "Title shown when no currency matches the search.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching currency"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brak takiej waluty"
           }
         }
       }
@@ -469,6 +667,42 @@
         }
       }
     },
+    "ratesRate": {
+      "comment": "Rate detail row; the argument is the base currency code, e.g. EUR.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate for 1 %@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurs za 1 %@"
+          }
+        }
+      }
+    },
+    "ratesSearchPrompt": {
+      "comment": "Placeholder of the currency search field.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search, e.g. dollar or USD"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Szukaj waluty, np. dolar lub USD"
+          }
+        }
+      }
+    },
     "ratesSelectCurrencyMessage": {
       "comment": "Landscape detail pane message when no rate is selected.",
       "extractionState": "manual",
@@ -505,6 +739,42 @@
         }
       }
     },
+    "ratesShowAll": {
+      "comment": "Button under a day's popular currencies; the argument is the number of all currencies.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show all currencies (%lld)"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokaż wszystkie waluty (%lld)"
+          }
+        }
+      }
+    },
+    "ratesTitle": {
+      "comment": "Title of the rates list screen.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exchange rates"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kursy walut"
+          }
+        }
+      }
+    },
     "ratesToday": {
       "comment": "Badge next to today's date in the rates list.",
       "extractionState": "manual",
@@ -519,6 +789,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dziś"
+          }
+        }
+      }
+    },
+    "ratesUpdatedAt": {
+      "comment": "Caption under today's date; the argument is a time, e.g. 10:00.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated %@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualizacja %@"
           }
         }
       }

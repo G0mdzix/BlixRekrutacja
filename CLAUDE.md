@@ -1,5 +1,5 @@
 # BlixRekrtuacja
-iOS 17+ SwiftUI app, iPhone only, portrait only. MVVM + Coordinator, Clean Architecture, constructor DI.
+iOS 17+ SwiftUI app, iPhone only, portrait and landscape. MVVM + Coordinator, Clean Architecture, constructor DI.
 Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 
 ## Commands — after every change
@@ -15,19 +15,22 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
   - `SnapshotRecord`: only `.snapshot`, records.
 
 ## Layers (BlixRekrtuacja/): read the layer's CLAUDE.md before changing it
-- App: composition root only. It is the only place that creates concrete types and wires them. No logic.
+- App: composition root only, no logic. `AppContainer` creates every concrete type once (not in the unit-test host);
+  `RootView` hosts the navigation stack with `MainDestination` and applies appearance and language; the `App` struct
+  only hosts the window.
 - Domain: Foundation only. Entities, repository protocols, pure rules (`BusinessDays`), `AppError`.
 - Data (`Data/CLAUDE.md`): networking, repositories, DTOs, the SwiftData cache.
 - Core (`Core/CLAUDE.md`): feature-agnostic infrastructure: errors, extensions, navigation, preferences, storage.
 - DesignSystem (`DesignSystem/CLAUDE.md`): tokens, colors, components.
-- Features (`Features/CLAUDE.md`): screens, each a View + ViewModel.
+- Features (`Features/CLAUDE.md`): screens (View + ViewModel), shared models and the one coordinator.
 - Resources: String Catalog, assets, `SFSymbol`; usable by every layer except Domain.
 - Dependencies point one way:
+  - App → every layer
   - Features → DesignSystem, Core, Domain
   - Data → Core, Domain
   - Core → Domain
 
-  Nothing depends on Features.
+  Only App depends on Features or Data.
 
 ## Swift
 - Default actor isolation is `nonisolated`. Mark ViewModels and other UI-bound types `@MainActor` explicitly.

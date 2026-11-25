@@ -5,6 +5,11 @@ enum RatesRequest: Equatable, Sendable {
     case latest
     case day(Date)
 
+    var day: Date? {
+        guard case .day(let day) = self else { return nil }
+        return day
+    }
+
     func perform(on repository: some RatesRepository) async throws -> DailyRates {
         switch self {
         case .latest: try await repository.latest()
