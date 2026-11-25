@@ -5,7 +5,7 @@ struct RatesView: View {
 
     var body: some View {
         content
-            .navigationTitle(.ratesTitle)
+            .blixNavigationTitle(.ratesTitle)
             .toolbar { settingsButton }
             .task { await viewModel.start() }
     }

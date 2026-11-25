@@ -40,7 +40,7 @@ Reference files: simple screen `Screens/Settings/`, several states `Screens/Rate
 
 ## View
 - `let viewModel` (`@Bindable var` only for a text input). `body` is a short outline: a container, named sections,
-  then chrome (`.navigationTitle`, `.toolbar`, `.task`, `.blixSearchable`).
+  then chrome (`.blixNavigationTitle`, `.toolbar`, `.task`, `.blixSearchable`). Never plain `.navigationTitle`.
 - Every section is a `private var … : some View` (`ratesCard`, `results`), or a `private func` when it needs data from
   an enum case (`list(baseInfo:)`). Toolbar items are `private var … : some ToolbarContent`.
 - Sections differing only by data share one generic helper:

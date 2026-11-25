@@ -11,7 +11,7 @@ struct SettingsView: View {
             BlixLabel(configurator: viewModel.languageHeaderConfigurator)
             selectionCard(Language.allCases, row: viewModel.languageRowConfigurator)
         }
-        .navigationTitle(.settingsTitle)
+        .blixNavigationTitle(.settingsTitle)
     }
 
     private func selectionCard<Option: Hashable>(
