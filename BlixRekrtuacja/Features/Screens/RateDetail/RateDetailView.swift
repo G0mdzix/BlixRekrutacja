@@ -17,11 +17,14 @@ struct RateDetailView: View {
     }
 
     @ViewBuilder private var history: some View {
+        BlixSectionHeader(configurator: viewModel.historyHeaderConfigurator)
         switch viewModel.history {
-        case .hidden:
-            EmptyView()
-        case let .loaded(header, chart, rows):
-            BlixSectionHeader(configurator: header)
+        case .hint(let hint):
+            BlixLabel(configurator: hint)
+                .padding(Spacing.large)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .cardBackground(.primary)
+        case let .loaded(chart, rows):
             BlixLineChart(configurator: chart)
             valuesCard(rows)
         }

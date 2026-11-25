@@ -415,6 +415,60 @@
         }
       }
     },
+    "ratesHistoryHint": {
+      "comment": "Rate detail, instead of the chart: how many loaded days the chart needs and how to load more. Argument: the minimum number of days.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "The chart appears once at least %lld day is loaded. Scroll down the rates list to load older days."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "The chart appears once at least %lld days are loaded. Scroll down the rates list to load older days."
+                }
+              }
+            }
+          }
+        },
+        "pl": {
+          "variations": {
+            "plural": {
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wykres pojawi się, gdy wczytasz co najmniej %lld dni. Przewiń listę kursów w dół, aby wczytać starsze dni."
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wykres pojawi się, gdy wczytasz co najmniej %lld dni. Przewiń listę kursów w dół, aby wczytać starsze dni."
+                }
+              },
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wykres pojawi się, gdy wczytasz co najmniej %lld dzień. Przewiń listę kursów w dół, aby wczytać starsze dni."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wykres pojawi się, gdy wczytasz co najmniej %lld dnia. Przewiń listę kursów w dół, aby wczytać starsze dni."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "ratesInvalidKeyTitle": {
       "comment": "Title of the screen shown when the rate service rejects the access key.",
       "extractionState": "manual",

@@ -10,10 +10,16 @@ extension RateDetailViewModelTests {
     struct HistoryScenario {
         let history: [RateSelection.Point]
         let expectedChartDays: [Date]?
+        var expectedHintKey: String?
     }
 
     nonisolated static let histories: [HistoryScenario] = [
-        HistoryScenario(history: points([RatesSamples.wednesday, RatesSamples.tuesday]), expectedChartDays: nil),
+        HistoryScenario(history: [], expectedChartDays: nil, expectedHintKey: hintKey),
+        HistoryScenario(
+            history: points([RatesSamples.wednesday, RatesSamples.tuesday]),
+            expectedChartDays: nil,
+            expectedHintKey: hintKey
+        ),
         HistoryScenario(
             history: points([RatesSamples.wednesday, RatesSamples.tuesday, monday]),
             expectedChartDays: [monday, RatesSamples.tuesday, RatesSamples.wednesday]
@@ -27,15 +33,26 @@ extension RateDetailViewModelTests {
 }
 
 extension RateDetailViewModel.History {
+    var hint: BlixLabelConfigurator? {
+        if case let .hint(hint) = self { hint } else { nil }
+    }
+
     var chart: BlixLineChartConfigurator? {
-        if case let .loaded(_, chart, _) = self { chart } else { nil }
+        if case let .loaded(chart, _) = self { chart } else { nil }
     }
 
     var rows: [BlixValueRowConfigurator]? {
-        if case let .loaded(_, _, rows) = self { rows } else { nil }
+        if case let .loaded(_, rows) = self { rows } else { nil }
     }
 }
 
+extension BlixLabelConfigurator.Content {
+    var key: String? {
+        if case let .localized(resource) = self { resource.key } else { nil }
+    }
+}
+
+private let hintKey = "ratesHistoryHint"
 private let monday = Date(iso: "2026-11-23T00:00:00Z")
 
 private func points(_ days: [Date]) -> [RateSelection.Point] {

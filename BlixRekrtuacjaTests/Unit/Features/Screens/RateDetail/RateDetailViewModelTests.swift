@@ -47,12 +47,13 @@ struct RateDetailViewModelTests {
     }
 
     @Test(arguments: Self.histories)
-    func chartsTheLoadedDaysFromThreeOn(_ scenario: HistoryScenario) {
+    func chartsTheLoadedDaysFromThreeOnOrExplainsHowToGetThem(_ scenario: HistoryScenario) {
         let rate = RatesSamples.selection("PLN", "Polish Zloty", "4.459811", change: nil, history: scenario.history)
         let sut = RateDetailViewModel(rate: rate, clipboard: clipboard)
 
         #expect(sut.history.chart?.points.map(\.date) == scenario.expectedChartDays)
         #expect(sut.history.rows?.count == scenario.expectedChartDays?.count)
+        #expect(sut.history.hint?.text.key == scenario.expectedHintKey)
     }
 
     // MARK: - Helpers

@@ -4,12 +4,8 @@ import Observation
 @MainActor @Observable
 final class RateDetailViewModel {
     enum History {
-        case hidden
-        case loaded(
-            header: BlixSectionHeaderConfigurator,
-            chart: BlixLineChartConfigurator,
-            rows: [BlixValueRowConfigurator]
-        )
+        case hint(BlixLabelConfigurator)
+        case loaded(chart: BlixLineChartConfigurator, rows: [BlixValueRowConfigurator])
     }
 
     let rate: RateSelection
@@ -57,10 +53,16 @@ extension RateDetailViewModel {
         return rows.compactMap(\.self)
     }
 
+    var historyHeaderConfigurator: BlixSectionHeaderConfigurator {
+        BlixSectionHeaderConfigurator(title: .localized(.ratesLoadedDays))
+    }
+
     var history: History {
-        guard rate.history.count >= Chart.minimumDays else { return .hidden }
+        guard rate.history.count >= Chart.minimumDays else {
+            let hint = BlixLabelConfigurator.Content.localized(.ratesHistoryHint(Chart.minimumDays))
+            return .hint(BlixLabelConfigurator(text: hint, style: .secondary, typography: .subheadline))
+        }
         return .loaded(
-            header: BlixSectionHeaderConfigurator(title: .localized(.ratesLoadedDays)),
             chart: BlixLineChartConfigurator(
                 points: rate.history.reversed().map {
                     BlixLineChartConfigurator.Point(date: $0.day, value: $0.value)
