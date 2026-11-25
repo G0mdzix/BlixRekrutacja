@@ -41,7 +41,7 @@ extension SettingsViewModel {
 
     func appearanceRowConfigurator(_ appearance: Appearance) -> BlixSelectionRowConfigurator {
         BlixSelectionRowConfigurator(
-            label: BlixLabelConfigurator(text: .localized(appearance.title)),
+            title: .localized(appearance.title),
             isSelected: appearance == preferences.appearance
         ) { [weak self] in
             guard let self else { return }
@@ -51,7 +51,7 @@ extension SettingsViewModel {
 
     func languageRowConfigurator(_ language: Language) -> BlixSelectionRowConfigurator {
         BlixSelectionRowConfigurator(
-            label: BlixLabelConfigurator(text: .localized(language.title)),
+            title: .localized(language.title),
             isSelected: language == preferences.language
         ) { [weak self] in
             guard let self else { return }

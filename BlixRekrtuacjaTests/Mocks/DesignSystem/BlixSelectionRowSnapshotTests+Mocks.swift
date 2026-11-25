@@ -7,18 +7,18 @@ extension BlixSelectionRowSnapshotTests {
     }
 
     nonisolated static let variants: [Scenario] = [
-        Scenario(name: "unselected", configurator: .init(label: .init(text: .localized(.appearanceLight))) {}),
+        Scenario(name: "unselected", configurator: .init(title: .localized(.appearanceLight)) {}),
         Scenario(
             name: "selected",
-            configurator: .init(label: .init(text: .localized(.appearanceSystem)), isSelected: true) {}
+            configurator: .init(title: .localized(.appearanceSystem), isSelected: true) {}
         ),
         Scenario(
             name: "selected-icon",
-            configurator: .init(label: .init(text: .localized(.appearanceDark), icon: .moon), isSelected: true) {}
+            configurator: .init(title: .localized(.appearanceDark), icon: .moon, isSelected: true) {}
         ),
         Scenario(
             name: "selected-multiline",
-            configurator: .init(label: .init(text: .localized(.errorOfflineMessage)), isSelected: true) {}
+            configurator: .init(title: .localized(.errorOfflineMessage), isSelected: true) {}
         )
     ]
 }

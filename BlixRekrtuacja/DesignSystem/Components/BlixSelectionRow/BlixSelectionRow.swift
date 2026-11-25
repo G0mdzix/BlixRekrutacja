@@ -12,7 +12,7 @@ struct BlixSelectionRow: View {
                 BlixLabel(configurator: configurator.label)
                 Spacer()
                 if configurator.isSelected {
-                    SFSymbol.checkmark.image.foregroundStyle(.brandPrimary)
+                    SFSymbol.checkmark.image.foregroundStyle(.textPositive)
                 }
             }
             .frame(minHeight: Size.minTapTarget)
@@ -24,9 +24,9 @@ struct BlixSelectionRow: View {
 
 #Preview {
     VStack(spacing: Spacing.small) {
-        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("Selected")), isSelected: true) {})
-        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("Unselected"))) {})
-        BlixSelectionRow(configurator: .init(label: .init(text: .verbatim("With icon"), icon: .moon)) {})
+        BlixSelectionRow(configurator: .init(title: .verbatim("Selected"), isSelected: true) {})
+        BlixSelectionRow(configurator: .init(title: .verbatim("Unselected")) {})
+        BlixSelectionRow(configurator: .init(title: .verbatim("With icon"), icon: .moon) {})
     }
     .padding(Spacing.large)
 }
