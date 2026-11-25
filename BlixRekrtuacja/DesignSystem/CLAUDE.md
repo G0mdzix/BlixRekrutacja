@@ -20,6 +20,9 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
 - Text goes through `BlixLabel`: `.localized` for catalog keys, `.verbatim` for user data, `.number`/`.percent` for decimals
   (`monospacedDigits: true` in columns). Styles: `.accent` for interactive text, `.positive`/`.negative` only for gains and losses.
 - Containers take `@ViewBuilder` content (`BlixList`, `BlixAdaptiveRow`).
+  `BlixList`: `ViewThatFits` (still stack or `ScrollView`) in portrait, always `ScrollView` at compact height:
+  switching branches while a list loads more of itself crashed in landscape.
+  Scroll indicators are hidden there for every screen; screens never set `scrollIndicators` themselves.
 - Layouts that change at accessibility text sizes go through `BlixAdaptiveRow`; components never read `dynamicTypeSize` themselves.
 - Dynamic Type xSmall–AX5: text wraps, rows use `minHeight: Size.minTapTarget`, nothing has a fixed text height.
 - Before adding a component, check whether an existing one can take a new variant.

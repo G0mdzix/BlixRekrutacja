@@ -1,10 +1,11 @@
-import Foundation
+import SwiftUI
 
 extension BlixListSnapshotTests {
     struct Scenario {
         let name: String
         let items: [String]
         let snapshot: SnapshotConfigurator
+        var verticalSizeClass = UserInterfaceSizeClass.regular
     }
 
     nonisolated static let contents: [Scenario] = [
@@ -14,8 +15,20 @@ extension BlixListSnapshotTests {
             name: "overflows-short-screen",
             items: Array(cities.prefix(15)),
             snapshot: .component.layout(.fixed(width: ShortScreen.width, height: ShortScreen.height))
+        ),
+        Scenario(
+            name: "fits-landscape",
+            items: Array(cities.prefix(3)),
+            snapshot: .component.layout(.fixed(width: Landscape.width, height: Landscape.height)),
+            verticalSizeClass: .compact
         )
     ]
+}
+
+/// iPhone 13 turned sideways: the compact height that always scrolls.
+private enum Landscape {
+    static let width: CGFloat = 844
+    static let height: CGFloat = 390
 }
 
 private enum ShortScreen {
