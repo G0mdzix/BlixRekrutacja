@@ -1,54 +1,38 @@
 import Observation
 
-/// The only coordinator: creates every screen's ViewModel, wires its intents to navigation and carries it in a route.
 @MainActor @Observable
-final class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator, MainNavigating {
     var path: [MainRoute] = []
-    /// The first screen, built once: its intents are wired to this coordinator.
-    @ObservationIgnored lazy var root = makeRoot()
+    @ObservationIgnored private(set) lazy var root = RatesViewModel(
+        repository: repository,
+        preferences: preferences,
+        dates: dates,
+        navigator: self
+    )
 
     private let repository: any RatesRepository
     private let preferences: UserPreferences
-    private let copy: @MainActor (String) -> Void
+    private let dates: DateProvider
+    private let clipboard: any Clipboard
 
     init(
         repository: any RatesRepository,
         preferences: UserPreferences,
-        copy: @escaping @MainActor (String) -> Void
+        dates: DateProvider,
+        clipboard: any Clipboard
     ) {
         self.repository = repository
         self.preferences = preferences
-        self.copy = copy
-    }
-
-    private func makeRoot() -> RatesViewModel {
-        RatesViewModel(
-            repository: repository,
-            preferences: preferences,
-            onSelectRate: { [weak self] rate in
-                guard let self else { return }
-                showRate(rate)
-            },
-            onShowDay: { [weak self] day in
-                guard let self else { return }
-                showDay(day)
-            },
-            onOpenSettings: { [weak self] in
-                guard let self else { return }
-                showSettings()
-            }
-        )
+        self.dates = dates
+        self.clipboard = clipboard
     }
 
     func showRate(_ rate: RateSelection) {
-        push(.rate(RateDetailViewModel(rate: rate, copy: copy)))
+        push(.rate(RateDetailViewModel(rate: rate, clipboard: clipboard)))
     }
 
     func showDay(_ day: DaySelection) {
-        push(.day(DayRatesViewModel(selection: day) { [weak self] rate in
-            guard let self else { return }
-            showRate(rate)
-        }))
+        push(.day(DayRatesViewModel(selection: day, navigator: self)))
     }
 
     func showSettings() {

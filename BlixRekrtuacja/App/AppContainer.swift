@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 /// The composition root: the only place that creates concrete types. Built once per launch.
 @MainActor
@@ -11,8 +10,10 @@ final class AppContainer {
         preferences = UserPreferences(store: UserDefaultsStore(defaults: .standard))
         coordinator = MainCoordinator(
             repository: Self.makeRatesRepository(bundle: .main),
-            preferences: preferences
-        ) { UIPasteboard.general.string = $0 }
+            preferences: preferences,
+            dates: .system,
+            clipboard: SystemClipboard()
+        )
     }
 
     /// Fixer through an ephemeral session (the key travels in the URL, so nothing may be cached on disk),

@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// The screen for a pushed route. Only `Navigation/` knows every screen.
 struct MainDestination: View {
     let route: MainRoute
 

@@ -49,9 +49,3 @@ extension SettingsViewModel {
         BlixLabelConfigurator(text: .localized(text), style: .secondary, typography: .subheadline)
     }
 }
-
-extension SettingsViewModel: nonisolated Hashable {
-    nonisolated static func == (lhs: SettingsViewModel, rhs: SettingsViewModel) -> Bool { lhs === rhs }
-
-    nonisolated func hash(into hasher: inout Hasher) { hasher.combine(ObjectIdentifier(self)) }
-}
