@@ -115,7 +115,11 @@ extension RatesViewModelTests {
         value: Decimal(exact: "4.04"),
         base: "EUR",
         day: RatesSamples.wednesday,
-        change: Decimal(exact: "0.01")
+        change: Decimal(exact: "0.01"),
+        history: [
+            RateSelection.Point(day: RatesSamples.wednesday, value: Decimal(exact: "4.04")),
+            RateSelection.Point(day: RatesSamples.tuesday, value: Decimal(exact: "4.00"))
+        ]
     )
 
     nonisolated static func rates(on day: Date) -> DailyRates {

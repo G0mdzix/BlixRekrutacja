@@ -487,6 +487,24 @@
         }
       }
     },
+    "ratesLoadedDays": {
+      "comment": "Rate detail section: the chart and list of every loaded day of the currency.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loaded days"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wczytane dni"
+          }
+        }
+      }
+    },
     "ratesLoading": {
       "comment": "Shown while the first rates load.",
       "extractionState": "manual",

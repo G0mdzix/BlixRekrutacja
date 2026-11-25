@@ -132,7 +132,11 @@ extension RatesViewModel {
     }
 
     private func selections(_ rates: DailyRates) -> [RateSelection] {
-        rates.selections(comparedWith: history.day(before: rates), locale: preferences.language.locale)
+        rates.selections(
+            comparedWith: history.day(before: rates),
+            loadedDays: days,
+            locale: preferences.language.locale
+        )
     }
 
     private func retryButtonConfigurator(for error: AppError) -> BlixButtonConfigurator? {

@@ -17,12 +17,14 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
   - Mapping (colors, alignment) lives in the configurator.
   - Actions are `@MainActor () -> Void`; optional only when the component can be non-interactive (`BlixRateRow`).
   - Configurators take `Content` and expose computed label configurators: `label` for one text, `<field>Label` for several.
+  - Composite components take child configurators as stored properties (`BlixMessageCardConfigurator.button`).
 - Text goes through `BlixLabel`: `.localized` for catalog keys, `.verbatim` for user data, `.number`/`.percent` for decimals
   (`monospacedDigits: true` in columns), `.date(_, FormatStyle)` for dates. Styles: `.accent` for interactive text, `.positive`/`.negative` only for gains and losses.
 - Containers take `@ViewBuilder` content (`BlixList`, `BlixAdaptiveRow`).
   `BlixList`: always a `ScrollView` with a `LazyVStack`; `.basedOnSize` keeps short content still. No `ViewThatFits`:
   swapping branches crashed while content changed and left the screen blank after a back swipe.
   Scroll indicators are hidden there for every screen; screens never set `scrollIndicators` themselves.
+- Charts go through `BlixLineChart` (Swift Charts, values as `Decimal`, the area starts at the lowest value).
 - Layouts that change at accessibility text sizes go through `BlixAdaptiveRow`; components never read `dynamicTypeSize` themselves.
 - Dynamic Type xSmall–AX5: text wraps, rows use `minHeight: Size.minTapTarget`, nothing has a fixed text height.
 - Before adding a component, check whether an existing one can take a new variant.

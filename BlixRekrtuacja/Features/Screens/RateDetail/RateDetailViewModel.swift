@@ -3,6 +3,15 @@ import Observation
 
 @MainActor @Observable
 final class RateDetailViewModel {
+    enum History {
+        case hidden
+        case loaded(
+            header: BlixSectionHeaderConfigurator,
+            chart: BlixLineChartConfigurator,
+            rows: [BlixValueRowConfigurator]
+        )
+    }
+
     let rate: RateSelection
     private(set) var isCopied = false
 
@@ -48,6 +57,25 @@ extension RateDetailViewModel {
         return rows.compactMap(\.self)
     }
 
+    var history: History {
+        guard rate.history.count >= Chart.minimumDays else { return .hidden }
+        return .loaded(
+            header: BlixSectionHeaderConfigurator(title: .localized(.ratesLoadedDays)),
+            chart: BlixLineChartConfigurator(
+                points: rate.history.reversed().map {
+                    BlixLineChartConfigurator.Point(date: $0.day, value: $0.value)
+                },
+                dateFormat: RateDateFormat.shortDay
+            ),
+            rows: rate.history.map {
+                BlixValueRowConfigurator(
+                    title: .date($0.day, RateDateFormat.day),
+                    value: .number($0.value, fractionLength: Precision.exact)
+                )
+            }
+        )
+    }
+
     var copyButtonConfigurator: BlixButtonConfigurator {
         BlixButtonConfigurator(
             title: .localized(isCopied ? .ratesCopied : .ratesCopyRate),
@@ -65,5 +93,9 @@ private extension RateDetailViewModel {
     enum Precision {
         static let exact = 6
         static let change = 2
+    }
+
+    enum Chart {
+        static let minimumDays = 3
     }
 }

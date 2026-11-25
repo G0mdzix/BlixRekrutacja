@@ -103,14 +103,21 @@ enum RatesSamples {
         selection("USD", "dolar amerykański", "1.5", change: nil)
     ])
 
-    static func selection(_ code: String, _ name: String, _ value: String, change: String?) -> RateSelection {
+    static func selection(
+        _ code: String,
+        _ name: String,
+        _ value: String,
+        change: String?,
+        history: [RateSelection.Point] = []
+    ) -> RateSelection {
         RateSelection(
             code: code,
             name: name,
             value: Decimal(exact: value),
             base: "EUR",
             day: wednesday,
-            change: change.map { Decimal(exact: $0) }
+            change: change.map { Decimal(exact: $0) },
+            history: history
         )
     }
 

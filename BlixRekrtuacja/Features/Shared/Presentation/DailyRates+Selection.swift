@@ -1,7 +1,7 @@
 import Foundation
 
 extension DailyRates {
-    func selections(comparedWith previous: DailyRates?, locale: Locale) -> [RateSelection] {
+    func selections(comparedWith previous: DailyRates?, loadedDays: [DailyRates], locale: Locale) -> [RateSelection] {
         let previousValues = Dictionary(uniqueKeysWithValues: previous?.rates.map { ($0.code, $0.value) } ?? [])
         return rates.map { rate in
             RateSelection(
@@ -10,7 +10,11 @@ extension DailyRates {
                 value: rate.value,
                 base: base,
                 day: day,
-                change: previousValues[rate.code].map { (rate.value - $0) / $0 }
+                change: previousValues[rate.code].map { (rate.value - $0) / $0 },
+                history: loadedDays.compactMap { loaded in
+                    loaded.rates.first { $0.code == rate.code }
+                        .map { RateSelection.Point(day: loaded.day, value: $0.value) }
+                }
             )
         }
     }
