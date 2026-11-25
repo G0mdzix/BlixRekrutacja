@@ -11,7 +11,7 @@ struct BlixLabel: View {
                 text
             }
         }
-        .typography(configurator.typography)
+        .typography(configurator.typography, monospacedDigits: configurator.monospacedDigits)
         .fontWeight(configurator.weight)
         .foregroundStyle(configurator.style.color)
     }
@@ -27,6 +27,10 @@ struct BlixLabel: View {
         BlixLabel(configurator: .init(text: .verbatim("Headline with icon"), typography: .headline, icon: .paintbrush))
         BlixLabel(configurator: .init(text: .verbatim("Semibold with icon"), weight: .semibold, icon: .moon))
         BlixLabel(configurator: .init(text: .verbatim("Jan Kowalski"), style: .secondary, typography: .subheadline))
+        BlixLabel(configurator: .init(text: .number(4.459811, fractionLength: 4), monospacedDigits: true))
+        BlixLabel(
+            configurator: .init(text: .percent(0.0028, fractionLength: 2), style: .positive, typography: .footnote)
+        )
         BlixLabel(
             configurator: .init(
                 text: .verbatim("A long centered text that wraps onto several lines at larger text sizes."),
