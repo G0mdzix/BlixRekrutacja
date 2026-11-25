@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// One currency in a day: code and name on the leading side, the rate and its change on the trailing side.
 struct BlixRateRow: View {
     let configurator: BlixRateRowConfigurator
 

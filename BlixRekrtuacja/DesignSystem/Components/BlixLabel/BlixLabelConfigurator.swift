@@ -22,7 +22,6 @@ struct BlixLabelConfigurator {
         case secondary
         case positive
         case negative
-        /// Interactive text, e.g. a secondary button title.
         case accent
         /// Text on a `brandPrimary` fill: dark in both appearances, because the fill is light in both.
         case onBrand

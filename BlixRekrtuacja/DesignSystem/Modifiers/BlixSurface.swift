@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// A filled shape with an optional border: cards, secondary buttons, icon circles.
 struct BlixSurface<SurfaceShape: InsettableShape>: ViewModifier {
     let fill: Color
     var border: Color?

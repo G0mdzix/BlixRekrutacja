@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The look of `BlixButton`. Pressed and disabled states dim the content only; the fill stays solid.
+/// Pressed and disabled states dim the content only; the fill stays solid.
 struct BlixButtonStyle: ButtonStyle {
     let style: BlixButtonConfigurator.Style
 
@@ -19,6 +19,6 @@ struct BlixButtonStyle: ButtonStyle {
 
     private func contentOpacity(isPressed: Bool) -> Double {
         guard isEnabled else { return Opacity.disabled }
-        return isPressed ? Opacity.pressed : 1
+        return isPressed ? Opacity.pressed : Opacity.opaque
     }
 }

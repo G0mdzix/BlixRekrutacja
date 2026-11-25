@@ -33,6 +33,13 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 - Default actor isolation is `nonisolated`. Mark ViewModels and other UI-bound types `@MainActor` explicitly.
 - Escaping closures capture `[weak self]` and start with `guard let self else { return }`, never `self?.`.
 - `ViewModel` is reserved for `@Observable` classes with logic.
+- No magic numbers or strings in production code. Give every literal with a meaning (status and error codes, durations,
+  API paths and parameters, Info.plist keys, identifiers) a name in an enum named after what it holds (`HTTPStatus`,
+  `FixerErrorCode`, `Weekday`):
+  - `private` under `// MARK: - Constants` at the end of the file; a shared enum gets its own file;
+  - UI sizes, colors and opacities are DesignSystem tokens, never literals in views;
+  - literals stay for 0 and ±1 meaning zero or one, enum raw values, the single value of a named constant,
+    `#Preview` data, log and precondition messages, and tests.
 
 ## Text
 - Every user-facing string comes from Resources/Localizable.xcstrings through generated symbols: `Text(.settingsTitle)`.

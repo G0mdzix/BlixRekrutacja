@@ -16,8 +16,15 @@ enum Language: String, CaseIterable, Codable, Sendable {
     var locale: Locale {
         switch self {
         case .system: .autoupdatingCurrent
-        case .polish: Locale(identifier: "pl")
-        case .english: Locale(identifier: "en")
+        case .polish: Locale(identifier: LocaleIdentifier.polish)
+        case .english: Locale(identifier: LocaleIdentifier.english)
         }
     }
+}
+
+// MARK: - Constants
+
+private enum LocaleIdentifier {
+    static let polish = "pl"
+    static let english = "en"
 }

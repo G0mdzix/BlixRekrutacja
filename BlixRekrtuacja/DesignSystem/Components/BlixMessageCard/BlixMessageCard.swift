@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// An inline message where the missing content would be, e.g. a day that failed to load.
 struct BlixMessageCard: View {
     let configurator: BlixMessageCardConfigurator
 

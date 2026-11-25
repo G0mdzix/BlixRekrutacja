@@ -1,12 +1,10 @@
 import SwiftUI
 
 /// Leading and trailing content side by side; stacked from accessibility text sizes, so long text keeps the full width.
-/// The only place in the Design System that reads the text size to change a layout.
 struct BlixAdaptiveRow<Leading: View, Trailing: View>: View {
     var alignment = VerticalAlignment.center
     var spacing = Spacing.small
     var stackedSpacing = Spacing.extraSmall
-    /// Pushes the trailing content to the trailing edge while side by side.
     var spreadsApart = true
     @ViewBuilder let leading: Leading
     @ViewBuilder let trailing: Trailing

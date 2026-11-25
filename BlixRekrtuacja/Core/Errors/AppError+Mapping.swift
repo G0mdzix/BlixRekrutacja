@@ -1,7 +1,6 @@
 import OSLog
 
 extension AppError {
-    /// Returns `nil` for cancellation — there is nothing to show the user.
     init?(_ error: any Error) {
         switch error {
         case let appError as AppError:
