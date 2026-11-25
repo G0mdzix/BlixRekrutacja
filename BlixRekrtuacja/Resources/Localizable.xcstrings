@@ -1,6 +1,60 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "appearanceDark": {
+      "comment": "Appearance option: always dark.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciemny"
+          }
+        }
+      }
+    },
+    "appearanceLight": {
+      "comment": "Appearance option: always light.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jasny"
+          }
+        }
+      }
+    },
+    "appearanceSystem": {
+      "comment": "Appearance option: follow the system setting.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Systemowy"
+          }
+        }
+      }
+    },
     "errorBadRequestMessage": {
       "comment": "Error alert message: HTTP 400, the request was rejected.",
       "extractionState": "manual",
@@ -127,6 +181,24 @@
         }
       }
     },
+    "errorStorageMessage": {
+      "comment": "Error alert message: saving a setting failed.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't save your changes. Try again."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się zapisać zmian. Spróbuj ponownie."
+          }
+        }
+      }
+    },
     "errorTimeoutMessage": {
       "comment": "Error alert message: the server took too long to respond.",
       "extractionState": "manual",
@@ -195,6 +267,42 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sesja wygasła. Zaloguj się ponownie."
+          }
+        }
+      }
+    },
+    "settingsAppearance": {
+      "comment": "Settings section: choose light, dark or system appearance.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wygląd"
+          }
+        }
+      }
+    },
+    "settingsTitle": {
+      "comment": "Navigation title of the Settings screen.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ustawienia"
           }
         }
       }

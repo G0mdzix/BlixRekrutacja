@@ -2,14 +2,14 @@ import SwiftUI
 
 // MARK: - Error alert
 extension View {
-    func errorAlert(_ error: Binding<AppError?>) -> some View {
+    func errorAlert(_ error: AppError?, onDismiss: @escaping @MainActor () -> Void) -> some View {
         alert(
             .errorTitle,
             isPresented: Binding(
-                get: { error.wrappedValue != nil },
-                set: { if !$0 { error.wrappedValue = nil } }
+                get: { error != nil },
+                set: { if !$0 { onDismiss() } }
             ),
-            presenting: error.wrappedValue,
+            presenting: error,
             actions: { _ in },
             message: { Text($0.message) }
         )

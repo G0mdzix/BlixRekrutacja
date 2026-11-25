@@ -12,6 +12,7 @@ extension AppError {
         case .tooManyRequests: .errorTooManyRequestsMessage
         case .server: .errorServerMessage
         case .decoding: .errorDecodingMessage
+        case .storage: .errorStorageMessage
         case .unknown: .errorGenericMessage
         }
     }

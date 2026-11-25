@@ -8,5 +8,6 @@ enum AppError: Error, Equatable, Sendable {
     case tooManyRequests
     case server
     case decoding
+    case storage
     case unknown
 }
