@@ -7,7 +7,22 @@ extension RemoteRatesRepositoryTests {
         let expectedPath: String
     }
 
+    enum Outcome {
+        case rateLimited
+        case answers
+    }
+
+    struct RateLimitScenario {
+        let outcomes: [Outcome]
+        let expectsRates: Bool
+    }
+
     nonisolated static let apiKey = "test-key"
+
+    nonisolated static let rateLimits: [RateLimitScenario] = [
+        RateLimitScenario(outcomes: [.rateLimited, .answers], expectsRates: true),
+        RateLimitScenario(outcomes: [.rateLimited, .rateLimited], expectsRates: false)
+    ]
 
     nonisolated static let requests: [RequestScenario] = [
         RequestScenario(request: .latest, expectedPath: "latest"),
