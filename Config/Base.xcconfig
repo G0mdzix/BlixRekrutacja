@@ -1,0 +1,5 @@
+// Base build configuration for Debug and Release.
+// The API key lives in Secrets.xcconfig, which git ignores. The include is optional,
+// so the project builds without it; the app then has no key to send.
+FIXER_API_KEY =
+#include? "Secrets.xcconfig"

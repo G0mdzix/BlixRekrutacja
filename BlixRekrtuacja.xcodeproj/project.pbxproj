@@ -68,6 +68,8 @@
 		6898D53C30B6084A00348852 /* BlixRekrtuacja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlixRekrtuacja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlixRekrtuacjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6898D5BA30B6210A00348852 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		689E968230B6E03E0068AD35 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		689E968430B6E03E0068AD35 /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.example.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -87,6 +89,7 @@
 				Data/CLAUDE.md,
 				DesignSystem/CLAUDE.md,
 				Features/CLAUDE.md,
+				Info.plist,
 			);
 			target = 6898D53B30B6084A00348852 /* BlixRekrtuacja */;
 		};
@@ -239,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				6844A37130B6515600641F2C /* Snapshots */,
+				689E968530B6E03E0068AD35 /* Config */,
 				6844A1B430B6472C00641F2C /* UnitTests.xctestplan */,
 				6844A1B330B6472400641F2C /* SnapshotTests.xctestplan */,
 				6898D5BA30B6210A00348852 /* .swiftlint.yml */,
@@ -255,6 +259,15 @@
 				6898D54930B6084B00348852 /* BlixRekrtuacjaTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		689E968530B6E03E0068AD35 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				689E968230B6E03E0068AD35 /* Base.xcconfig */,
+				689E968430B6E03E0068AD35 /* Secrets.example.xcconfig */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +407,7 @@
 /* Begin XCBuildConfiguration section */
 		6898D55B30B6084B00348852 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 689E968230B6E03E0068AD35 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -458,6 +472,7 @@
 		};
 		6898D55C30B6084B00348852 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 689E968230B6E03E0068AD35 /* Base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -523,6 +538,7 @@
 				DEVELOPMENT_TEAM = 548J77AC83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlixRekrtuacja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -557,6 +573,7 @@
 				DEVELOPMENT_TEAM = 548J77AC83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlixRekrtuacja/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

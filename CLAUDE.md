@@ -6,6 +6,8 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 - Test: `set -o pipefail && xcodebuild -scheme BuildApp -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' test | xcbeautify`
 - Lint: `swiftlint lint --strict`. Mechanical rules live in `.swiftlint.yml`; never restate them in CLAUDE.md files.
   Fix violations. Never disable or relax a rule to pass.
+- API key: `cp Config/Secrets.example.xcconfig Config/Secrets.xcconfig`, set `FIXER_API_KEY`; it reaches the app as
+  Info.plist `FixerAPIKey`. Never commit `Secrets.xcconfig`.
 - Schemes:
   - `BuildApp`: app + all tests.
   - `UnitTests`: skips `.snapshot`.

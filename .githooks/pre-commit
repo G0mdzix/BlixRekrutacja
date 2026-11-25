@@ -1,6 +1,17 @@
 #!/bin/sh
-# Lints staged Swift files. Enable once: git config core.hooksPath .githooks
+# Blocks secrets and lints staged Swift files. Enable once: git config core.hooksPath .githooks
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+# The API key lives only in Config/Secrets.xcconfig, which git ignores; never commit it, even forced.
+if git diff --cached --name-only | grep -q 'Secrets\.xcconfig$'; then
+    echo "❌ Secrets.xcconfig must never be committed (git restore --staged <file>)"
+    exit 1
+fi
+if git diff --cached -U0 | grep -Eq '^\+[[:space:]]*FIXER_API_KEY[[:space:]]*=[[:space:]]*[^[:space:]/]'; then
+    echo "❌ A FIXER_API_KEY value is staged; keep the key in Config/Secrets.xcconfig only"
+    exit 1
+fi
+
 files=$(git diff --cached --name-only --diff-filter=ACM -- '*.swift')
 [ -z "$files" ] && exit 0
 command -v swiftlint >/dev/null || { echo "❌ SwiftLint missing: brew install swiftlint"; exit 1; }

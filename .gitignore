@@ -10,3 +10,6 @@ CLAUDE.local.md
 
 # macOS
 .DS_Store
+
+# Secrets (API keys) — see Config/Secrets.example.xcconfig
+**/Secrets.xcconfig
