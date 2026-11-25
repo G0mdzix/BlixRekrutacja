@@ -21,9 +21,13 @@ final class SettingsViewModel {
 // MARK: - UI configurators
 
 extension SettingsViewModel {
-    var appearanceHeaderConfigurator: BlixLabelConfigurator { header(.settingsAppearance) }
+    var appearanceHeaderConfigurator: BlixLabelConfigurator { secondaryLabel(.settingsAppearance) }
 
-    var languageHeaderConfigurator: BlixLabelConfigurator { header(.settingsLanguage) }
+    var languageHeaderConfigurator: BlixLabelConfigurator { secondaryLabel(.settingsLanguage) }
+
+    var dataHeaderConfigurator: BlixLabelConfigurator { secondaryLabel(.settingsData) }
+
+    var dataInfoConfigurator: BlixLabelConfigurator { secondaryLabel(.settingsDataInfo) }
 
     func appearanceRowConfigurator(_ appearance: Appearance) -> BlixSelectionRowConfigurator {
         BlixSelectionRowConfigurator(
@@ -45,7 +49,7 @@ extension SettingsViewModel {
         }
     }
 
-    private func header(_ text: LocalizedStringResource) -> BlixLabelConfigurator {
+    private func secondaryLabel(_ text: LocalizedStringResource) -> BlixLabelConfigurator {
         BlixLabelConfigurator(text: .localized(text), style: .secondary, typography: .subheadline)
     }
 }

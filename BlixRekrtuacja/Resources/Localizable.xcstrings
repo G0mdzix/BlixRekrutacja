@@ -831,6 +831,42 @@
         }
       }
     },
+    "settingsData": {
+      "comment": "Settings section header: where the rates come from.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dane"
+          }
+        }
+      }
+    },
+    "settingsDataInfo": {
+      "comment": "Settings data section: the rates' source and why weekends are missing.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rates come from fixer.io and the European Central Bank. The ECB does not publish rates on Saturdays and Sundays, so the list shows working days only."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kursy pochodzą z fixer.io i Europejskiego Banku Centralnego. W soboty i niedziele EBC nie publikuje kursów, dlatego na liście są tylko dni robocze."
+          }
+        }
+      }
+    },
     "settingsLanguage": {
       "comment": "Settings section: choose the app language.",
       "extractionState": "manual",

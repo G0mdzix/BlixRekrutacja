@@ -10,6 +10,12 @@ struct SettingsView: View {
 
             BlixLabel(configurator: viewModel.languageHeaderConfigurator)
             selectionCard(Language.allCases, row: viewModel.languageRowConfigurator)
+
+            BlixLabel(configurator: viewModel.dataHeaderConfigurator)
+            BlixLabel(configurator: viewModel.dataInfoConfigurator)
+                .padding(Spacing.large)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .cardBackground(.secondary)
         }
         .blixNavigationTitle(.settingsTitle)
     }
