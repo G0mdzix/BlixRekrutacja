@@ -25,6 +25,10 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
   swapping branches crashed while content changed and left the screen blank after a back swipe.
   Scroll indicators are hidden there for every screen; screens never set `scrollIndicators` themselves.
 - Charts go through `BlixLineChart` (Swift Charts, values as `Decimal`, the area starts at the lowest value).
+- `BlixSplash` is the first load, full screen; the screen hides the navigation bar. Its first frame equals the launch
+  screen (`UILaunchScreen` in Info.plist: `LaunchLogo` on `backgroundPrimary`); the logo lifts, the title shows and
+  `LogoArrows` turn until the data arrives (Reduce Motion: no movement). Logo artwork is SVG in
+  `Resources/Assets.xcassets/Logo/`; `LaunchLogo` must stay `LogoBase` + `LogoArrows`.
 - Layouts that change at accessibility text sizes go through `BlixAdaptiveRow`; components never read `dynamicTypeSize` themselves.
 - Dynamic Type xSmall–AX5: text wraps, rows use `minHeight: Size.minTapTarget`, nothing has a fixed text height.
 - Before adding a component, check whether an existing one can take a new variant.

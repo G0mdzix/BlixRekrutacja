@@ -721,6 +721,44 @@
         }
       }
     },
+    "ratesSplashBrand": {
+      "comment": "Splash title, first word: the brand, the same in every language.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blix"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blix"
+          }
+        }
+      },
+      "shouldTranslate": false
+    },
+    "ratesSplashProduct": {
+      "comment": "Splash title, second word in the accent color: the product name, the same in every language.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waluty"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waluty"
+          }
+        }
+      },
+      "shouldTranslate": false
+    },
     "ratesTitle": {
       "comment": "Title of the rates list screen.",
       "extractionState": "manual",

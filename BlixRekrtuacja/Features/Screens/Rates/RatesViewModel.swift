@@ -91,8 +91,16 @@ final class RatesViewModel {
 // MARK: - UI configurators
 
 extension RatesViewModel {
+    var splashConfigurator: BlixSplashConfigurator {
+        BlixSplashConfigurator(
+            brand: .localized(.ratesSplashBrand),
+            product: .localized(.ratesSplashProduct),
+            caption: .localized(.ratesLoading)
+        )
+    }
+
     var progressConfigurator: BlixProgressRowConfigurator {
-        BlixProgressRowConfigurator(text: .localized(days.isEmpty ? .ratesLoading : .ratesLoadingNextDay))
+        BlixProgressRowConfigurator(text: .localized(.ratesLoadingNextDay))
     }
 
     var loadOlderButtonConfigurator: BlixButtonConfigurator {

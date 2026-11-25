@@ -12,7 +12,7 @@ struct RatesView: View {
 
     @ViewBuilder private var content: some View {
         switch viewModel.content {
-        case .loading: BlixProgressRow(configurator: viewModel.progressConfigurator)
+        case .loading: BlixSplash(configurator: viewModel.splashConfigurator).toolbar(.hidden, for: .navigationBar)
         case let .failed(emptyState, retry): failed(emptyState, retry: retry)
         case .list(let baseInfo): list(baseInfo: baseInfo)
         }
