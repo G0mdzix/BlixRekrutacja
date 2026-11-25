@@ -29,7 +29,8 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
 
 ## Modifiers and styles
 - `Modifiers/BlixSurface.swift`: the `BlixSurface` view modifier (fill + optional border) and its shortcuts `cardBackground`, `circled`.
-- `Modifiers/BlixSearchable.swift`: `blixSearchable(text:prompt:)`, a search field visible without pulling the list.
+- `Modifiers/BlixSearchable.swift`: `blixSearchable(text:prompt:)`, a search field visible without pulling the list;
+  a tap on the content hides the keyboard.
 - `Modifiers/BlixNavigationTitle.swift`: `blixNavigationTitle(_:)`, a title that updates when the app's language changes.
 - `Extensions/View+DesignSystem.swift`: `typography`.
 - Buttons get their look from a `ButtonStyle` (`BlixButtonStyle`): pressed and disabled dim the content, never the fill.
