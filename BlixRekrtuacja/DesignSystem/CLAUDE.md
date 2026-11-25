@@ -3,7 +3,7 @@
 The visual layer: tokens, colors, components and view modifiers. It knows nothing about Core, Data or features.
 
 ## Tokens
-- Sizes, fonts and motion come from `Spacing`, `Radius`, `Size`, `Opacity`, `Motion` and `Typography` in `Tokens/`.
+- Sizes and fonts come from `Spacing`, `Radius`, `Size`, `Opacity` and `Typography` in `Tokens/`.
 - Colors come from `Resources/Assets.xcassets/Colors` (light + dark) through the generated symbols:
   `.brandPrimary/Secondary`, `.backgroundPrimary/Secondary`, `.textPrimary/Secondary`, `.textPositive/Negative`, `.textOnBrand`,
   `.hairline`, `.fillMuted`, `.selectedBackground`, `.errorSubtle`, `.success`, `.warning`, `.error`, `.info`.
@@ -29,7 +29,7 @@ The visual layer: tokens, colors, components and view modifiers. It knows nothin
 
 ## Modifiers and styles
 - `Modifiers/BlixSurface.swift`: the `BlixSurface` view modifier (fill + optional border) and its shortcuts `cardBackground`, `circled`.
-- `Modifiers/BlixFailureFeedback.swift`: `failureFeedback(trigger:)` shakes a failed element in place and plays error haptics.
+- `Modifiers/BlixSearchable.swift`: `blixSearchable(text:prompt:)`, a search field visible without pulling the list.
 - `Extensions/View+DesignSystem.swift`: `typography`.
 - Buttons get their look from a `ButtonStyle` (`BlixButtonStyle`): pressed and disabled dim the content, never the fill.
 
