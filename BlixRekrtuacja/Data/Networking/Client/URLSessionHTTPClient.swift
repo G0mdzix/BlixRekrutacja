@@ -48,7 +48,7 @@ struct URLSessionHTTPClient: HTTPClient {
 
     private func validate(_ response: URLResponse) throws(APIError) {
         guard let response = response as? HTTPURLResponse else { throw .invalidResponse }
-        guard 200..<300 ~= response.statusCode else { throw .status(response.statusCode) }
+        guard HTTPStatus.success ~= response.statusCode else { throw .status(response.statusCode) }
     }
 
     private func decode<Response: Decodable>(_ type: Response.Type, from data: Data) throws(APIError) -> Response {
