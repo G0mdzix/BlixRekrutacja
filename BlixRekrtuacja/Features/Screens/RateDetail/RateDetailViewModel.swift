@@ -6,24 +6,18 @@ final class RateDetailViewModel {
     let rate: RateSelection
     private(set) var isCopied = false
 
-    private let copy: @MainActor (String) -> Void
+    private let clipboard: any Clipboard
 
-    init(rate: RateSelection, copy: @escaping @MainActor (String) -> Void) {
+    init(rate: RateSelection, clipboard: any Clipboard) {
         self.rate = rate
-        self.copy = copy
+        self.clipboard = clipboard
     }
 
     /// Copies the exact rate with a dot, not the screen's localized text, so it pastes as a number anywhere.
     func copyRate() {
-        copy(rate.value.description)
+        clipboard.copy(rate.value.description)
         isCopied = true
     }
-}
-
-extension RateDetailViewModel: nonisolated Hashable {
-    nonisolated static func == (lhs: RateDetailViewModel, rhs: RateDetailViewModel) -> Bool { lhs === rhs }
-
-    nonisolated func hash(into hasher: inout Hasher) { hasher.combine(ObjectIdentifier(self)) }
 }
 
 // MARK: - UI configurators

@@ -1,29 +1,28 @@
 import SwiftUI
 
 struct DayRatesView: View {
-    let viewModel: DayRatesViewModel
-
-    @State private var query = ""
+    @Bindable var viewModel: DayRatesViewModel
 
     var body: some View {
         BlixList(spacing: Spacing.large) {
             BlixSectionHeader(configurator: viewModel.headerConfigurator)
-            let rows = viewModel.rowConfigurators(matching: query)
-            if rows.isEmpty {
-                BlixEmptyState(configurator: viewModel.noResultsConfigurator(for: query))
-            } else {
-                VStack(spacing: .zero) {
-                    ForEach(rows, id: \.code) { BlixRateRow(configurator: $0) }
-                }
-                .cardBackground(.primary)
-            }
+            results
         }
         .navigationBarTitleDisplayMode(.inline)
-        .searchable(text: $query, placement: searchPlacement, prompt: Text(.ratesSearchPrompt))
+        .blixSearchable(text: $viewModel.query, prompt: Text(.ratesSearchPrompt))
     }
 
-    /// Before iOS 26 the automatic drawer hides the field until the list is pulled down; Liquid Glass shows it below.
-    private var searchPlacement: SearchFieldPlacement {
-        if #available(iOS 26, *) { .automatic } else { .navigationBarDrawer(displayMode: .always) }
+    @ViewBuilder private var results: some View {
+        switch viewModel.results {
+        case .rows(let rows): ratesCard(rows)
+        case .noResults(let noResults): BlixEmptyState(configurator: noResults)
+        }
+    }
+
+    private func ratesCard(_ rows: [BlixRateRowConfigurator]) -> some View {
+        VStack(spacing: .zero) {
+            ForEach(rows, id: \.code) { BlixRateRow(configurator: $0) }
+        }
+        .cardBackground(.primary)
     }
 }

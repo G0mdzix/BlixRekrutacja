@@ -3,18 +3,24 @@ import Observation
 
 @MainActor @Observable
 final class DayRatesViewModel {
+    enum Results {
+        case rows([BlixRateRowConfigurator])
+        case noResults(BlixEmptyStateConfigurator)
+    }
+
+    var query = ""
+
     private let selection: DaySelection
-
-    private let onSelectRate: @MainActor (RateSelection) -> Void
     private let searchKeys: [String]
+    @ObservationIgnored private weak var navigator: (any MainNavigating)?
 
-    init(selection: DaySelection, onSelectRate: @escaping @MainActor (RateSelection) -> Void) {
+    init(selection: DaySelection, navigator: any MainNavigating) {
         self.selection = selection
-        self.onSelectRate = onSelectRate
+        self.navigator = navigator
         searchKeys = selection.rates.map { Self.searchKey("\($0.code) \($0.name ?? "")") }
     }
 
-    func rates(matching query: String) -> [RateSelection] {
+    private var matchingRates: [RateSelection] {
         let query = Self.searchKey(query.trimmingCharacters(in: .whitespaces))
         guard !query.isEmpty else { return selection.rates }
         return zip(selection.rates, searchKeys).filter { $0.1.contains(query) }.map(\.0)
@@ -23,12 +29,6 @@ final class DayRatesViewModel {
     private static func searchKey(_ text: String) -> String {
         text.applyingTransform(Search.foldingTransform, reverse: false) ?? text.lowercased()
     }
-}
-
-extension DayRatesViewModel: nonisolated Hashable {
-    nonisolated static func == (lhs: DayRatesViewModel, rhs: DayRatesViewModel) -> Bool { lhs === rhs }
-
-    nonisolated func hash(into hasher: inout Hasher) { hasher.combine(ObjectIdentifier(self)) }
 }
 
 // MARK: - UI configurators
@@ -41,21 +41,14 @@ extension DayRatesViewModel {
         )
     }
 
-    func rowConfigurators(matching query: String) -> [BlixRateRowConfigurator] {
-        rates(matching: query).map { rate in
-            rate.rowConfigurator { [weak self] in
-                guard let self else { return }
-                onSelectRate(rate)
-            }
-        }
-    }
-
-    func noResultsConfigurator(for query: String) -> BlixEmptyStateConfigurator {
-        BlixEmptyStateConfigurator(
+    var results: Results {
+        let rates = matchingRates
+        guard rates.isEmpty else { return .rows(rates.map { $0.rowConfigurator(navigator: navigator) }) }
+        return .noResults(BlixEmptyStateConfigurator(
             icon: .search,
             title: .localized(.ratesNoResultsTitle),
             message: .localized(.ratesNoResultsMessage(query))
-        )
+        ))
     }
 }
 
