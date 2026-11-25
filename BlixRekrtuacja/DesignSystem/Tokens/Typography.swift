@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum Typography {
-    case largeTitle, title, headline, body, subheadline
+    case largeTitle, title, headline, body, subheadline, footnote
 
     var font: Font {
         switch self {
@@ -10,6 +10,7 @@ enum Typography {
         case .headline: .headline
         case .body: .body
         case .subheadline: .subheadline
+        case .footnote: .footnote
         }
     }
 }

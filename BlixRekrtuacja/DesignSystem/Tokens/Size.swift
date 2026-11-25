@@ -1,6 +1,9 @@
 import CoreGraphics
 
 enum Size {
-    static let icon: CGFloat = 24
+    static let borderWidth: CGFloat = 1
+    static let messageIcon: CGFloat = 36
     static let minTapTarget: CGFloat = 44
+    static let emptyStateBadge: CGFloat = 26
+    static let emptyStateIcon: CGFloat = 72
 }
