@@ -71,6 +71,7 @@ struct RatesViewModelTests {
 
         #expect(sut.days.map(\.day) == [RatesSamples.wednesday])
         #expect(repository.requests.last == .day(Self.monday))
+        #expect(sut.nextDay == RatesSamples.friday)
     }
 
     @Test func pagesPastAHolidayThatAnswersAnEarlierDay() async {

@@ -75,7 +75,8 @@ final class RatesViewModel {
         isLoading = true
         defer { isLoading = false }
         do {
-            try await history.loadNext()
+            // Not the caller's task: a footer rebuilt mid-load (rotation) cancels its `.task`, the request goes on.
+            try await Task { [history] in try await history.loadNext() }.value
             error = nil
         } catch {
             self.error = AppError(error)
@@ -95,7 +96,7 @@ extension RatesViewModel {
     }
 
     var loadOlderButtonConfigurator: BlixButtonConfigurator {
-        loadButton(title: .ratesLoadOlder, style: .secondary)
+        loadButton(title: .ratesLoadOlder, style: .secondary, isLoading: isLoading)
     }
 
     func messageCardConfigurator(_ error: AppError) -> BlixMessageCardConfigurator {

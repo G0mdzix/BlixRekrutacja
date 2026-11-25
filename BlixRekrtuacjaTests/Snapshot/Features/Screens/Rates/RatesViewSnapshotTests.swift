@@ -10,8 +10,9 @@ struct RatesViewSnapshotTests {
     @Test(arguments: Self.variants)
     func recordSnapshot(_ scenario: Scenario) async {
         let preferences = UserPreferences.isolated(language: .polish)
+        let repository = RatesRepositorySpy(answer: scenario.answer)
         let viewModel = RatesViewModel(
-            repository: RatesRepositorySpy(answer: scenario.answer),
+            repository: repository,
             preferences: preferences,
             dates: RatesSamples.dates,
             navigator: navigator
@@ -25,6 +26,10 @@ struct RatesViewSnapshotTests {
         let sut = NavigationStack { RatesView(viewModel: viewModel) }
             .environment(\.locale, preferences.language.locale)
 
+        let requestsBeforeRender = repository.requests.count
+
         assertSnapshots(of: sut, named: scenario.name, configurator: .screen)
+
+        #expect(repository.requests.count == requestsBeforeRender)
     }
 }
