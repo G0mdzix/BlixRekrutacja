@@ -21,7 +21,9 @@ od najnowszego. Zadanie rekrutacyjne dla Blix.
 Splash przy pierwszym wczytaniu: zaczyna się dokładnie jak ekran startowy, potem logo się unosi, pojawia się nazwa,
 a strzałki kręcą się, dopóki nie przyjdą kursy (nagranie z symulatora).
 
-<img src="docs/splash.gif" width="240" alt="Animowany splash Blix Waluty">
+<p align="center">
+  <img src="docs/splash.gif" width="240" alt="Animowany splash Blix Waluty">
+</p>
 
 ## Co potrafi
 
@@ -80,6 +82,22 @@ też się zbuduje i pokaże ekran z instrukcją.
 |---|---|---|
 | Jednostkowe | 202 przypadki w 66 testach (24 suite'y) | ViewModele, reguły doczytywania, cache, mapowanie odpowiedzi i błędów Fixera, dni robocze, preferencje |
 | Snapshotowe | 54 scenariusze w 18 suite'ach, 276 obrazów | wszystkie komponenty (jasny i ciemny, tekst xSmall, large i AX5) oraz ekrany w każdym stanie |
+| **Razem** | **256 przypadków w 84 testach (42 suite'y)** | |
+
+**Pokrycie kodu: 90,3%** linii aplikacji (1632 z 1807), z testami jednostkowymi i snapshotowymi razem.
+
+| Warstwa | Pokrycie |
+|---|---|
+| Domain | 100% |
+| DesignSystem | 98,3% |
+| Data (w tym klient HTTP: 97,8%) | 87,3% |
+| Core | 89,4% |
+| Features | 87,3% |
+| App | 19,5% |
+
+Niepokryte zostały głównie miejsca, które spinają aplikację w całość: `App` (composition root celowo nie startuje
+w testach, żeby nie otwierać bazy i nie wysyłać zapytań), nawigacja (`MainDestination`, `CoordinatedStack`),
+ekran ustawień bez snapshotu i otwieranie bazy SwiftData na dysku (testy używają bazy w pamięci).
 
 Testy są napisane w Swift Testing, parametryzowane i nie korzystają z sieci: odpowiedzi API pochodzą ze stubów
 i zapisanych odpowiedzi.
@@ -93,6 +111,11 @@ xcodebuild -scheme SnapshotTests -destination 'platform=iOS Simulator,name=iPhon
 
 # aplikacja i wszystkie testy
 xcodebuild -scheme BuildApp -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' test
+
+# pokrycie kodu
+xcodebuild -scheme BuildApp -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1' \
+  -enableCodeCoverage YES -resultBundlePath coverage.xcresult test
+xcrun xccov view --report --only-targets coverage.xcresult
 ```
 
 Obrazy wzorcowe są w `Snapshots/`. Schemat `SnapshotRecord` nagrywa je od nowa po zamierzonej zmianie wyglądu.
