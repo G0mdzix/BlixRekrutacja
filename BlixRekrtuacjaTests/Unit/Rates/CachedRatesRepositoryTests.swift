@@ -13,7 +13,11 @@ struct CachedRatesRepositoryTests {
             request.day.map { RatesSamples.rates(on: BusinessDays.day(containing: $0), pln: Self.freshPLN) }
                 ?? scenario.latest
         }
-        let sut = CachedRatesRepository(remote: remote, cache: cache) { scenario.now }
+        let sut = CachedRatesRepository(
+            remote: remote,
+            cache: cache,
+            dates: DateProvider(now: { scenario.now }, timeZone: .gmt)
+        )
 
         let rates = try await scenario.request.perform(on: sut)
 
@@ -26,7 +30,7 @@ struct CachedRatesRepositoryTests {
     func passesSourceErrorsOnAndCachesNothing(_ request: RatesRequest) async throws {
         let cache = try SwiftDataRatesCache(isStoredInMemoryOnly: true)
         let failing = RatesRepositorySpy { _ in throw AppError.offline }
-        let sut = CachedRatesRepository(remote: failing, cache: cache) { RatesSamples.wednesdayNoon }
+        let sut = CachedRatesRepository(remote: failing, cache: cache, dates: RatesSamples.dates)
 
         await #expect(throws: AppError.offline) { try await request.perform(on: sut) }
 

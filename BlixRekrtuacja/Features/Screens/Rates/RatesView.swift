@@ -49,18 +49,10 @@ struct RatesView: View {
     }
 
     private func failed(_ emptyState: BlixEmptyStateConfigurator, retry: BlixButtonConfigurator?) -> some View {
-        ViewThatFits(in: .vertical) {
-            emptyStateCard(emptyState, retry: retry)
-            ScrollView { emptyStateCard(emptyState, retry: retry) }.scrollIndicators(.hidden)
-        }
-    }
-
-    private func emptyStateCard(_ emptyState: BlixEmptyStateConfigurator, retry: BlixButtonConfigurator?) -> some View {
-        VStack(spacing: Spacing.large) {
+        BlixList(spacing: Spacing.large, anchor: .center) {
             BlixEmptyState(configurator: emptyState)
             if let retry { BlixButton(configurator: retry) }
         }
-        .padding(Spacing.large)
     }
 
     private func daySection(_ rates: DailyRates) -> some View {

@@ -3,17 +3,17 @@ import Foundation
 struct CachedRatesRepository: RatesRepository {
     private let remote: any RatesRepository
     private let cache: any RatesCache
-    private let now: @Sendable () -> Date
+    private let dates: DateProvider
 
-    init(remote: any RatesRepository, cache: any RatesCache, now: @escaping @Sendable () -> Date = { Date() }) {
+    init(remote: any RatesRepository, cache: any RatesCache, dates: DateProvider) {
         self.remote = remote
         self.cache = cache
-        self.now = now
+        self.dates = dates
     }
 
     /// Fixer's `latest` is the last published day, not today on weekends, so the cache keeps what it last returned.
     func latest() async throws -> DailyRates {
-        let now = now()
+        let now = dates.now()
         if let cached = await cache.latest(), let fetchedAt = cached.latestFetchedAt,
            now.timeIntervalSince(fetchedAt) < Lifetime.latest {
             return cached.rates
@@ -28,7 +28,7 @@ struct CachedRatesRepository: RatesRepository {
             return cached.rates
         }
         let rates = try await remote.rates(on: day)
-        await store(rates, at: now(), fromLatest: false)
+        await store(rates, at: dates.now(), fromLatest: false)
         return rates
     }
 

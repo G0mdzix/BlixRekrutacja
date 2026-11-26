@@ -1,9 +1,15 @@
 import Foundation
 
 extension DailyRates {
-    func selections(comparedWith previous: DailyRates?, loadedDays: [DailyRates], locale: Locale) -> [RateSelection] {
+    /// `codes` limits the result before any lookup, so a five-row card doesn't build ~170 selections.
+    func selections(
+        comparedWith previous: DailyRates?,
+        loadedDays: [DailyRates],
+        locale: Locale,
+        codes: [String]? = nil
+    ) -> [RateSelection] {
         let previousValues = Dictionary(uniqueKeysWithValues: previous?.rates.map { ($0.code, $0.value) } ?? [])
-        return rates.map { rate in
+        return rates.filter { codes?.contains($0.code) ?? true }.map { rate in
             RateSelection(
                 code: rate.code,
                 name: locale.localizedString(forCurrencyCode: rate.code),

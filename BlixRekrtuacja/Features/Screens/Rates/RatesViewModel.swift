@@ -121,9 +121,7 @@ extension RatesViewModel {
     }
 
     func rowConfigurators(_ rates: DailyRates) -> [BlixRateRowConfigurator] {
-        selections(rates)
-            .filter { PopularCurrency.codes.contains($0.code) }
-            .map { $0.rowConfigurator(navigator: navigator) }
+        selections(rates, codes: PopularCurrency.codes).map { $0.rowConfigurator(navigator: navigator) }
     }
 
     func showAllButtonConfigurator(_ rates: DailyRates) -> BlixButtonConfigurator? {
@@ -139,11 +137,12 @@ extension RatesViewModel {
         BlixLabelConfigurator(text: .localized(.ratesBaseInfo(base)), style: .secondary, typography: .subheadline)
     }
 
-    private func selections(_ rates: DailyRates) -> [RateSelection] {
+    private func selections(_ rates: DailyRates, codes: [String]? = nil) -> [RateSelection] {
         rates.selections(
             comparedWith: history.day(before: rates),
             loadedDays: days,
-            locale: preferences.language.locale
+            locale: preferences.language.locale,
+            codes: codes
         )
     }
 

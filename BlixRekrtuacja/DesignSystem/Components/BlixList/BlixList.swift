@@ -4,10 +4,13 @@ import SwiftUI
 /// scroll view crashed while the content changed (paging, search) and left the screen blank after a back swipe.
 struct BlixList<Content: View>: View {
     private let spacing: CGFloat
+    private let anchor: UnitPoint?
     private let content: Content
 
-    init(spacing: CGFloat = Spacing.small, @ViewBuilder content: () -> Content) {
+    /// `anchor: .center` centres content shorter than the screen (a full-screen message).
+    init(spacing: CGFloat = Spacing.small, anchor: UnitPoint? = nil, @ViewBuilder content: () -> Content) {
         self.spacing = spacing
+        self.anchor = anchor
         self.content = content()
     }
 
@@ -17,6 +20,7 @@ struct BlixList<Content: View>: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(Spacing.large)
         }
+        .defaultScrollAnchor(anchor)
         .scrollBounceBehavior(.basedOnSize)
         .scrollIndicators(.hidden)
     }
