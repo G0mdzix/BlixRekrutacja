@@ -18,6 +18,11 @@ od najnowszego. Zadanie rekrutacyjne dla Blix.
 - **[Design system](https://claude.ai/artifact/ASKLoCaCzER5fN3xBWppeU)**: kolory, typografia, odstępy i 14 komponentów
   dokładnie tak, jak są w kodzie (`BlixRekrtuacja/DesignSystem`), oraz opis danych i ograniczeń API.
 
+Splash przy pierwszym wczytaniu: zaczyna się dokładnie jak ekran startowy, potem logo się unosi, pojawia się nazwa,
+a strzałki kręcą się, dopóki nie przyjdą kursy (nagranie z symulatora).
+
+<img src="docs/splash.gif" width="240" alt="Animowany splash Blix Waluty">
+
 ## Co potrafi
 
 - Kursy pogrupowane po dniach, od dziś wstecz. Każdy dzień pokazuje pięć popularnych walut
