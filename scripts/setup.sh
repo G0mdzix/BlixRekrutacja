@@ -32,8 +32,8 @@ read_key() {
     local current key
     current="$(saved_key)"
     if [ -t 0 ]; then
-        echo "Blix Waluty potrzebuje klucza API Fixer.io (32 znaki, przyszedł mailem;"
-        echo "darmowy klucz można też założyć na https://fixer.io)."
+        echo "Blix Waluty potrzebuje klucza API Fixer.io (32 znaki). Darmowy klucz założysz na"
+        echo "https://fixer.io: Get Free API Key, plan Free, a potem skopiuj API Access Key z panelu."
         [ -n "$current" ] && echo "Zapisany klucz: $(masked "$current"). Enter zostawia go bez zmian."
         read -r -s -p "Wklej klucz: " key
         echo

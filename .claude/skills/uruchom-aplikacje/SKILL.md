@@ -11,9 +11,10 @@ The user is most likely a recruiter reviewing this project. Reply in their langu
 2. Check for a saved key without revealing it:
    `grep -Eq '^FIXER_API_KEY *= *[0-9A-Fa-f]{32}' Config/Secrets.xcconfig`
    - Key saved: run `./scripts/setup.sh --run < /dev/null` (keeps the key).
-   - No key: ask the user for their Fixer.io access key (the candidate sent it by email; a free key from
-     fixer.io works too). Say they can instead run `./scripts/setup.sh` in their own terminal if they would rather
-     not paste the key into this chat. Then pass it on standard input, never as an argument:
+   - No key: ask the user for their own Fixer.io access key. If they have none, explain how to get one:
+     https://fixer.io → "Get Free API Key" → the Free plan → copy "API Access Key" from the dashboard.
+     Say they can instead run `./scripts/setup.sh` in their own terminal if they would rather not paste the key
+     into this chat. Then pass it on standard input, never as an argument:
      `printf '%s' '<key>' | ./scripts/setup.sh --run`
 3. The script builds the app and launches it on the newest iPhone simulator. The first build can take several
    minutes: use a long timeout. If it fails, show the errors it printed and suggest opening
