@@ -18,9 +18,7 @@ extension RateDetailViewSnapshotTests {
 
 private enum Rate {
     static let pln = RatesSamples.selection("PLN", "złoty polski", "4.259811", change: "0.0020")
-    /// The oldest loaded day has no previous day to compare with, so the change row is hidden.
     static let plnWithoutChange = RatesSamples.selection("PLN", "złoty polski", "4.251240", change: nil)
-    /// Five loaded days: enough for the chart and the list of loaded days.
     static let plnWithHistory = RatesSamples.selection(
         "PLN",
         "złoty polski",

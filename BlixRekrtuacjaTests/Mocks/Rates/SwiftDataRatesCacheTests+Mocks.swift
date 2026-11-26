@@ -31,7 +31,6 @@ extension SwiftDataRatesCacheTests {
         latestFetchedAt: nil
     )
 
-    /// Closing values win; the time `latest` returned the day is kept.
     private static let closingSeenByLatest = CachedRates(
         rates: closing.rates,
         isFinal: true,

@@ -7,7 +7,6 @@ struct BlixList<Content: View>: View {
     private let anchor: UnitPoint?
     private let content: Content
 
-    /// `anchor: .center` centres content shorter than the screen (a full-screen message).
     init(spacing: CGFloat = Spacing.small, anchor: UnitPoint? = nil, @ViewBuilder content: () -> Content) {
         self.spacing = spacing
         self.anchor = anchor

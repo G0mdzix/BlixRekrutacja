@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// Leading and trailing content side by side; stacked from accessibility text sizes, so long text keeps the full width.
 struct BlixAdaptiveRow<Leading: View, Trailing: View>: View {
     var alignment = VerticalAlignment.center
     var spacing = Spacing.small

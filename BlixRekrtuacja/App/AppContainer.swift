@@ -1,6 +1,5 @@
 import Foundation
 
-/// The composition root: the only place that creates concrete types. Built once per launch.
 @MainActor
 final class AppContainer {
     let preferences: UserPreferences

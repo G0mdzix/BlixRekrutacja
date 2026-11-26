@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// The window content: the main navigation stack and the user's appearance and language.
 struct RootView: View {
     let container: AppContainer
 

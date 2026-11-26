@@ -1,14 +1,11 @@
 import SwiftUI
 
-/// Starts exactly like the launch screen (the logo centred). Then the logo lifts, the title rises in under it and the
-/// caption follows; the arrows turn for as long as the splash is on screen.
 struct BlixSplash: View {
     let configurator: BlixSplashConfigurator
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isShown: Bool
 
-    /// `isShown` starts the splash settled; the app always starts it hidden, like the launch screen.
     init(configurator: BlixSplashConfigurator, isShown: Bool = false) {
         self.configurator = configurator
         _isShown = State(initialValue: isShown)
@@ -60,7 +57,6 @@ private enum Splash {
     static let delay = 0.3
     static let logoScale = 0.9
     static let logoLift: CGFloat = 56
-    /// The title hangs from here (below the lifted logo), so a title stacked at accessibility sizes grows downwards.
     static let titleTop: CGFloat = 24
     static let titleRise: CGFloat = 14
     static let captionDelay = 0.8

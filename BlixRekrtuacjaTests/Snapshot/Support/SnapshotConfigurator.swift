@@ -49,8 +49,6 @@ struct SnapshotConfigurator {
     /// such as a spinner, are then caught mid-frame, so screens are snapshotted in settled states only.
     var drawsInWindow = false
 
-    /// Whole screens with their navigation bar: light + dark at the default text size.
-    /// Dynamic Type is covered by the component snapshots.
     static let screen = Self(drawsInWindow: true)
     static let component = Self(textSizes: [.extraSmall, .large, .accessibility5], layout: .component())
 

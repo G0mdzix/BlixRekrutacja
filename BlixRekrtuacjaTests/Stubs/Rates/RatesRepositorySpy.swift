@@ -1,7 +1,6 @@
 @testable import BlixRekrtuacja
 import Foundation
 
-/// Answers with `answer` and records every request. Main-actor isolated, so tests read it without locks.
 @MainActor
 final class RatesRepositorySpy: RatesRepository {
     var answer: (RatesRequest) throws -> DailyRates

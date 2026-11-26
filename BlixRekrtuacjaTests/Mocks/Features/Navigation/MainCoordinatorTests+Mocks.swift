@@ -9,7 +9,6 @@ extension MainCoordinatorTests {
     }
 }
 
-/// The ViewModel a route carries, or `nil` for another route.
 extension MainRoute {
     var rateDetail: RateDetailViewModel? {
         guard case .rate(let viewModel) = self else { return nil }

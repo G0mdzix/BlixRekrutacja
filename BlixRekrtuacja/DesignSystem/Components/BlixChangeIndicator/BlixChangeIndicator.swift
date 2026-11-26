@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// A rate change: the arrow and the colour always come together, never the colour alone.
 struct BlixChangeIndicator: View {
     let configurator: BlixChangeIndicatorConfigurator
 

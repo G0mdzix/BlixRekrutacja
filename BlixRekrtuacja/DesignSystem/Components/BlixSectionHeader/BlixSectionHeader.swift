@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// Title on its own line, so a long date never squeezes the badge and the caption.
 struct BlixSectionHeader: View {
     let configurator: BlixSectionHeaderConfigurator
 

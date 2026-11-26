@@ -1,7 +1,6 @@
 @testable import BlixRekrtuacja
 import Foundation
 
-/// Answers with `respond` and records every endpoint's path and query.
 @MainActor
 final class HTTPClientSpy: HTTPClient {
     struct Request: Equatable {

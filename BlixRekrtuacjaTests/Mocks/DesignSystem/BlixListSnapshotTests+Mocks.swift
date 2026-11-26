@@ -23,7 +23,6 @@ extension BlixListSnapshotTests {
     ]
 }
 
-/// iPhone 13 turned sideways.
 private enum Landscape {
     static let width: CGFloat = 844
     static let height: CGFloat = 390

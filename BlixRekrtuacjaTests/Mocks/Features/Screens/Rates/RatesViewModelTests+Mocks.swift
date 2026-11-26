@@ -27,7 +27,6 @@ extension RatesViewModelTests {
     }
 
     struct RetryScenario {
-        /// The first try comes from `start()`, every later one is a retry.
         let olderDayOutcomes: [Outcome]
         let expectedDays: Int
         let expectedError: AppError?
@@ -166,7 +165,6 @@ extension RatesViewModel.Content {
 }
 
 extension BlixLabelConfigurator.Content {
-    /// The catalog text in English with its arguments filled in.
     var englishText: String? {
         guard case .localized(var resource) = self else { return nil }
         resource.locale = Locale(identifier: "en")

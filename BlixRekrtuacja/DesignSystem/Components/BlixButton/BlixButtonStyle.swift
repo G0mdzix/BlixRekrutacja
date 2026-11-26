@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// Pressed and disabled states dim the content only; the fill stays solid.
 struct BlixButtonStyle: ButtonStyle {
     let style: BlixButtonConfigurator.Style
 

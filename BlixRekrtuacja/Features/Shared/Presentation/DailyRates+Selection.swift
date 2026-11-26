@@ -1,7 +1,6 @@
 import Foundation
 
 extension DailyRates {
-    /// `codes` limits the result before any lookup, so a five-row card doesn't build ~170 selections.
     func selections(
         comparedWith previous: DailyRates?,
         loadedDays: [DailyRates],
