@@ -9,7 +9,8 @@ struct DayRatesViewSnapshotTests {
 
     @Test(arguments: Self.variants)
     func recordSnapshot(_ scenario: Scenario) {
-        let viewModel = DayRatesViewModel(selection: scenario.selection, navigator: navigator)
+        let viewModel = DayRatesViewModel(selection: Self.selection, navigator: navigator)
+        viewModel.query = scenario.query
 
         let sut = NavigationStack { DayRatesView(viewModel: viewModel) }
             .environment(\.locale, Language.polish.locale)

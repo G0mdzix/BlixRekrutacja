@@ -46,7 +46,9 @@ extension RatesViewModelTests {
 
     struct HeaderScenario {
         let latestDay: Date
+        let timeZone: TimeZone
         let expectsTodayBadge: Bool
+        let expectedCaption: String
     }
 
     nonisolated static let monday = Date(iso: "2026-11-23T00:00:00Z")
@@ -105,8 +107,24 @@ extension RatesViewModelTests {
     ]
 
     nonisolated static let headers: [HeaderScenario] = [
-        HeaderScenario(latestDay: RatesSamples.wednesday, expectsTodayBadge: true),
-        HeaderScenario(latestDay: RatesSamples.tuesday, expectsTodayBadge: false)
+        HeaderScenario(
+            latestDay: RatesSamples.wednesday,
+            timeZone: .gmt,
+            expectsTodayBadge: true,
+            expectedCaption: "Updated 12:00\u{202F}AM"
+        ),
+        HeaderScenario(
+            latestDay: RatesSamples.wednesday,
+            timeZone: warsaw,
+            expectsTodayBadge: true,
+            expectedCaption: "Updated 1:00\u{202F}AM"
+        ),
+        HeaderScenario(
+            latestDay: RatesSamples.tuesday,
+            timeZone: warsaw,
+            expectsTodayBadge: false,
+            expectedCaption: "Closing rate"
+        )
     ]
 
     static let expectedPLNSelection = RateSelection(
@@ -146,3 +164,14 @@ extension RatesViewModel.Content {
         return retry
     }
 }
+
+extension BlixLabelConfigurator.Content {
+    /// The catalog text in English with its arguments filled in.
+    var englishText: String? {
+        guard case .localized(var resource) = self else { return nil }
+        resource.locale = Locale(identifier: "en")
+        return String(localized: resource)
+    }
+}
+
+private let warsaw = TimeZone(fixed: "Europe/Warsaw")

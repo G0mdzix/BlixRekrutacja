@@ -18,3 +18,10 @@ extension Date {
         self = date
     }
 }
+
+extension TimeZone {
+    init(fixed identifier: String) {
+        guard let zone = TimeZone(identifier: identifier) else { preconditionFailure("Not a time zone: \(identifier)") }
+        self = zone
+    }
+}

@@ -39,10 +39,14 @@ struct RemoteRatesRepositoryTests {
     @Test(arguments: Self.rateLimits)
     func triesOnceMoreWhenRateLimited(_ scenario: RateLimitScenario) async throws {
         let response = try RatesSamples.fixerResponse()
+        let fixerLimit = try RatesSamples.fixerResponse(Self.fixerRateLimitBody)
         var outcomes = scenario.outcomes[...]
         client.respond = { _ throws(APIError) in
-            guard outcomes.popFirst() == .rateLimited else { return response }
-            throw .status(HTTPStatus.tooManyRequests)
+            switch outcomes.popFirst() {
+            case .httpRateLimited: throw .status(HTTPStatus.tooManyRequests)
+            case .fixerRateLimited: fixerLimit
+            case .answers, nil: response
+            }
         }
         let sut = RemoteRatesRepository(client: client, apiKey: Self.apiKey, retryDelay: .zero)
 
@@ -56,5 +60,6 @@ struct RemoteRatesRepositoryTests {
         client.respond = { _ throws(APIError) in throw .transport(.notConnectedToInternet) }
 
         await #expect(throws: APIError.transport(.notConnectedToInternet)) { try await sut.latest() }
+        #expect(client.requests.count == 1)
     }
 }

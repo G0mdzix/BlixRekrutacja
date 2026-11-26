@@ -8,7 +8,9 @@ extension RemoteRatesRepositoryTests {
     }
 
     enum Outcome {
-        case rateLimited
+        case httpRateLimited
+        /// Fixer's own limit: HTTP 200 with error 106 in the body.
+        case fixerRateLimited
         case answers
     }
 
@@ -20,9 +22,13 @@ extension RemoteRatesRepositoryTests {
     nonisolated static let apiKey = "test-key"
 
     nonisolated static let rateLimits: [RateLimitScenario] = [
-        RateLimitScenario(outcomes: [.rateLimited, .answers], expectsRates: true),
-        RateLimitScenario(outcomes: [.rateLimited, .rateLimited], expectsRates: false)
+        RateLimitScenario(outcomes: [.httpRateLimited, .answers], expectsRates: true),
+        RateLimitScenario(outcomes: [.fixerRateLimited, .answers], expectsRates: true),
+        RateLimitScenario(outcomes: [.httpRateLimited, .fixerRateLimited], expectsRates: false)
     ]
+
+    nonisolated static let fixerRateLimitBody =
+        #"{"success":false,"error":{"code":106,"type":"rate_limit_reached","info":"Info"}}"#
 
     nonisolated static let requests: [RequestScenario] = [
         RequestScenario(request: .latest, expectedPath: "latest"),

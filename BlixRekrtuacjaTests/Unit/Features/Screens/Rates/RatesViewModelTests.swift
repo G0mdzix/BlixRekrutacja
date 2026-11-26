@@ -132,6 +132,11 @@ struct RatesViewModelTests {
 
         #expect(sut.days.count == RatesViewModel.Paging.autoLoadedDays)
         #expect(sut.footer == .loadOlderButton)
+
+        await sut.loadNextDay()
+
+        #expect(sut.days.count == RatesViewModel.Paging.autoLoadedDays + 1)
+        #expect(sut.footer == .loadOlderButton)
     }
 
     @Test(arguments: Self.rowScenarios)
@@ -178,11 +183,18 @@ struct RatesViewModelTests {
     @Test(arguments: Self.headers)
     func marksTodayAndClosedDays(_ scenario: HeaderScenario) async {
         repository.answer = { Self.rates(on: $0.day ?? scenario.latestDay) }
+        let sut = RatesViewModel(
+            repository: repository,
+            preferences: .isolated(language: .english),
+            dates: DateProvider(now: { RatesSamples.wednesdayNoon }, timeZone: scenario.timeZone),
+            navigator: navigator
+        )
         await sut.start()
 
         let header = sut.headerConfigurator(sut.days[0])
 
         #expect((header.badge != nil) == scenario.expectsTodayBadge)
+        #expect(header.caption?.englishText == scenario.expectedCaption)
     }
 
     @Test func settingsButtonOpensSettings() {
