@@ -5,7 +5,6 @@ struct BlixRateRowConfigurator {
     var name: String?
     let value: Decimal
     var change: Decimal?
-    var isSelected = false
     var action: (@MainActor () -> Void)?
 
     var codeLabel: BlixLabelConfigurator {
@@ -18,7 +17,7 @@ struct BlixRateRowConfigurator {
 
     var valueLabel: BlixLabelConfigurator {
         BlixLabelConfigurator(
-            text: .number(value, fractionLength: Self.fractionLength),
+            text: .number(value, fractionLength: RateFormat.digits),
             typography: .headline,
             alignment: .trailing,
             monospacedDigits: true
@@ -28,8 +27,10 @@ struct BlixRateRowConfigurator {
     var changeIndicator: BlixChangeIndicatorConfigurator? {
         change.map { BlixChangeIndicatorConfigurator(change: $0) }
     }
+}
 
-    var background: Color { isSelected ? .selectedBackground : .clear }
+// MARK: - Constants
 
-    private static let fractionLength = 4
+private enum RateFormat {
+    static let digits = 4
 }

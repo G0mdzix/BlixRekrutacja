@@ -721,42 +721,6 @@
         }
       }
     },
-    "ratesSelectCurrencyMessage": {
-      "comment": "Landscape detail pane message when no rate is selected.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap a rate in the list to see its exact value, date and change since the previous day."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dotknij kursu na liście, aby zobaczyć dokładną wartość, datę i zmianę względem poprzedniego dnia."
-          }
-        }
-      }
-    },
-    "ratesSelectCurrencyTitle": {
-      "comment": "Landscape detail pane title when no rate is selected.",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a currency"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wybierz walutę"
-          }
-        }
-      }
-    },
     "ratesShowAll": {
       "comment": "Button under a day's popular currencies; the argument is the number of all currencies.",
       "extractionState": "manual",

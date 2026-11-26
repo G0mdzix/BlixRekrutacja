@@ -8,18 +8,8 @@ extension BlixRateRowConfiguratorTests {
         let nameStyle: BlixLabelConfigurator.Style?
     }
 
-    struct SelectionScenario {
-        let isSelected: Bool
-        let background: Color
-    }
-
     static let optionalData: [DataScenario] = [
         DataScenario(name: "złoty polski", change: 0.0028, nameStyle: .secondary),
         DataScenario(name: nil, change: nil, nameStyle: nil)
-    ]
-
-    static let selections: [SelectionScenario] = [
-        SelectionScenario(isSelected: false, background: .clear),
-        SelectionScenario(isSelected: true, background: .selectedBackground)
     ]
 }

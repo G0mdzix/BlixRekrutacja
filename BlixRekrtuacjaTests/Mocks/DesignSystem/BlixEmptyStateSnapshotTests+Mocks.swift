@@ -12,8 +12,8 @@ extension BlixEmptyStateSnapshotTests {
             name: "default",
             configurator: .init(
                 icon: .chartUptrend,
-                title: .localized(.ratesSelectCurrencyTitle),
-                message: .localized(.ratesSelectCurrencyMessage)
+                title: .localized(.ratesNoResultsTitle),
+                message: .localized(.ratesNoResultsMessage("xyz"))
             )
         ),
         Scenario(

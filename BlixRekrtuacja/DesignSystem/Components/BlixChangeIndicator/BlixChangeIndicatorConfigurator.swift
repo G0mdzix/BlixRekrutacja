@@ -15,7 +15,7 @@ struct BlixChangeIndicatorConfigurator {
     var displayedChange: Decimal {
         var value = change
         var rounded = Decimal()
-        NSDecimalRound(&rounded, &value, Self.fractionLength + Self.percentShift, .plain)
+        NSDecimalRound(&rounded, &value, PercentFormat.fractionLength + PercentFormat.shift, .plain)
         return rounded
     }
 
@@ -31,7 +31,7 @@ struct BlixChangeIndicatorConfigurator {
 
     var label: BlixLabelConfigurator {
         BlixLabelConfigurator(
-            text: .percent(magnitude, fractionLength: Self.fractionLength),
+            text: .percent(magnitude, fractionLength: PercentFormat.fractionLength),
             style: direction.style,
             typography: .footnote,
             weight: .semibold,
@@ -39,10 +39,6 @@ struct BlixChangeIndicatorConfigurator {
             monospacedDigits: true
         )
     }
-
-    private static let fractionLength = 2
-    /// A percent shows the fraction × 100, i.e. two more decimal places of the fraction.
-    private static let percentShift = 2
 }
 
 extension BlixChangeIndicatorConfigurator.Direction {
@@ -61,4 +57,12 @@ extension BlixChangeIndicatorConfigurator.Direction {
         case .flat: .secondary
         }
     }
+}
+
+// MARK: - Constants
+
+private enum PercentFormat {
+    static let fractionLength = 2
+    /// A percent shows the fraction × 100, i.e. two more decimal places of the fraction.
+    static let shift = 2
 }

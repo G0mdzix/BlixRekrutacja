@@ -25,7 +25,6 @@ struct BlixRateRow: View {
         .padding(.vertical, Spacing.small)
         .padding(.horizontal, Spacing.large)
         .frame(maxWidth: .infinity, minHeight: Size.minTapTarget, alignment: .leading)
-        .background(configurator.background)
         .contentShape(.rect)
     }
 }
@@ -35,6 +34,6 @@ struct BlixRateRow: View {
         BlixRateRow(configurator: .init(code: "PLN", name: "Polish zloty", value: 4.459811, change: 0.0028) {})
         BlixRateRow(configurator: .init(code: "USD", name: "US dollar", value: 1.097273, change: -0.0011))
         BlixRateRow(configurator: .init(code: "GBP", name: "British pound", value: 0.838894))
-        BlixRateRow(configurator: .init(code: "JPY", value: 173.978128, change: 0.0042, isSelected: true))
+        BlixRateRow(configurator: .init(code: "JPY", value: 173.978128, change: 0.0042))
     }
 }

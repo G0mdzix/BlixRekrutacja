@@ -47,7 +47,8 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
 
 ## Text
 - Every user-facing string comes from Resources/Localizable.xcstrings through generated symbols: `Text(.settingsTitle)`.
-- Add keys manually (camelCase, feature prefix: settings…, about…, common…, error…) with PL + EN and a comment.
+- Add keys manually (camelCase, prefixed by screen or type: rates…, settings…, appearance…, language…, common…, error…)
+  with PL + EN and a comment.
 - Values in sentences use a key with arguments, plurals use Vary by Plural, numbers and dates use FormatStyle. Never use literals or concatenation.
 - Not user-facing (plain String): Logger messages, fatalError, storage keys, SF Symbol names. User data is shown as-is (`.verbatim`).
 

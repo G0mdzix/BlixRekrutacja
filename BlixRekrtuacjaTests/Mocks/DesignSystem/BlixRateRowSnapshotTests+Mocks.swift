@@ -13,9 +13,10 @@ extension BlixRateRowSnapshotTests {
             configurator: .init(code: "PLN", name: "złoty polski", value: 4.459811, change: 0.0028) {}
         ),
         Scenario(name: "without-change", configurator: .init(code: "GBP", name: "funt szterling", value: 0.838894)),
+        Scenario(name: "compact", configurator: .init(code: "JPY", value: 173.978128, change: -0.0042)),
         Scenario(
-            name: "compact-selected",
-            configurator: .init(code: "JPY", value: 173.978128, change: -0.0042, isSelected: true)
+            name: "tiny-value",
+            configurator: .init(code: "BTC", name: "bitcoin", value: Decimal(exact: "0.0000117"))
         ),
         Scenario(
             name: "large-value",

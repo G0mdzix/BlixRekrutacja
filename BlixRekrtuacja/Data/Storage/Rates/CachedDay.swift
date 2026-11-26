@@ -24,7 +24,7 @@ final class CachedDay {
     /// `nil` when a stored value no longer parses: a partial day would show wrong data.
     var cachedRates: CachedRates? {
         let values = rates.compactMap { code, value in
-            Decimal(string: value, locale: Self.decimalLocale).map { CurrencyRate(code: code, value: $0) }
+            Decimal(string: value, locale: DecimalFormat.locale).map { CurrencyRate(code: code, value: $0) }
         }
         guard values.count == rates.count else {
             Logger.storage.error("Cached rates of \(self.day, privacy: .public) are corrupt")
@@ -43,9 +43,14 @@ final class CachedDay {
         rates = Self.strings(from: cached.rates.rates)
     }
 
-    private static let decimalLocale = Locale(identifier: "en_US_POSIX")
-
     private static func strings(from rates: [CurrencyRate]) -> [String: String] {
         Dictionary(uniqueKeysWithValues: rates.map { ($0.code, $0.value.description) })
     }
+}
+
+// MARK: - Constants
+
+private enum DecimalFormat {
+    /// `Decimal.description` always writes a dot.
+    static let locale = Locale(identifier: "en_US_POSIX")
 }

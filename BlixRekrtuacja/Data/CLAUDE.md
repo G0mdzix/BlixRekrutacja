@@ -11,7 +11,7 @@ It knows Domain and Core.
 - Errors reach Features as `AppError`: `APIError` through `AppErrorConvertible` (`APIError+AppError.swift`); Fixer error
   codes and incomplete Fixer bodies throw `AppError` directly. Never map them in ViewModels.
 - Extensions of Apple types used only by Data live in `Extensions/<Type>+<Purpose>.swift` (`Bundle+Fixer.swift`):
-  one target, so a name already used in Core (`Bundle+Extension.swift`) would clash at build time.
+  one target, so file names must be unique across layers.
 
 ## Repositories (`Repositories/<Name>/`)
 - The protocol `<Name>Repository` and its entities live in `Domain/`. `Remote<Name>Repository` takes an `HTTPClient`.

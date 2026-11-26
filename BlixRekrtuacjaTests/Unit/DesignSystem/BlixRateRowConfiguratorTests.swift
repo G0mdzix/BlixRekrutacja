@@ -11,11 +11,4 @@ struct BlixRateRowConfiguratorTests {
         #expect(sut.nameLabel?.style == scenario.nameStyle)
         #expect(sut.changeIndicator?.change == scenario.change)
     }
-
-    @Test(arguments: Self.selections)
-    func highlightsSelectedRow(_ scenario: SelectionScenario) {
-        let sut = BlixRateRowConfigurator(code: "PLN", value: 4.459811, isSelected: scenario.isSelected)
-
-        #expect(sut.background == scenario.background)
-    }
 }
