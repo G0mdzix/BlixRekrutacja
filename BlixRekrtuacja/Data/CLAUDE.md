@@ -3,13 +3,18 @@
 Data talks to the outside world: networking, repositories, DTOs and the on-device cache.
 It knows Domain and Core.
 
-## Networking (`Networking/Client/`, `Networking/Errors/`)
+## Networking (`Networking/Client/`, `APIError`)
+- Networking knows only Foundation and OSLog — never Core or Domain types.
 - Every request goes through the `HTTPClient` protocol and `Endpoint<Response>` (path, method, query, body).
   Only `URLSessionHTTPClient` touches `URLSession`.
-- The client throws typed `APIError` and logs once with `Logger.network`.
+- The client throws typed `APIError` and logs once with its own logger (category "network").
 - Use `EmptyResponse` for requests without a body in the reply.
-- Errors reach Features as `AppError`: `APIError` through `AppErrorConvertible` (`APIError+AppError.swift`); Fixer error
-  codes and incomplete Fixer bodies throw `AppError` directly. Never map them in ViewModels.
+
+## Errors (`Errors/`)
+- Errors reach Features as `AppError`: Data maps `APIError` through `AppErrorConvertible`
+  (`Errors/APIError+AppError.swift`); Fixer error codes and incomplete Fixer bodies throw `AppError` directly. Never map them in ViewModels.
+
+## Extensions (`Extensions/`)
 - Extensions of Apple types used only by Data live in `Extensions/<Type>+<Purpose>.swift` (`Bundle+Fixer.swift`):
   one target, so file names must be unique across layers.
 

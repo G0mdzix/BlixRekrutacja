@@ -63,7 +63,7 @@ struct URLSessionHTTPClient: HTTPClient {
     private func log<Response>(_ error: APIError, for endpoint: Endpoint<Response>) {
         guard error != .cancelled else { return }
         let request = "\(endpoint.method.rawValue) \(endpoint.path)"
-        Logger.network.error("\(request) failed: \(String(describing: error), privacy: .public)")
+        Log.network.error("\(request) failed: \(String(describing: error), privacy: .public)")
     }
 }
 
@@ -74,5 +74,11 @@ private extension URLSessionHTTPClient {
         static let accept = "Accept"
         static let contentType = "Content-Type"
         static let applicationJSON = "application/json"
+    }
+
+    enum Log {
+        static let subsystem = Bundle.main.bundleIdentifier ?? "BlixRekrtuacja"
+        static let category = "network"
+        static let network = Logger(subsystem: subsystem, category: category)
     }
 }

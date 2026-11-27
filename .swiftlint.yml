@@ -123,6 +123,12 @@ custom_rules:
     regex: '\bDispatchQueue\b'
     message: "Use async/await, Task or actors instead of DispatchQueue"
     severity: error
+  # Layers
+  networking_is_leaf:
+    included: '/BlixRekrtuacja/Data/Networking/'
+    regex: '\b(AppError|AppErrorConvertible|Appearance|BusinessDays|Clipboard|CoordinatedStack|Coordinator|CurrencyRate|DailyRates|DateProvider|KeyValueStore|Language|LocaleIdentifier|RatesRepository|StorageKey|UserDefaultsStore|UserPreferences|Weekday)\b|\bLogger\.(app|network|storage)\b'
+    message: "Networking depends only on Foundation and OSLog"
+    severity: error
   # Tests
   no_xctest_assertions:
     included: '/BlixRekrtuacjaTests/'

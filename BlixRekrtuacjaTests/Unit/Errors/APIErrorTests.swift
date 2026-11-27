@@ -1,7 +1,7 @@
 @testable import BlixRekrtuacja
 import Testing
 
-@Suite(.tags(.unit, .networking))
+@Suite(.tags(.unit, .errors))
 struct APIErrorTests {
     @Test(arguments: Self.mappings)
     func mapsToAppError(_ scenario: Scenario) {

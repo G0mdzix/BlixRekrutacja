@@ -29,6 +29,7 @@ Follow the `ios-project-conventions` skill; on conflict the CLAUDE.md files win.
   - App → every layer
   - Features → DesignSystem, Core, Domain
   - Data → Core, Domain
+  - Data/Networking → Foundation only
   - Core → Domain
 
   Only App depends on Features or Data.

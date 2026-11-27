@@ -132,7 +132,7 @@ tylko rysują, a logikę można testować bez interfejsu.
 | `App` | composition root: `AppContainer` tworzy zależności raz, `RootView` obsługuje nawigację |
 | `Features` | ekrany (View + ViewModel), `MainCoordinator`, wspólne modele i prezentacja |
 | `DesignSystem` | tokeny, komponenty `Blix…` i modyfikatory |
-| `Data` | klient HTTP, repozytoria Fixera, cache SwiftData |
+| `Data` | repozytoria Fixera, cache SwiftData, mapowanie `APIError` → `AppError`; `Networking` (klient HTTP) zna tylko Foundation i OSLog |
 | `Core` | preferencje, nawigacja, magazyn ustawień, mapowanie błędów, usługi (`DateProvider`, `Clipboard`) |
 | `Domain` | encje, protokoły repozytoriów, reguła dni roboczych, `AppError`; tylko Foundation |
 
